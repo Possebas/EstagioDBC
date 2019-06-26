@@ -1,8 +1,20 @@
 public class Item{
-    int quantidade;
-    String descricao;
+    private int quantidade;
+    private String descricao;
     
-    public void acrescentaMaisUm(){
-        quantidade++;
+    public int getQuantidade(){
+        return this.quantidade;
+    }
+    
+    public void setQuantidade(int quantidade){
+        this.quantidade = quantidade;
+    }
+    
+    public String getDescricao(){
+        return this.descricao;
+    }
+    
+    public void setDescricao(){
+        this.descricao = descricao;
     }
 }

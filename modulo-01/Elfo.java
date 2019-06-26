@@ -1,8 +1,20 @@
 public class Elfo{
-    String nome;
+    private String nome;
+    private int experiencia = 0;
     
-    Item faca = new Item();
-    faca.quantidade = 1;
-    faca.acrescentaMaisUm();
+    public String getNome(){
+        return this.nome;
+    }
+   
+    public void setNome(String nome){
+        this.nome = nome;
+    }
     
+     public int getExperiencia(){
+        return this.experiencia;
+    }
+    
+    public void setExperiencia(int experiencia){
+        this.experiencia = experiencia;
+    }
 }

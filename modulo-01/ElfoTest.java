@@ -14,7 +14,7 @@ public class ElfoTest{
         novoElfo.atirarFlecha(novoDwarf);
         novoElfo.atirarFlecha(novoDwarf);
         assertEquals(4, novoElfo.getExperiencia());
-        assertEquals(0, novoElfo.getQtdFelcha());
+        assertEquals(0, novoElfo.getInventario().buscaQuantidadePorNomeItem("Flecha"));
     }
     
     @Test
@@ -23,18 +23,19 @@ public class ElfoTest{
         Dwarf novoDwarf = new Dwarf("Gimli");
         novoElfo.atirarFlecha(novoDwarf);
         assertEquals(1, novoElfo.getExperiencia());
-        assertEquals(3, novoElfo.getQtdFelcha());
+        assertEquals(3, novoElfo.getInventario().buscaQuantidadePorNomeItem("Flecha"));
     }
+    
     
     @Test
     public void criarNovoElfoCom4Flechas(){
         Elfo novoElfo = new Elfo("Legolas");
-        assertEquals(4, novoElfo.getQtdFelcha());
+        assertEquals(4, novoElfo.getInventario().buscaQuantidadePorNomeItem("Flecha"));
     }
     
     @Test
     public void criarNovoElfoCom1Arco(){
         Elfo novoElfo = new Elfo("Legolas");
-        assertEquals(1, novoElfo.getQtdArco());
+        assertEquals(1, novoElfo.getInventario().buscaQuantidadePorNomeItem("Arco"));
     }
 }

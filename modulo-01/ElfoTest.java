@@ -25,5 +25,16 @@ public class ElfoTest{
         assertEquals(1, novoElfo.getExperiencia());
         assertEquals(3, novoElfo.getQtdFelcha());
     }
-   
+    
+    @Test
+    public void criarNovoElfoCom4Flechas(){
+        Elfo novoElfo = new Elfo("Legolas");
+        assertEquals(4, novoElfo.getQtdFelcha());
+    }
+    
+    @Test
+    public void criarNovoElfoCom1Arco(){
+        Elfo novoElfo = new Elfo("Legolas");
+        assertEquals(1, novoElfo.getQtdArco());
+    }
 }

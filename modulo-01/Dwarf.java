@@ -11,9 +11,14 @@ public class Dwarf
     public double getVida(){
         return this.vida;
     }
+    
+    public boolean podePerderVida(){
+        return this.vida > 0.0;
+    }
+    
     public void diminuirVida(){
-        if(this.vida >= 10){
-            this.vida = this.vida - 10.0;
+        if(podePerderVida()){
+            this.vida = this.vida >=10.0 ? this.vida - 10.0 : 0.0;
         }
     }
 }

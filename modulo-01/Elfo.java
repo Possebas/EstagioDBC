@@ -29,6 +29,10 @@ public class Elfo{
         return this.flecha.getQuantidade();
     }
     
+    public int getQtdArco(){
+        return this.arco.getQuantidade();
+    }
+    
     public void aumentarXp(){
         this.experiencia++;
     }

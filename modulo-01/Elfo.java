@@ -1,17 +1,26 @@
 public class Elfo{
     private String nome;
-    private Inventario inventario = new Inventario (2);
+    private Inventario inventario;
     private int experiencia;
+    private Status status;
     
+    {
+        inventario = new Inventario ();
+        status = Status.RECEM_CRIADO;
+        experiencia = 0;
+    }
     public Elfo(String nome){
         this.nome = nome;
-        this.experiencia = 0;
-        this.inventario.adicionar(new Item(4, "Flecha"));
-        this.inventario.adicionar(new Item(1, "Arco"));
+        this.inventario.getItens().add(new Item(4, "Flecha"));
+        this.inventario.getItens().add(new Item(1, "Arco"));
     }
     
     public String getNome(){
         return this.nome;
+    }
+    
+    public Status getStatus(){
+        return this.status;
     }
    
     public Inventario getInventario(){
@@ -31,12 +40,14 @@ public class Elfo{
     }
     
     public void atirarFlecha(Dwarf dwarf){
-        Item flecha = this.inventario.obter(0);
-        int qtdAtual = this.inventario.buscaQuantidadePorNomeItem("Flecha");
+        Item flecha = inventario.getItens().get(0);
+        int qtdAtual = flecha.getQuantidade();
         if(qtdAtual > 0){
             flecha.setQuantidade(qtdAtual - 1);
             this.aumentarXp();
-            dwarf.diminuirVida();
+            if(!(dwarf.estaMorto())){
+                dwarf.diminuirVida();
+            }
         } 
     }
 }

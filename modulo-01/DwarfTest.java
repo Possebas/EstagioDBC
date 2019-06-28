@@ -36,5 +36,16 @@ public class DwarfTest
         assertEquals(0, anao.getVida(),0.1);
         assertEquals(false, anao.podePerderVida());
     }
+    
+    @Test
+    public void dwarfNaoPodeSerAtacadoMorto(){
+        Dwarf anao = new Dwarf("Gimli");
+        for(int i =0; i<11;i++){
+            anao.diminuirVida();
+        }
+        assertEquals(0, anao.getVida(),0.1);
+        assertEquals(Status.MORTO, anao.getStatus());
+        assertEquals(false, anao.podePerderVida());
+    }
 
 }

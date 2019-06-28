@@ -1,7 +1,7 @@
 public class Inventario
 {
-    private Item[] itens;
-    
+    private Item itens[];
+    private int count = 0;
     public Inventario(){
         this(99);
     }
@@ -16,6 +16,7 @@ public class Inventario
         for(int i = 0; i < itens.length; i++){
             if(itens[i] == null){
                 itens [i] = item;
+                count++;
                 break;
             }
         }
@@ -52,12 +53,13 @@ public class Inventario
     public void remover(int posicao){
         if(posicao >= 0 && posicao < itens.length-1){
             itens[posicao] = null;
+            count--;
         }
     }
     
     public Item maiorQuantidade(){
         Item maior = itens[0];
-        for(int i = 0; i < itens.length; i++){
+        for(int i = 1; i < itens.length; i++){
             if(itens[i] != null){
                 if(maior.getQuantidade() < itens[i].getQuantidade()){
                     maior = itens[i];
@@ -75,8 +77,12 @@ public class Inventario
                 resultado.append(",");
             }
         }   
-        return resultado.toString();
+        //return resultado.toString();
+        return (resultado.length()>0 ? 
+        resultado.substring(0,(resultado.length()-1)) : 
+        resultado.toString());
     }
+    
 }
     
    

@@ -10,8 +10,6 @@ public class Elfo{
         this.inventario.adicionar(new Item(1, "Arco"));
     }
     
-    
-    
     public String getNome(){
         return this.nome;
     }

@@ -10,7 +10,13 @@ public class InventarioTest
         Inventario inventario = new Inventario();
         inventario.adicionar(new Item(4,"Faca"));
         inventario.adicionar(new Item(5,"Sabre"));
-        assertEquals("Faca,Sabre,",inventario.imprimeNomeItens());
+        assertEquals("Faca,Sabre",inventario.imprimeNomeItens());
+    }
+    
+    @Test
+    public void imprimeNenhumItem(){
+        Inventario inventario = new Inventario();
+        assertEquals("",inventario.imprimeNomeItens());
     }
     
     @Test
@@ -50,5 +56,30 @@ public class InventarioTest
         assertEquals(5,inventario.obter(1).getQuantidade());
     }
     
+    @Test
+    public void getItemMaiorQuantidadeComVarios(){
+        Inventario inventario = new Inventario();
+        inventario.adicionar(new Item(4,"Faca"));
+        inventario.adicionar(new Item(5,"Sabre"));
+        inventario.adicionar(new Item(10,"Arma"));
+        assertEquals("Arma",inventario.maiorQuantidade().getDescricao());
+    }
     
+    @Test
+    public void getItemMaiorQuantidadeInventarioVazio(){
+        Inventario inventario = new Inventario();
+        assertNull(null,inventario.maiorQuantidade());
+    }
+    
+    @Test
+    public void getItemMaiorQuantidadeComItensComMesmaQuantidade(){
+        Inventario inventario = new Inventario();
+        inventario.adicionar(new Item(4,"Faca"));
+        inventario.adicionar(new Item(5,"Sabre"));
+        inventario.adicionar(new Item(5,"Adaga"));
+        inventario.adicionar(new Item(8,"Bazuka"));
+        inventario.adicionar(new Item(8,"Bazuka"));
+        inventario.adicionar(new Item(5,"Cajado"));
+        assertEquals("Bazuka",inventario.maiorQuantidade().getDescricao());
+    }
 }

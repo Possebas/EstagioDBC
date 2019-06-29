@@ -22,4 +22,12 @@ public class Item{
     public void setDescricao(){
         this.descricao = descricao;
     }
+    
+    public int compareTo(Item item) 
+    {
+      int resultado = 0;
+      if (this.quantidade > item.quantidade){resultado = 1;} 
+      if (this.quantidade < item.quantidade) {resultado = -1;}
+      return resultado;
+    }
 }

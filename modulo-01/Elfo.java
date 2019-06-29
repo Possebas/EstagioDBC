@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Elfo{
     private String nome;
     private Inventario inventario;
@@ -11,8 +13,8 @@ public class Elfo{
     }
     public Elfo(String nome){
         this.nome = nome;
-        this.inventario.getItens().add(new Item(4, "Flecha"));
-        this.inventario.getItens().add(new Item(1, "Arco"));
+        getInventario().add(new Item(4, "Flecha"));
+        getInventario().add(new Item(1, "Arco"));
     }
     
     public String getNome(){
@@ -22,9 +24,10 @@ public class Elfo{
     public Status getStatus(){
         return this.status;
     }
-   
-    public Inventario getInventario(){
-        return this.inventario;
+    
+    
+    public ArrayList<Item> getInventario(){
+        return this.inventario.getItens();
     }
    
     public void setNome(String nome){

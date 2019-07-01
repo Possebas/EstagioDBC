@@ -35,38 +35,28 @@ public class Inventario
         return aux; 
     }
     
-    public void ordenarItens(){ //Classico bubbleSort como otimização de n ao quadrado, considerando n como numero de elementos.
-       Item aux = null;
-       if (itens.size()>1){ // nem entra senão houver mais de um item
-            for (int j=0; j<itens.size(); j++){ //laço mais externo onde
-                for (int i=0; i < itens.size()-i; i++){
-                    if (itens.get(i).compareTo(itens.get(i+1)) > 0){ //comparo o que to, é maior que o proximo e então realizo a troca
-                        aux = itens.get(i); //atual fica em aux
-                        itens.set(i,itens.get(i+1) ); //proxima posição na atual
-                        itens.set(i+1, aux); //proxima posição com o aux (atual)
+    public void ordenarItens(){ 
+        this.ordenarItens(TipoOrdenacao.ASC);
+     }
+    
+    public void ordenarItens(TipoOrdenacao ordenacao){ 
+       if (itens.size()>1){ 
+            for (int i=0; i<itens.size(); i++){ 
+                for (int j=0; j < itens.size()-1; j++){
+                    Item atual = this.itens.get(j);
+                    Item proximo = this.itens.get(j+1);
+                    boolean deveTrocar = ordenacao == TipoOrdenacao.ASC ? 
+                    atual.getQuantidade() > proximo.getQuantidade() : 
+                    atual.getQuantidade() < proximo.getQuantidade();
+                    if(deveTrocar){
+                        Item itemTrocado = atual;
+                        this.itens.set(j, proximo);
+                        this.itens.set(j+1, atual);
                     }
                 }
             }
        } 
     }
-    
-    public void ordenarItens(TipoOrdenacao ordem){ 
-       //Classico bubbleSort como otimização de n ao quadrado, considerando n como numero de elementos.
-       Item aux = null;
-       if(ordem == TipoOrdenacao.ASC){
-           if (itens.size()>1){ // nem entra senão houver mais de um item
-               for (int j=0; j<itens.size(); j++){ //laço mais externo onde
-                   for (int i=0; i < itens.size()-i; i++){
-                       if (itens.get(i).compareTo(itens.get(i+1)) < 0){ //comparo o que to, é menor que o proximo e então realizo a troca
-                           aux = itens.get(i); //atual fica em aux
-                           itens.set(i,itens.get(i+1) ); //proxima posição na atual
-                           itens.set(i+1, aux); //proxima posição com o aux (atual)
-                    }
-                }
-               }
-           }     
-        } else{ordenarItens();}       
-    } 
     
     
     public String imprimeNomeItens(){

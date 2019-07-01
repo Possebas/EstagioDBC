@@ -104,8 +104,9 @@ public class InventarioTest
         inventario.getItens().add(new Item(8, "Escudo de metal"));
         inventario.getItens().add(new Item(5, "Bracelete"));
         inventario.ordenarItens(TipoOrdenacao.ASC);
-        assertEquals("Escudo de metal,Sabre,Bracelete",inventario.imprimeNomeItens());
+        assertEquals("Bracelete,Sabre,Escudo de metal",inventario.imprimeNomeItens());
     }
+    
     
     @Test
     public void inventerComApenasUmItem(){
@@ -115,6 +116,7 @@ public class InventarioTest
         assertEquals(termica, inventario.inverter().get(0));
         assertEquals(1, inventario.inverter().size());
     }
+    
     
     @Test
     public void inventerComDoisItens(){

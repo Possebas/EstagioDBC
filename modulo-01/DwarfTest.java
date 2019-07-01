@@ -11,14 +11,14 @@ public class DwarfTest
     @Test 
     public void dwarfNasceCom110DeVida(){
         Dwarf dwarf = new Dwarf("Gimli");
-        assertEquals(110.0,dwarf.getVida(),0.1);
+        assertEquals(110.0,dwarf.getVida(),1e-9);
     }
     
     @Test
     public void diminuirVidaEmMenos10(){
         Dwarf anao = new Dwarf("Gimli");
         anao.diminuirVida();
-        assertEquals(100.0, anao.getVida(),1e-9);
+        assertEquals(105.0, anao.getVida(),1e-9);
     }
     
     @Test
@@ -30,20 +30,20 @@ public class DwarfTest
     @Test
     public void dwarfDiminuiVidaAte0(){
         Dwarf anao = new Dwarf("Gimli");
-        for(int i =0; i<11;i++){
+        for(int i =0; i<22;i++){
             anao.diminuirVida();
         }
-        assertEquals(0, anao.getVida(),0.1);
+        assertEquals(0, anao.getVida(),1e-9);
         assertEquals(false, anao.podePerderVida());
     }
     
     @Test
     public void dwarfNaoPodeSerAtacadoMorto(){
         Dwarf anao = new Dwarf("Gimli");
-        for(int i =0; i<11;i++){
+        for(int i =0; i<22;i++){
             anao.diminuirVida();
         }
-        assertEquals(0, anao.getVida(),0.1);
+        assertEquals(0, anao.getVida(),1e-9);
         assertEquals(Status.MORTO, anao.getStatus());
         assertEquals(false, anao.podePerderVida());
     }
@@ -54,22 +54,73 @@ public class DwarfTest
         assertEquals(Status.RECEM_CRIADO, dwarf.getStatus());
     }
     
+     @Test 
+    public void dwarfAdicionaItem(){
+        Dwarf dwarf = new Dwarf("Gimli");
+        Item flecha = new Item(3, "Flechas");
+        dwarf.ganharItem(flecha);
+        assertEquals(flecha,dwarf.getInventario().get(1));
+        assertEquals(Status.RECEM_CRIADO, dwarf.getStatus());
+    }
+    
+    @Test 
+    public void dwarfPerdeItem(){
+        Dwarf dwarf = new Dwarf("Gimli");
+        Item flecha = new Item(3, "Flechas");
+        dwarf.perderItem(flecha);
+        assertEquals(1, dwarf.getInventario().size());
+    }
+    
     @Test 
     public void dwarfPerdeVidaEContinuaVivo(){
         Dwarf dwarf = new Dwarf("Gimli");
         dwarf.diminuirVida();
-        
         assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
     }
+    
     
     @Test 
     public void dwarfPerdeVidaEDeveMorrer(){
        Dwarf dwarf = new Dwarf("Gimli");
-       for(int i =0; i<12;i++){
+       for(int i =0; i<22;i++){
            dwarf.diminuirVida();
        }
        assertEquals(Status.MORTO, dwarf.getStatus());
        assertEquals(0.0, dwarf.getVida(),1e-9);
+    }
+    
+    
+    @Test 
+    public void dwarfTemEscudo(){
+       Dwarf dwarf = new Dwarf("Gimli");
+       assertTrue(dwarf.temEscudo());
+    }
+    
+    @Test 
+    public void dwarfTemEscudoEPerdeMetade(){
+       Dwarf dwarf = new Dwarf("Gimli");
+       dwarf.diminuirVida();
+       assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
+       assertEquals(105.0, dwarf.getVida(),1e-9);
+    }
+    
+    @Test 
+    public void dwarfNaoTemEscudoPerdeVida(){
+       Dwarf dwarf = new Dwarf("Gimli");
+       dwarf.getInventario().remove(0);
+       dwarf.diminuirVida();
+       assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
+       assertEquals(100.0, dwarf.getVida(),1e-9);
+    }
+    
+    @Test 
+    public void dwarfTemEscudoEPerdeMetadeDaVida(){
+       Dwarf dwarf = new Dwarf("Gimli");
+       for(int i =0; i<11;i++){
+           dwarf.diminuirVida();
+       }
+       assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
+       assertEquals(55.0, dwarf.getVida(),1e-9);
     }
     
 }

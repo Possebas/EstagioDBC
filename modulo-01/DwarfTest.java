@@ -47,5 +47,29 @@ public class DwarfTest
         assertEquals(Status.MORTO, anao.getStatus());
         assertEquals(false, anao.podePerderVida());
     }
-
+    
+    @Test 
+    public void dwarfNasceComStatus(){
+        Dwarf dwarf = new Dwarf("Gimli");
+        assertEquals(Status.RECEM_CRIADO, dwarf.getStatus());
+    }
+    
+    @Test 
+    public void dwarfPerdeVidaEContinuaVivo(){
+        Dwarf dwarf = new Dwarf("Gimli");
+        dwarf.diminuirVida();
+        
+        assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
+    }
+    
+    @Test 
+    public void dwarfPerdeVidaEDeveMorrer(){
+       Dwarf dwarf = new Dwarf("Gimli");
+       for(int i =0; i<12;i++){
+           dwarf.diminuirVida();
+       }
+       assertEquals(Status.MORTO, dwarf.getStatus());
+       assertEquals(0.0, dwarf.getVida(),1e-9);
+    }
+    
 }

@@ -1,4 +1,4 @@
 public enum Status
 {
-    RECEM_CRIADO,MORTO
+    RECEM_CRIADO, SOFREU_DANO, MORTO
 }

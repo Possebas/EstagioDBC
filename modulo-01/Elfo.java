@@ -7,7 +7,7 @@ public class Elfo{
     private Status status;
     
     {
-        inventario = new Inventario ();
+        inventario = new Inventario (2);
         status = Status.RECEM_CRIADO;
         experiencia = 0;
     }
@@ -48,9 +48,7 @@ public class Elfo{
         if(qtdAtual > 0){
             flecha.setQuantidade(qtdAtual - 1);
             this.aumentarXp();
-            if(!(dwarf.estaMorto())){
-                dwarf.diminuirVida();
-            }
+            dwarf.diminuirVida();
         } 
     }
 }

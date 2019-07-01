@@ -4,8 +4,8 @@ public class Inventario
 {
     private ArrayList<Item> itens;
     
-    public Inventario(){
-        itens = new ArrayList<>();
+    public Inventario(int quantidade){
+        itens = new ArrayList<>(quantidade);
     }
    
     public ArrayList<Item> getItens(){
@@ -17,24 +17,23 @@ public class Inventario
     }
     
     public Item buscaItemPorDescricao(String descricao){
-        Item aux = null;
-        for(int i = 0; i < itens.size(); i++){
-            aux = itens.get(i);
-            if(aux.getDescricao() == descricao){
-               return aux;
-            }        
-        }      
-        return (aux != null) ? aux : null;
+        for(Item itemAtual : this.itens){
+            boolean encontrei = itemAtual.getDescricao().equals(descricao);
+            if(encontrei){
+                return itemAtual;
+            }
+        }
+        return null;
     }
     
     public ArrayList<Item> inverter() { 
-        ArrayList<Item> aux = new ArrayList<Item>(); 
+        ArrayList<Item> aux = new ArrayList<Item>(this.itens.size()); 
         int tam = getTamanho() - 1;
         for (int i = tam; i >= 0; i--){
-            aux.add(getItens().get(i)); 
+            aux.add(this.getItens().get(i)); 
         }
         return aux; 
-    } 
+    }
     
     public void ordenarItens(){ //Classico bubbleSort como otimização de n ao quadrado, considerando n como numero de elementos.
        Item aux = null;
@@ -66,7 +65,7 @@ public class Inventario
                 }
                }
            }     
-        } //else{ordenarItens();}       
+        } else{ordenarItens();}       
     } 
     
     
@@ -84,6 +83,18 @@ public class Inventario
                 resultado.substring(0,(resultado.length()-1)) : 
                 resultado.toString());
     }
-}   
+    
+    public Item itemComMaiorQuantidade(){
+        int indice = 0;
+        int valor = 0;
+        for(int i = 0; i < itens.size();i++){
+            if(valor < itens.get(i).getQuantidade()){
+                valor = itens.get(i).getQuantidade();
+                indice = i;
+            }
+        }
+        return this.itens.size() > 0 ? this.itens.get(indice) : null;
+    }  
+} 
     
    

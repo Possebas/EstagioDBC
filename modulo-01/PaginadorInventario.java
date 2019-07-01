@@ -10,7 +10,7 @@ public class PaginadorInventario
     }
     
     public void pular(int index){
-        this.index = index;
+        this.index = index > 0 ? index : 0;
     }
     
     public String limitar(int numElem){

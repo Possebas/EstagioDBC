@@ -8,7 +8,7 @@ public class PaginadorInventarioTest
 {
     @Test
     public void pular0Limitar2(){
-        Inventario inventario = new Inventario();
+        Inventario inventario = new Inventario(4);
 	inventario.getItens().add(new Item(1, "Espada"));
 	inventario.getItens().add(new Item(2, "Escudo de metal"));
 	inventario.getItens().add(new Item(3, "Poção de HP"));
@@ -23,7 +23,7 @@ public class PaginadorInventarioTest
     
     @Test
     public void pularTotal2LimitarTotal4(){
-        Inventario inventario = new Inventario();
+        Inventario inventario = new Inventario(4);
 	inventario.getItens().add(new Item(1, "Espada"));
 	inventario.getItens().add(new Item(2, "Escudo de metal"));
 	inventario.getItens().add(new Item(3, "Poção de HP"));

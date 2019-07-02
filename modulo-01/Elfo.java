@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class Elfo{
     private String nome;
     private Inventario inventario;
@@ -7,7 +6,7 @@ public class Elfo{
     private Status status;
     
     {
-        inventario = new Inventario ();
+        inventario = new Inventario (2);
         status = Status.RECEM_CRIADO;
         experiencia = 0;
     }
@@ -25,7 +24,6 @@ public class Elfo{
         return this.status;
     }
     
-    
     public ArrayList<Item> getInventario(){
         return this.inventario.getItens();
     }
@@ -42,15 +40,21 @@ public class Elfo{
         this.experiencia++;
     }
     
+    public void ganharItem(Item item){
+        this.getInventario().add(item);
+    }
+    
+    public void perderItem(Item item){
+        this.inventario.getItens().remove(item);
+    }
+        
     public void atirarFlecha(Dwarf dwarf){
         Item flecha = inventario.getItens().get(0);
         int qtdAtual = flecha.getQuantidade();
         if(qtdAtual > 0){
             flecha.setQuantidade(qtdAtual - 1);
             this.aumentarXp();
-            if(!(dwarf.estaMorto())){
-                dwarf.diminuirVida();
-            }
+            dwarf.diminuirVida();
         } 
     }
 }

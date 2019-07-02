@@ -9,40 +9,36 @@ public class EstatisticasInventario
     }
     
     public double calcularMedia(){
-        int tam = inventario.getTamanho();
-        int qtdItem = 0;
-        int totalItens = 0;
-        for(int i = 0; i<tam; i++){
-            qtdItem = inventario.getItens().get(i).getQuantidade();
-            totalItens += qtdItem;
+        if(this.inventario.getItens().isEmpty()){
+            return Double.NaN;
+        } 
+        double somaQtds = 0;
+        for(Item item : this.inventario.getItens()){
+            somaQtds += item.getQuantidade(); 
         }
-        return totalItens/tam;
+        return somaQtds / this.inventario.getItens().size();
     }
     
     public double calcularMediana(){
-        double mediana = 0.0;
-        int tam = inventario.getTamanho();
-        int meio = tam/2;
-        if(tam % 2 == 0){
-            mediana = (meio + (meio+1))/2;
-        } else{
-            mediana = meio;
+        int qtdItens = this.inventario.getItens().size();
+        int meio = qtdItens / 2;
+        int qtdMeio = this.inventario.getItens().get(meio).getQuantidade();
+        if(qtdItens % 2 == 1){
+             return qtdMeio;
         }
-        return mediana;
+        int qtdMeioMenosUm = this.inventario.getItens().get(meio-1).getQuantidade();
+        return (qtdMeio + qtdMeioMenosUm)/2.0;
     }
     
     public int qtdItensAcimaDaMedia(){
-        double media = calcularMedia();
-        int qtdItemAcimaMedia = 0;
-        int qtdItem = 0;
-        int tam = inventario.getTamanho();
+        double media = this.calcularMedia();
+        int qtdAcima = 0;
         
-        for(int i = 0; i<tam; i++){
-            qtdItem = inventario.getItens().get(i).getQuantidade();
-            if(qtdItem > media){
-                qtdItemAcimaMedia++;
+        for(Item item : this.inventario.getItens()){
+            if( item.getQuantidade() > media ){
+                qtdAcima++;
             }
         }
-        return qtdItemAcimaMedia;
+        return qtdAcima++;
     }
 }

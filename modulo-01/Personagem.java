@@ -52,5 +52,7 @@ public class Personagem
     public boolean podePerderVida(){
         return this.vida > 0.0;
     }
+    
+    
 
 }

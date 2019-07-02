@@ -13,7 +13,7 @@ public class Elfo extends Personagem{
     }
     
     public void atirarFlecha(Dwarf dwarf){
-        Item flecha = inventario.getItens().get(0);
+        Item flecha = this.inventario.getItens().get(0);
         int qtdAtual = flecha.getQuantidade();
         if(qtdAtual > 0){
             flecha.setQuantidade(qtdAtual - 1);

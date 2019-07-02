@@ -5,6 +5,8 @@ import org.junit.Test;
 
 public class ElfoTest{
     
+    private final double DELTA = 1e-9;
+    
     @Test
     public void atirarFlechaDiminuirFlechaAumentarXp(){
         Elfo novoElfo = new Elfo("Legolas");
@@ -42,7 +44,7 @@ public class ElfoTest{
     @Test
     public void elfoNasceCom100DeVida(){
         Elfo novoElfo = new Elfo("Legolas");
-        assertEquals(100.0, novoElfo.vida, 1e-9);
+        assertEquals(100.0, novoElfo.vida, DELTA);
     }
     
     

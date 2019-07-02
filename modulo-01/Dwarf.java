@@ -1,28 +1,15 @@
 import java.util.*;
-public class Dwarf
-{
-    private String nome;
-    private double vida;
-    private Status status;
-    private Inventario inventario;
+public class Dwarf extends Personagem
+{    
     
     {
-        inventario = new Inventario(1);
-        status = Status.RECEM_CRIADO;
-        vida = 110.0;
+        this.inventario = new Inventario(1);
+        this.vida = 110.0;
     }
     
     public Dwarf(String nome){
-        this.nome = nome;
+        super(nome);
         this.equiparEscudo();
-    }
-    
-    public Status getStatus(){
-        return this.status;
-    }
-    
-    public ArrayList<Item> getInventario(){
-        return this.inventario.getItens();
     }
     
     public void equiparEscudo(){
@@ -35,21 +22,6 @@ public class Dwarf
            return true;
         }
         return false;
-    }
-    public double getVida(){
-        return this.vida;
-    }
-    
-    public boolean podePerderVida(){
-        return this.vida > 0.0;
-    }
-    
-    public void ganharItem(Item item){
-        this.inventario.getItens().add(item);
-    }
-    
-    public void perderItem(Item item){
-        this.inventario.getItens().remove(item);
     }
     
     public void diminuirVida(){

@@ -40,8 +40,15 @@ public class ElfoTest{
     }
     
     @Test
-    public void elfoNasceComStatusRecemCriado(){
+    public void elfoNasceCom100DeVida(){
         Elfo novoElfo = new Elfo("Legolas");
-        assertEquals(Status.RECEM_CRIADO, novoElfo.getStatus());
+        assertEquals(100.0, novoElfo.vida, 1e-9);
+    }
+    
+    
+    @Test
+    public void elfoNasceComStatusRecemCriado(){
+        Personagem elfo = new Personagem("Legolas");
+        assertEquals(Status.RECEM_CRIADO, elfo.getStatus());
     }
 }

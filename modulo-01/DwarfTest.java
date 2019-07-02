@@ -60,7 +60,6 @@ public class DwarfTest
         Item flecha = new Item(3, "Flechas");
         dwarf.ganharItem(flecha);
         assertEquals(flecha,dwarf.getInventario().get(1));
-        assertEquals(Status.RECEM_CRIADO, dwarf.getStatus());
     }
     
     @Test 

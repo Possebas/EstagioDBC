@@ -8,17 +8,19 @@ import org.junit.Test;
 public class DwarfTest
 {
     
+    private final double DELTA = 1e-9;
+    
     @Test 
     public void dwarfNasceCom110DeVida(){
         Dwarf dwarf = new Dwarf("Gimli");
-        assertEquals(110.0,dwarf.getVida(),1e-9);
+        assertEquals(110.0,dwarf.getVida(),DELTA);
     }
     
     @Test
     public void diminuirVidaEmMenos10(){
         Dwarf anao = new Dwarf("Gimli");
         anao.diminuirVida();
-        assertEquals(105.0, anao.getVida(),1e-9);
+        assertEquals(105.0, anao.getVida(),DELTA);
     }
     
     @Test
@@ -26,6 +28,7 @@ public class DwarfTest
         Dwarf anao = new Dwarf("Gimli");
         assertEquals(true, anao.podePerderVida());
     }
+    
     
     @Test
     public void dwarfDiminuiVidaAte0(){
@@ -60,7 +63,6 @@ public class DwarfTest
         Item flecha = new Item(3, "Flechas");
         dwarf.ganharItem(flecha);
         assertEquals(flecha,dwarf.getInventario().get(1));
-        assertEquals(Status.RECEM_CRIADO, dwarf.getStatus());
     }
     
     @Test 
@@ -86,7 +88,7 @@ public class DwarfTest
            dwarf.diminuirVida();
        }
        assertEquals(Status.MORTO, dwarf.getStatus());
-       assertEquals(0.0, dwarf.getVida(),1e-9);
+       assertEquals(0.0, dwarf.getVida(),DELTA);
     }
     
     
@@ -101,7 +103,7 @@ public class DwarfTest
        Dwarf dwarf = new Dwarf("Gimli");
        dwarf.diminuirVida();
        assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
-       assertEquals(105.0, dwarf.getVida(),1e-9);
+       assertEquals(105.0, dwarf.getVida(),DELTA);
     }
     
     @Test 
@@ -110,7 +112,7 @@ public class DwarfTest
        dwarf.getInventario().remove(0);
        dwarf.diminuirVida();
        assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
-       assertEquals(100.0, dwarf.getVida(),1e-9);
+       assertEquals(100.0, dwarf.getVida(),DELTA);
     }
     
     @Test 
@@ -120,7 +122,7 @@ public class DwarfTest
            dwarf.diminuirVida();
        }
        assertEquals(Status.SOFREU_DANO, dwarf.getStatus());
-       assertEquals(55.0, dwarf.getVida(),1e-9);
+       assertEquals(55.0, dwarf.getVida(),DELTA);
     }
     
 }

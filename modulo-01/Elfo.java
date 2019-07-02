@@ -1,55 +1,19 @@
 import java.util.*;
-public class Elfo{
-    private String nome;
-    private Inventario inventario;
-    private int experiencia;
-    private Status status;
-    
+public class Elfo extends Personagem{
+ 
     {
-        inventario = new Inventario (2);
-        status = Status.RECEM_CRIADO;
-        experiencia = 0;
+        this.inventario = new Inventario (2);
+        this.vida = 100.0;
     }
+    
     public Elfo(String nome){
-        this.nome = nome;
+        super(nome);
         getInventario().add(new Item(4, "Flecha"));
         getInventario().add(new Item(1, "Arco"));
     }
     
-    public String getNome(){
-        return this.nome;
-    }
-    
-    public Status getStatus(){
-        return this.status;
-    }
-    
-    public ArrayList<Item> getInventario(){
-        return this.inventario.getItens();
-    }
-   
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    
-     public int getExperiencia(){
-        return this.experiencia;
-    }
-    
-    public void aumentarXp(){
-        this.experiencia++;
-    }
-    
-    public void ganharItem(Item item){
-        this.getInventario().add(item);
-    }
-    
-    public void perderItem(Item item){
-        this.inventario.getItens().remove(item);
-    }
-        
     public void atirarFlecha(Dwarf dwarf){
-        Item flecha = inventario.getItens().get(0);
+        Item flecha = this.inventario.getItens().get(0);
         int qtdAtual = flecha.getQuantidade();
         if(qtdAtual > 0){
             flecha.setQuantidade(qtdAtual - 1);

@@ -17,9 +17,59 @@ public class ElfoVerdeTest
     @Test
     public void elfoVerdeAdicionaItemArcoDeVidro(){
         ElfoVerde elfoVerde = new ElfoVerde("Legolas Green");
+        Item arcoDeVidro = new Item(1, "Arco de Vidro");
+        elfoVerde.ganharItem(arcoDeVidro);
+        assertEquals("Arco de Vidro",elfoVerde.getInventario().get(2).getDescricao());
+    }
+    
+    @Test
+    public void elfoVerdeRemoveItemArcoDeVidro(){
+        ElfoVerde elfoVerde = new ElfoVerde("Legolas Green");
         Item arcoDeVidro = new Item(1, "Arco de vidro");
         elfoVerde.ganharItem(arcoDeVidro);
-        assertEquals("Arco de vidro",elfoVerde.getInventario().get(2).getDescricao());
+        elfoVerde.perderItem(arcoDeVidro);
+        assertEquals("Arco",elfoVerde.getInventario().get(1).getDescricao());
+    }
+    
+    @Test
+    public void elfoVerdeAdicionaItemEspadaValeriano(){
+        ElfoVerde elfoVerde = new ElfoVerde("Legolas Green");
+        Item espadaValiriana = new Item(1, "Espada de aço valiriano");
+        elfoVerde.ganharItem(espadaValiriana);
+        assertEquals("Espada de aço valiriano",elfoVerde.getInventario().get(2).getDescricao());
+    }
+    
+    @Test
+    public void elfoVerdeRemoveItemEspadaValeriano(){
+        ElfoVerde elfoVerde = new ElfoVerde("Legolas Green");
+        Item espadaValiriana = new Item(1, "Espada de aço valiriano");
+        elfoVerde.ganharItem(espadaValiriana);
+        assertEquals("Arco",elfoVerde.getInventario().get(1).getDescricao());
+    }
+    
+    @Test
+    public void elfoVerdeAdicionaItemFlechaDeVidro(){
+        ElfoVerde elfoVerde = new ElfoVerde("Legolas Green");
+        Item flechaDeVidro = new Item(1, "Flecha de Vidro");
+        elfoVerde.ganharItem(flechaDeVidro);
+        assertEquals("Flecha de Vidro",elfoVerde.getInventario().get(2).getDescricao());
+    }
+    
+    @Test
+    public void elfoVerdeRemoveItemFlechaDeVidro(){
+        ElfoVerde elfoVerde = new ElfoVerde("Legolas Green");
+        Item flechaDeVidro = new Item(1, "Flecha de Vidro");
+        elfoVerde.ganharItem(flechaDeVidro);
+        elfoVerde.perderItem(flechaDeVidro);
+        assertEquals("Arco",elfoVerde.getInventario().get(1).getDescricao());
+    }
+    
+    @Test
+    public void elfoVerdeAdicionaItemInvalido(){
+        ElfoVerde elfoVerde = new ElfoVerde("Legolas Green");
+        Item pocaoDeHp = new Item(1, "Pocao de HP");
+        elfoVerde.ganharItem(pocaoDeHp);
+        assertNull(elfoVerde.inventario.buscaItemPorDescricao("Pocao de HP"));
     }
     
     @Test

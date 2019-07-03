@@ -32,7 +32,7 @@ public class ElfoNoturnoTest
     }
     
     @Test
-    public void atirar2FlechaDiminuirFlechaAumentarXp3Vezes(){
+    public void atirar2FlechaDiminuirFlechaAumentarXp3VezesMais(){
         ElfoNoturno novoElfo = new ElfoNoturno("Legolas");
         Dwarf novoDwarf = new Dwarf("Gimli");
         novoElfo.atirarFlecha(novoDwarf);
@@ -40,6 +40,17 @@ public class ElfoNoturnoTest
         novoElfo.atirarFlecha(novoDwarf);
         assertEquals(9, novoElfo.getExperiencia());
         assertEquals(1, novoElfo.getInventario().get(0).getQuantidade());
+    }
+    
+    @Test
+    public void elfoNoturnoAte0ENaoPodeSerMorto(){
+        ElfoNoturno novoElfo = new ElfoNoturno("Legolas");
+        for(int i =0; i<8;i++){
+            novoElfo.diminuirVida();
+        }
+        assertEquals(0.0, novoElfo.getVida(),DELTA);
+        assertEquals(Status.MORTO, novoElfo.getStatus());
+        assertEquals(false, novoElfo.podePerderVida());
     }
     
     

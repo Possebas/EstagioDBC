@@ -2,12 +2,12 @@ import java.util.*;
 public class Elfo extends Personagem{
  
     {
-        this.inventario = new Inventario (2);
         this.vida = 100.0;
     }
     
     public Elfo(String nome){
         super(nome);
+        this.qtdExperienciaPorAtaque = 1;
         getInventario().add(new Item(4, "Flecha"));
         getInventario().add(new Item(1, "Arco"));
     }
@@ -21,4 +21,5 @@ public class Elfo extends Personagem{
             dwarf.diminuirVida();
         } 
     }
+    
 }

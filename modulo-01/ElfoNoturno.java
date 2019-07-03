@@ -1,14 +1,14 @@
 
 public class ElfoNoturno extends Elfo
 {
+    
     public ElfoNoturno(String nome){
         super(nome);
+        this.qtdExperienciaPorAtaque = 3;
+        this.qtdDano = 15.0;
     }
     
-    public void aumentarXp(){
-        this.experiencia += 3;
-    }
-    
+    @Override 
     public void atirarFlecha(Dwarf dwarf){
         Item flecha = this.inventario.getItens().get(0);
         int qtdAtual = flecha.getQuantidade();
@@ -20,15 +20,5 @@ public class ElfoNoturno extends Elfo
         } 
     }
     
-    public void diminuirVida(){
-        if(podePerderVida()){
-           this.vida = (this.vida >=15.0) ? this.vida - 15.0 : 0.0;
-        }
-        if(this.vida == 0){
-             this.status = Status.MORTO;
-           } else {
-             this.status = Status.SOFREU_DANO;
-        }
-    }
 }
 

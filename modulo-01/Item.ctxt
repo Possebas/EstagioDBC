@@ -12,4 +12,6 @@ comment5.params=
 comment5.target=void\ setDescricao()
 comment6.params=item
 comment6.target=int\ compareTo(Item)
-numComments=7
+comment7.params=obj
+comment7.target=boolean\ equals(java.lang.Object)
+numComments=8

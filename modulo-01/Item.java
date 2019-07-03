@@ -30,4 +30,10 @@ public class Item{
       if (this.quantidade < item.quantidade) {resultado = -1;}
       return resultado;
     }
+    
+    public boolean equals(Object obj){
+        Item outroItem = (Item)obj;
+        return this.quantidade == outroItem.getQuantidade()  &&
+        this.descricao == outroItem.getDescricao();
+    }   
 }

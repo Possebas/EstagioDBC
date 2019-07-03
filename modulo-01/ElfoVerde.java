@@ -1,38 +1,32 @@
-
+import java.util.*;
 public class ElfoVerde extends Elfo
 {
-    private final String espadaValiriana = "Espada de aço valiriano";
-    private final String arcoValiriano = "Arco de Vidro";
-    private final String flechaVidro = "Flecha de Vidro";
-
+    private final ArrayList<String> DESCRICOES_VALIDAS = new ArrayList<>(
+        Arrays.asList(
+            "Espada de aço valiriano",
+            "Arco de Vidro",
+            "Flecha de Vidro"
+        )
+    );
     
     public ElfoVerde(String nome){
         super(nome);
+        this.qtdExperienciaPorAtaque = 2;
     }
     
-    public void aumentarXp(){
-        this.experiencia += 2;
-    }
-    
-    public boolean itensPermitidos(String item){
-        if(item.equalsIgnoreCase(espadaValiriana) ||
-           item.equalsIgnoreCase(arcoValiriano)   ||
-           item.equalsIgnoreCase(flechaVidro)){
-               return true;
-        }
-        return false;
-    }
-    
+    @Override 
     public void ganharItem(Item item){
-        if(itensPermitidos(item.getDescricao())){
+        boolean descricaoValida = DESCRICOES_VALIDAS.contains(item.getDescricao());
+        if(descricaoValida){
             this.getInventario().add(item);
         }
     }
     
-    
+    @Override 
     public void perderItem(Item item){
-        if(itensPermitidos(item.getDescricao())){
-            this.inventario.getItens().remove(item);
+        boolean descricaoValida = DESCRICOES_VALIDAS.contains(item.getDescricao());
+        if(descricaoValida){
+            this.getInventario().remove(item);
         }
     }
     

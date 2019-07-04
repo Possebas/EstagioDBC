@@ -1,6 +1,6 @@
 public class Item{
-    private int quantidade;
-    private String descricao;
+    protected int quantidade;
+    protected String descricao;
     
     public Item(int quantidade, String descricao){
         this.quantidade = quantidade;

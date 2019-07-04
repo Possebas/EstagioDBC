@@ -1,32 +1,52 @@
-
+import java.util.*;
 public class ElfoDaLuz extends Elfo
 {
-
-    private int qtdAtaques;
+    private final double QTD_VIDA_GANHA = 10.0;
+    private final ArrayList<String> DESCRICOES_OBRIGATORIAS = new ArrayList<>(
+        Arrays.asList(
+            "Espada de Galvorn"
+        )
+    );
     
     {
         this.qtdExperienciaPorAtaque = 1;
-        this.qtdAtaques = 1;
+        this.qtdAtaques = 0;
         this.qtdDano = 21.0;
     }
 
     public ElfoDaLuz(String nome){
         super(nome);
-        this.getInventario().add(new Item(1, "Espada de Galvorn"));
+        super.ganharItem(new ItemSempreExistente(1, DESCRICOES_OBRIGATORIAS.get(0)));
+    }
+    
+    
+    private boolean devePerderVida(){
+        return qtdAtaques % 2 == 1;
     }
     
     public void ganharVida(){
-        this.vida += 10.0; 
+        this.vida += this.QTD_VIDA_GANHA; 
+    }
+    
+    public Item getEspada(){
+        return this.inventario.buscaItemPorDescricao(DESCRICOES_OBRIGATORIAS.get(0));
     }
 
-    public void atacarComEspada(Dwarf dwarf){
-        if(this.qtdAtaques % 2 == 0){
-            this.ganharVida();
-        } else{
-            this.diminuirVida();
+    public void perderItem(Item item){
+        boolean possoPerder = !(DESCRICOES_OBRIGATORIAS.contains(item.getDescricao()));
+        if(possoPerder){
+            super.perderItem(item);
         }
-        this.aumentarXp();
-        dwarf.diminuirVida();
-        this.qtdAtaques++;
+    }
+    public void atacarComEspada(Dwarf dwarf){
+        if(this.getEspada().getQuantidade() > 0){
+            qtdAtaques++;
+            dwarf.diminuirVida();
+            this.aumentarXp();
+            if(devePerderVida()){
+                this.diminuirVida();
+            }
+            else {this.ganharVida();}
+        }
     }
 }

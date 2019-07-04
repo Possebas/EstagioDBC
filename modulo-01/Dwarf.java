@@ -9,7 +9,6 @@ public class Dwarf extends Personagem
     
     public Dwarf(String nome){
         super(nome);
-        this.equiparEscudo();
     }
     
     public void equiparEscudo(){

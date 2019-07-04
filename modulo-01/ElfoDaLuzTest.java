@@ -27,6 +27,7 @@ public class ElfoDaLuzTest
         feanor.atacarComEspada(novoDwarf);
         assertEquals(1, feanor.getExperiencia());
         assertEquals(79.0,feanor.vida,DELTA);
+        assertEquals(100.0,novoDwarf.vida,DELTA);
     }
 
     @Test
@@ -37,5 +38,6 @@ public class ElfoDaLuzTest
         feanor.atacarComEspada(novoDwarf);
         assertEquals(89.0,feanor.vida,DELTA);
         assertEquals(2, feanor.getExperiencia());
+        assertEquals(90.0,novoDwarf.vida,DELTA);
     }
 }

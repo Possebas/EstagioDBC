@@ -10,6 +10,7 @@ public class Elfo extends Personagem{
         this.qtdExperienciaPorAtaque = 1;
         getInventario().add(new Item(4, "Flecha"));
         getInventario().add(new Item(1, "Arco"));
+        this.qtdInstancia++;
     }
     
     public void atirarFlecha(Dwarf dwarf){

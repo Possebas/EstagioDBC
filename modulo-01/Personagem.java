@@ -8,6 +8,7 @@ public class Personagem
     protected int experiencia;
     protected int qtdExperienciaPorAtaque;
     protected double qtdDano;
+    protected static int qtdInstancia;
 
     {
         status = Status.RECEM_CRIADO;
@@ -15,6 +16,7 @@ public class Personagem
         inventario = new Inventario(0);
         qtdDano = 0.0;
         experiencia = 0;
+        qtdInstancia = 0;
     }
 
     public Personagem(String nome){

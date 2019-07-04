@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.*;
 public class AgendaContatosTest
 {
     @Test
@@ -33,13 +33,12 @@ public class AgendaContatosTest
     }
 
     @Test
-    public void ordenadaCsv(){
+    public void adicionarContatoEGerarCSV(){
         AgendaContatos agenda = new AgendaContatos();
-        agenda.adicionar("Lucas","789456123");
-        agenda.adicionar("Maria","159753456");
-        agenda.adicionar("Luiz","123456789");
-        agenda.adicionar("Joao","015004520");
-        agenda.adicionar("Ana","741221451");
-        assertEquals("Ana:741221451	Joao:015004520	Lucas:789456123	Luiz:123456789	Maria:159753456	",agenda.csv());
+        agenda.adicionar("Marcos","123123123");
+        agenda.adicionar("DBC","555555");
+        String separador = System.lineSeparator();
+        String esperado = String.format("Marcos,123123123%sDBC,555555%s",separador,separador);
+        assertEquals(esperado,agenda.csv());
     }
 }

@@ -28,4 +28,7 @@ public class Dwarf extends Personagem
         return this.temEscudo() ? 5.0 : this.qtdDano; 
     }
     
+    public String imprimirResultado(){
+        return "Dwarf";
+    }
 }

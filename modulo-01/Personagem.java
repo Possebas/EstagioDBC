@@ -1,5 +1,5 @@
 import java.util.*;
-public class Personagem
+public abstract class Personagem
 {
     protected String nome;
     protected Status status;
@@ -8,7 +8,7 @@ public class Personagem
     protected int experiencia;
     protected int qtdExperienciaPorAtaque;
     protected double qtdDano;
-    protected static int qtdInstancia;
+
     protected int qtdAtaques;
 
     {
@@ -17,59 +17,59 @@ public class Personagem
         inventario = new Inventario(0);
         qtdDano = 0.0;
         experiencia = 0;
-        qtdInstancia = 0;
         qtdAtaques  = 0;
     }
 
-    public Personagem(String nome){
+    protected Personagem(String nome){
         this.nome = nome;
     }
-
-    public Status getStatus(){
+    
+    
+    protected Status getStatus(){
         return this.status;
     }
 
-    public ArrayList<Item> getInventario(){
+    protected ArrayList<Item> getInventario(){
         return this.inventario.getItens();
     }
 
-    public void setNome(String nome){
+    protected void setNome(String nome){
         this.nome = nome;
     }
     
-    public String getNome(){
+    protected String getNome(){
         return this.nome;
     }
 
-    public int getExperiencia(){
+    protected int getExperiencia(){
         return this.experiencia;
     }
 
-    public double getVida(){
+    protected double getVida(){
         return this.vida;
     }
 
-    public void aumentarXp(){
+    protected void aumentarXp(){
         this.experiencia = this.experiencia + this.qtdExperienciaPorAtaque;
     }
 
-    public void ganharItem(Item item){
+    protected void ganharItem(Item item){
         this.getInventario().add(item);
     }
 
-    public void perderItem(Item item){
+    protected void perderItem(Item item){
         this.inventario.getItens().remove(item);
     }
 
-    public boolean podePerderVida(){
+    protected boolean podePerderVida(){
         return this.vida > 0.0;
     }
     
-    public double calcularDano(){
+    protected double calcularDano(){
         return this.qtdDano;
     }
 
-    public void diminuirVida(){
+    protected void diminuirVida(){
         this.vida -= (this.vida >=this.qtdDano) ? this.calcularDano() : this.vida;
         if(this.vida == 0){
             this.status = Status.MORTO;
@@ -77,4 +77,6 @@ public class Personagem
             this.status = Status.SOFREU_DANO;
         }
     }
+    
+    protected abstract String imprimirResultado();
 }

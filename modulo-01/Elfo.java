@@ -1,6 +1,6 @@
 import java.util.*;
 public class Elfo extends Personagem{
- 
+    protected static int qtdInstancia;
     {
         this.vida = 100.0;
     }
@@ -10,7 +10,15 @@ public class Elfo extends Personagem{
         this.qtdExperienciaPorAtaque = 1;
         getInventario().add(new Item(4, "Flecha"));
         getInventario().add(new Item(1, "Arco"));
-        this.qtdInstancia++;
+        Elfo.qtdInstancia++;
+    }
+    
+    protected void finalize() throws Throwable{
+        Elfo.qtdInstancia--;
+    }
+    
+    protected static int getQtdElfos(){
+        return Elfo.qtdInstancia;
     }
     
     public void atirarFlecha(Dwarf dwarf){
@@ -23,4 +31,7 @@ public class Elfo extends Personagem{
         } 
     }
     
+    public String imprimirResultado(){
+        return "Elfo";
+    }
 }

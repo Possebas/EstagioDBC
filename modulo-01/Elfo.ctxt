@@ -2,6 +2,12 @@
 comment0.target=Elfo
 comment1.params=nome
 comment1.target=Elfo(java.lang.String)
-comment2.params=dwarf
-comment2.target=void\ atirarFlecha(Dwarf)
-numComments=3
+comment2.params=
+comment2.target=void\ finalize()
+comment3.params=
+comment3.target=int\ getQtdElfos()
+comment4.params=dwarf
+comment4.target=void\ atirarFlecha(Dwarf)
+comment5.params=
+comment5.target=java.lang.String\ imprimirResultado()
+numComments=6

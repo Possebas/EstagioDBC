@@ -5,6 +5,11 @@ import org.junit.Test;
 
 public class ElfoTest{
     
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+    
     private final double DELTA = 1e-9;
     
     @Test
@@ -50,7 +55,20 @@ public class ElfoTest{
     
     @Test
     public void elfoNasceComStatusRecemCriado(){
-        Personagem elfo = new Personagem("Legolas");
+        Elfo elfo = new Elfo("Legolas");
         assertEquals(Status.RECEM_CRIADO, elfo.getStatus());
+    }
+    
+    @Test
+    public void criarUmElfoIncrementaContadorUmaVez(){
+        new Elfo("Legolas");
+        assertEquals(1, Elfo.getQtdElfos());
+    }
+    
+    @Test
+    public void criarDoisElfoIncrementaContadorUmaVez(){
+        new Elfo("Legolas");
+        new Elfo("Diart");
+        assertEquals(2, Elfo.getQtdElfos());
     }
 }

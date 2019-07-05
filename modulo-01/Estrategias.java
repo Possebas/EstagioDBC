@@ -1,5 +1,6 @@
 import java.util.*;
 public interface Estrategias 
 {
-    ArrayList<Elfo> getOrdemDeAtaque(ArrayList<Elfo> atacantes);
+    ArrayList<Elfo> getNoturnoPorUltimo(ArrayList<Elfo> atacantes);
+    ArrayList<Elfo> getAtaqueIntercalado(ArrayList<Elfo> atacantes);
 }

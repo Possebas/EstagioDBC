@@ -12,11 +12,11 @@ public class ExercitoTest
         ElfoNoturno novoElfo3 = new ElfoNoturno("Legolas3");
         ElfoNoturno novoElfo4 = new ElfoNoturno("Legolas4");
         Exercito exercito = new Exercito();
-        exercito.alistar("Legolas1", novoElfo);
-        exercito.alistar("Legolas2", novoElfo2);
-        exercito.alistar("Legolas3", novoElfo3);
-        exercito.alistar("Legolas4", novoElfo4);
-        assertEquals(4,exercito.getExercito().size());
+        exercito.alistar(novoElfo);
+        exercito.alistar(novoElfo2);
+        exercito.alistar(novoElfo3);
+        exercito.alistar(novoElfo4);
+        assertEquals(4,exercito.getElfos().size());
     }
 
     @Test
@@ -26,11 +26,11 @@ public class ExercitoTest
         ElfoVerde novoElfo3 = new ElfoVerde("Legolas3");
         ElfoVerde novoElfo4 = new ElfoVerde("Legolas4");
         Exercito exercito = new Exercito();
-        exercito.alistar("Legolas1", novoElfo);
-        exercito.alistar("Legolas2", novoElfo2);
-        exercito.alistar("Legolas3", novoElfo3);
-        exercito.alistar("Legolas4", novoElfo4);
-        assertEquals(4,exercito.getExercito().size());
+        exercito.alistar(novoElfo);
+        exercito.alistar(novoElfo2);
+        exercito.alistar(novoElfo3);
+        exercito.alistar(novoElfo4);
+        assertEquals(4,exercito.getElfos().size());
     }
     
     @Test
@@ -40,11 +40,11 @@ public class ExercitoTest
         ElfoDaLuz novoElfo3 = new ElfoDaLuz("Legolas3");
         ElfoDaLuz novoElfo4 = new ElfoDaLuz("Legolas4");
         Exercito exercito = new Exercito();
-        exercito.alistar("Legolas1", novoElfo);
-        exercito.alistar("Legolas2", novoElfo2);
-        exercito.alistar("Legolas3", novoElfo3);
-        exercito.alistar("Legolas4", novoElfo4);
-        assertEquals(0,exercito.getExercito().size());
+        exercito.alistar(novoElfo);
+        exercito.alistar(novoElfo2);
+        exercito.alistar(novoElfo3);
+        exercito.alistar(novoElfo4);
+        assertEquals(0,exercito.getElfos().size());
     }
     
     @Test
@@ -58,15 +58,15 @@ public class ExercitoTest
         ElfoNoturno novoElfo7 = new ElfoNoturno("Legolas7");
         ElfoNoturno novoElfo8 = new ElfoNoturno("Legolas8");
         Exercito exercito = new Exercito();
-        exercito.alistar("Legolas1", novoElfo);
-        exercito.alistar("Legolas2", novoElfo2);
-        exercito.alistar("Legolas3", novoElfo3);
-        exercito.alistar("Legolas4", novoElfo4);
-        exercito.alistar("Legolas5", novoElfo5);
-        exercito.alistar("Legolas6", novoElfo6);
-        exercito.alistar("Legolas7", novoElfo7);
-        exercito.alistar("Legolas8", novoElfo8);
-        assertEquals(8,exercito.getExercito().size());
+        exercito.alistar(novoElfo);
+        exercito.alistar(novoElfo2);
+        exercito.alistar(novoElfo3);
+        exercito.alistar(novoElfo4);
+        exercito.alistar(novoElfo5);
+        exercito.alistar(novoElfo6);
+        exercito.alistar(novoElfo7);
+        exercito.alistar(novoElfo8);
+        assertEquals(8,exercito.getElfos().size());
     }
     
     @Test
@@ -80,15 +80,15 @@ public class ExercitoTest
         ElfoNoturno novoElfo7 = new ElfoNoturno("Legolas7");
         ElfoNoturno novoElfo8 = new ElfoNoturno("Legolas8");
         Exercito exercito = new Exercito();
-        exercito.alistar("Legolas1", novoElfo);
-        exercito.alistar("Legolas2", novoElfo2);
-        exercito.alistar("Legolas3", novoElfo3);
-        exercito.alistar("Legolas4", novoElfo4);
-        exercito.alistar("Legolas5", novoElfo5);
-        exercito.alistar("Legolas6", novoElfo6);
-        exercito.alistar("Legolas7", novoElfo7);
-        exercito.alistar("Legolas8", novoElfo8);
-        assertEquals(8,exercito.buscarPorStatus(Status.RECEM_CRIADO).size());
+        exercito.alistar(novoElfo);
+        exercito.alistar(novoElfo2);
+        exercito.alistar(novoElfo3);
+        exercito.alistar(novoElfo4);
+        exercito.alistar(novoElfo5);
+        exercito.alistar(novoElfo6);
+        exercito.alistar(novoElfo7);
+        exercito.alistar(novoElfo8);
+        assertEquals(8,exercito.buscar(Status.RECEM_CRIADO).size());
     }
     
     @Test
@@ -106,15 +106,15 @@ public class ExercitoTest
         novoElfo.atirarFlecha(anao);
         novoElfo.atirarFlecha(anao);
         Exercito exercito = new Exercito();
-        exercito.alistar("Legolas1", novoElfo);
-        exercito.alistar("Legolas2", novoElfo2);
-        exercito.alistar("Legolas3", novoElfo3);
-        exercito.alistar("Legolas4", novoElfo4);
-        exercito.alistar("Legolas5", novoElfo5);
-        exercito.alistar("Legolas6", novoElfo6);
-        exercito.alistar("Legolas7", novoElfo7);
-        exercito.alistar("Legolas8", novoElfo8);
-        assertEquals(1,exercito.buscarPorStatus(Status.SOFREU_DANO).size());
+        exercito.alistar(novoElfo);
+        exercito.alistar(novoElfo2);
+        exercito.alistar(novoElfo3);
+        exercito.alistar(novoElfo4);
+        exercito.alistar(novoElfo5);
+        exercito.alistar(novoElfo6);
+        exercito.alistar(novoElfo7);
+        exercito.alistar(novoElfo8);
+        assertEquals(1,exercito.buscar(Status.SOFREU_DANO).size());
     }
     
     @Test
@@ -130,10 +130,10 @@ public class ExercitoTest
             novoElfo2.atirarFlecha(anao2);
         }
         Exercito exercito = new Exercito();
-        exercito.alistar("Legolas1", novoElfo);
-        exercito.alistar("Legolas2", novoElfo2);
-        assertEquals(2,exercito.buscarPorStatus(Status.MORTO).size());
-        assertEquals(novoElfo.getNome(),exercito.getExercito().get("Legolas1").getNome());
+        exercito.alistar(novoElfo);
+        exercito.alistar(novoElfo2);
+        assertEquals(2,exercito.buscar(Status.MORTO).size());
+        assertEquals(novoElfo,exercito.getElfos().get(0));
     }
     
     

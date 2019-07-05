@@ -88,7 +88,7 @@ public class ExercitoTest
         exercito.alistar(novoElfo6);
         exercito.alistar(novoElfo7);
         exercito.alistar(novoElfo8);
-        assertEquals(8,exercito.buscar(Status.RECEM_CRIADO).size());
+        assertEquals(8,exercito.buscarPorStatus(Status.RECEM_CRIADO).size());
     }
     
     @Test
@@ -114,7 +114,7 @@ public class ExercitoTest
         exercito.alistar(novoElfo6);
         exercito.alistar(novoElfo7);
         exercito.alistar(novoElfo8);
-        assertEquals(1,exercito.buscar(Status.SOFREU_DANO).size());
+        assertEquals(1,exercito.buscarPorStatus(Status.SOFREU_DANO).size());
     }
     
     @Test
@@ -132,7 +132,7 @@ public class ExercitoTest
         Exercito exercito = new Exercito();
         exercito.alistar(novoElfo);
         exercito.alistar(novoElfo2);
-        assertEquals(2,exercito.buscar(Status.MORTO).size());
+        assertEquals(2,exercito.buscarPorStatus(Status.MORTO).size());
         assertEquals(novoElfo,exercito.getElfos().get(0));
     }
     

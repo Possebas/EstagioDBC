@@ -4,7 +4,7 @@ public class Elfo extends Personagem{
     {
         this.vida = 100.0;
     }
-    
+
     public Elfo(String nome){
         super(nome);
         this.qtdExperienciaPorAtaque = 1;
@@ -12,15 +12,15 @@ public class Elfo extends Personagem{
         getInventario().add(new Item(1, "Arco"));
         Elfo.qtdInstancia++;
     }
-    
+
     protected void finalize() throws Throwable{
         Elfo.qtdInstancia--;
     }
-    
+
     protected static int getQtdElfos(){
         return Elfo.qtdInstancia;
     }
-    
+
     public void atirarFlecha(Dwarf dwarf){
         Item flecha = this.inventario.getItens().get(0);
         int qtdAtual = flecha.getQuantidade();
@@ -30,6 +30,11 @@ public class Elfo extends Personagem{
             dwarf.diminuirVida();
         } 
     }
+
+    public void atacar(){
+        
+    }
+    
     
     public String imprimirResultado(){
         return "Elfo";

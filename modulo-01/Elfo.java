@@ -31,10 +31,16 @@ public class Elfo extends Personagem{
         } 
     }
 
-    public void atacar(){
-        
+     public Item getFlecha()
+    {
+        return super.inventario.buscaItemPorDescricao("Flecha");
     }
-    
+
+    public boolean podeAtirarFlecha()
+    {
+        return getFlecha().getQuantidade() > 0;
+    }
+
     
     public String imprimirResultado(){
         return "Elfo";

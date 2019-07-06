@@ -3,7 +3,7 @@ import java.util.*;
 public class EstrategiaPriorizandoElfosVerdes implements EstrategiasDeAtaque
 {
     private ArrayList<Elfo> collections(ArrayList<Elfo> elfos){
-            Collections.sort(elfos, new Comparator<Elfo>(){
+        Collections.sort(elfos, new Comparator<Elfo>(){
                 public int compare (Elfo elfoAtual, Elfo proximoElfo){
                     boolean mesmoTipo = elfoAtual.getClass() == proximoElfo.getClass();
                     if(mesmoTipo){
@@ -12,10 +12,16 @@ public class EstrategiaPriorizandoElfosVerdes implements EstrategiasDeAtaque
                     return elfoAtual instanceof ElfoVerde && proximoElfo instanceof ElfoNoturno ? -1 : 1;
                 }
             });
-            return elfos;
+        return elfos;
     }
 
     public ArrayList<Elfo> getOrdemDeAtaque(ArrayList<Elfo> elfos){
-        return collections(elfos);
+        ArrayList<Elfo> aux = new ArrayList<>();
+        for(Elfo elfo : elfos){
+            if(!(elfo.getStatus().equals(Status.MORTO))){
+                aux.add(elfo);
+            }
+        } 
+        return collections(aux);
     }
 }

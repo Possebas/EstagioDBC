@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo CSS</title>
+
+        <style>
+            
+            div:first-child{
+                color: red;
+            }
+            div > p:nth-child(2){
+                color: blue;
+            }
+            div > p:nth-child(3){
+                color: green;
+            }
+            p span{
+                color: purple;
+            }
+            span span {
+                color: yellow;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div>
+        <p>Texto verde</p>
+        <p>Texto azul</p>
+        <p>Texto vermelho mas este em <span>roxo</span></p>
+
+        <span>
+            <span>Este texto é amarelo</span>
+        </span>
+    </body>
+
+    <style>
+        
+    </style>
+</html>

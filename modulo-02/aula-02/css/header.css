@@ -1,0 +1,12 @@
+/* Header */
+.header{
+    padding: 15px 15px;
+    background: #ffffff;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4 );
+}
+.logo{
+    padding-top: 10px;  
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;
+}

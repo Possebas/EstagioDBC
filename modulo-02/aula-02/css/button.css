@@ -8,12 +8,27 @@
     font-size: 16px;
     line-height: 16px;
     color: #fff;
+    transition: background 0.2s ease-in-out 0s, transform 0.2s ease-in-out 0s;
 }
-
+.button:hover{
+    transform: scale(1.1);
+}
 .button-blue{
     background: navy;
 }
+.button-blue:hover{
+    background: #005bca;
+}
+.button-blue:active{
+    background: #0fcdfd;
+}
 
 .button-green{
-    background: chartreuse;
+    background: indigo;
+}
+.button-green:hover{
+    background: #2c963e;
+}
+.button-green:active{
+    background: greenyellow;
 }

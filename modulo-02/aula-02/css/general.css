@@ -10,12 +10,7 @@ a{
     color: #0f7afd;
     text-decoration: none;
 }
-.container{
-    width: 980px;
-    margin: 0 auto;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
+
 nav ul{
     padding: 0;
     margin: 0;
@@ -46,6 +41,14 @@ h3,
 p{
     margin:  0 0 15px;
 }
+h2{
+    font-size: 24px;
+    line-height: 30px;
+}
+h3{
+    font-size: 20px;
+    line-height: 24px;
+}
 .table,
 .table-cell{
     width: 100%;
@@ -60,4 +63,7 @@ p{
 }
 .text-center{
     text-align: center;
+}
+article img{
+    margin: 15px;
 }

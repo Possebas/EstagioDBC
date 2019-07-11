@@ -1,0 +1,36 @@
+/* Formulário */
+
+form {
+    height: 355px;
+}
+
+form div {
+    padding: 13px;
+}
+
+form input {
+    padding: 10px;
+}
+
+form textarea {
+    height: 100px;
+    width: 200px;
+}
+
+form label {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+}
+
+form h2 {
+    text-align: center;
+}
+
+input:focus {
+    background-color: rgba(209, 209, 209, 0.589);
+}
+
+textarea:focus {
+    background-color: rgba(209, 209, 209, 0.589);
+}

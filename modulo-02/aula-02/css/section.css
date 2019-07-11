@@ -8,12 +8,17 @@
 }
 
 section{
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .row{
     margin: 0 -15px;
+}
+
+.title {
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .row:after,
@@ -35,4 +40,7 @@ section{
 
 .article-image{
     margin: 0 15px 10px 0;
+}
+.article-p{
+    color: gray;
 }

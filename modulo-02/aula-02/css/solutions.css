@@ -1,0 +1,14 @@
+/* Solutions */
+
+/* .article-list{
+    padding: 60px 0 0;
+    margin: 60px 0 0;
+    border-top: 1px dashed #aaa;
+    list-style: none;
+} */
+
+.bordinha{
+    border-top: 1px dashed #aaa;
+    margin: 60px 0 0;
+    transition: transform 0.3s ease-in-out 0s;
+}

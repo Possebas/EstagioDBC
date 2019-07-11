@@ -1,74 +1,26 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Contato - DBC Company</title>
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/section.css">
-    <link rel="stylesheet" href="css/form.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="icon" href="http://www.dbccompany.com.br/wp-content/uploads/2018/09/favicon-32x32.png" sizes="32x32">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Contato - DBC Company</title>
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/button.css">
+        <link rel="stylesheet" href="css/section.css">
+        <link rel="stylesheet" href="css/form.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/banner.css">
+        <link rel="stylesheet" href="css/contact.css">
+        <link rel="icon" href="http://www.dbccompany.com.br/wp-content/uploads/2018/09/favicon-32x32.png" sizes="32x32">
+    </head>
 
-<body>
+    <body>
 
-    <header class="header">
-        <nav class="container clearfix">
-            <a class="logo pull-left" href="home.html">DBC Company</a>
-            <ul class="pull-right">
-                <li>
-                    <a href="home.html">Home</a>
-                </li>
-                <li>
-                    <a href="quemsomos.html">Quem Somos</a>
-                </li>
-                <li>
-                    <a href="solucoes.html">Soluções</a>
-                </li>
-                <li>
-                    <a href="contato.html">Contato</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <section class="container">
-        <div class="row">
-            <div class="col col-half">
-                <form>
-                    <h2>Contato:</h2>
-                    <div>
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" placeholder="Digite o seu nome..." />
-                    </div>
-                    <div>
-                        <label for="mail">E-mail:</label>
-                        <input type="email" id="mail" placeholder="Digite o seu email..." />
-                    </div>
-                    <div>
-                        <label for="subject">Assunto:</label>
-                        <input type="text" id="subject" placeholder="Digite o assunto...">
-                    </div>
-                    <div class="clearfix">
-                        <label for="msg">Mensagem:</label>
-                        <textarea id="msg" placeholder="Digite sua mensagem aqui..."></textarea>
-                    </div>
-                    <a href="#" class="button button-blue pull-right">Enviar Mensagem</a>
-                </form>
-            </div>
-            <div class="col col-half">
-                <iframe class="clearfix" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.717313191017!2d-51.17082718520208!3d-30.01627243692657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951977775fc4c071%3A0x6de693cbd6b0b5e5!2sDBC+Company!5e0!3m2!1spt-BR!2sbr!4v1562786828072!5m2!1spt-BR!2sbr"
-                    width="480" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container text-center">
-            <nav>
-                <ul>
+        <header class="header">
+            <nav class="container clearfix">
+                <a class="logo pull-left" href="home.html">DBC Company</a>
+                <ul class="pull-right">
                     <li>
                         <a href="home.html">Home</a>
                     </li>
@@ -83,11 +35,77 @@
                     </li>
                 </ul>
             </nav>
-            <p>
-                &copy; Copyright 2019 - DBC Company. Todos os direitos reeservados.
-            </p>
-        </div>
-    </footer>
-</body>
+        </header>
+        
+        <section class="container">
+            <div class="row">
+                <div class="col col-50">
+                    <h2>Contato</h3>
+                        <p>
+                            Av. Andaraí, 531 – Bairro Passo D’Areia<br>
+                            Porto Alegre / RS – CEP: 91350-110<br>
+                            Telefone: +55 (51) 3330.7777
+                        </p>
+                        <p>
+                            Contato Comercial: <br>
+                            <a href="mailto:contato@dbccompany.com.br">contato@dbccompany.com.br</a><br>
+                        </p>
+                        <p>
+                            Contato Gestão de Pessoas:<br>
+                            <a href="mailto:oportunidades@dbccompany.com.br">oportunidades@dbccompany.com.br</a>
+                        </p>
+                        <form>
+                            <label for="name">Nome:</label>
+                            <input class="field" type="text" id="name" placeholder="Digite seu nome" />
+
+                            <label for="email">E-mail:</label>
+                            <input class="field" type="email" id="email" placeholder="seu@email.com" />
+
+                            <label for="subject">Assunto:</label>
+                            <input class="field" type="text" id="subject" placeholder="Digite o assunto">
+
+                            <label for="message">Mensagem:</label>
+                            <textarea class="field" id="message" placeholder="Mensagem"></textarea>
+                            <div class="clearfix">
+                                <a href="#" class="button button-green pull-right">Enviar</a>
+                            </div>
+                        </form>
+                </div>
+                <div class="col col-50">
+                    <h2 class="text-center">Localização</h2>
+                    <iframe class="map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.717313191017!2d-51.17082718520208!3d-30.01627243692657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951977775fc4c071%3A0x6de693cbd6b0b5e5!2sDBC+Company!5e0!3m2!1spt-BR!2sbr!4v1562867541692!5m2!1spt-BR!2sbr"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container text-center">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="home.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="quemsomos.html">Quem Somos</a>
+                        </li>
+                        <li>
+                            <a href="solucoes.html">Soluções</a>
+                        </li>
+                        <li>
+                            <a href="contato.html">Contato</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="clearfix">
+                    <p>
+                        &copy; Copyright 2019 - DBC Company. Todos os direitos reservados.
+                    </p>
+                    <a id="irtopo" href="quemsomos.html" class="button button-black pull-right">Ir ao topo</a>
+                </div>
+            </div>
+        </footer>
+    </body>
 
 </html>

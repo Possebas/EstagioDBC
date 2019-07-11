@@ -3,12 +3,14 @@
     display: inline-block;
     margin: 0;
     padding: 15px 20px;
+    border: none;
     border-radius: 10px;
     opacity: 0.7;
     font-size: 16px;
     line-height: 16px;
     color: #fff;
     transition: background 0.2s ease-in-out 0s, transform 0.2s ease-in-out 0s;
+    cursor: pointer;
 }
 .button:hover{
     transform: scale(1.1);
@@ -16,6 +18,7 @@
 .button-blue{
     background: navy;
 }
+
 .button-blue:hover{
     background: #005bca;
 }
@@ -31,4 +34,8 @@
 }
 .button-green:active{
     background: greenyellow;
+}
+
+.button-black{
+    background: black;
 }

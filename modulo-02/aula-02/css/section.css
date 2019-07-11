@@ -34,12 +34,23 @@ section{
     box-sizing: border-box;
 }
 
-.col-half{
+.col-50{
     width: 50%;
 }
 
+.col-25{
+    width: 25%;
+}
+.col-100{
+    width: 100%;
+}
+
+.col-75{
+    width: 75%;
+}
+
 .article-image{
-    margin: 0 15px 10px 0;
+    margin: 15px 15px 10px 0;
 }
 .article-p{
     color: gray;

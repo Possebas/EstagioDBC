@@ -7,6 +7,13 @@ body{
     color: #333;
 }
 
+@media (max-width:600px){
+    body{
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
 a,
 button,
 input,
@@ -57,6 +64,22 @@ h3{
     font-size: 20px;
     line-height: 24px;
 }
+
+@media (max-width:600px){
+    h2{
+        font-size: 20px;
+        line-height: 24px;
+    }
+    h3{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    h4{
+        font-size: 14px;
+        line-height:18px;
+    }
+}
+
 .table,
 .table-cell{
     width: 100%;
@@ -85,4 +108,11 @@ article img{
     display: inline-block;
     width: 460px;
     height: 500px;
+}
+
+hr{
+    margin: 30px 0;
+    border: none;
+    border-top: 1px dashed #aaa;
+    clear: both;
 }

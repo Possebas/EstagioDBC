@@ -20,3 +20,10 @@
   line-height: 16px;
   color: #777;
 }
+
+@media (max-width:600px){
+  .footer nav{
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}

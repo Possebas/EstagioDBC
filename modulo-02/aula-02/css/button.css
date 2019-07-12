@@ -11,6 +11,8 @@
     color: #fff;
     transition: background 0.2s ease-in-out 0s, transform 0.2s ease-in-out 0s;
     cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
 }
 .button:hover{
     transform: scale(1.1);
@@ -38,4 +40,11 @@
 
 .button-black{
     background: black;
+}
+
+@media (max-width: 480px){
+    .button{
+        display: block;
+        width: 100%;
+    }
 }

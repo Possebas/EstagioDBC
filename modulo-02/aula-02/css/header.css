@@ -13,3 +13,25 @@
     line-height: 22px;
     font-weight: bold;
 }
+
+@media (max-width: 600px) {
+    .header{
+        text-align: center;
+    }
+    .logo, 
+    .header ul{
+        float: none;;
+    }
+    .logo{
+        padding-top: 0;
+        margin-bottom: 10px;
+    }
+    .header nav{
+        padding: 0;
+    }
+    .header a:not(.logo){
+        padding: 7px;
+        font-size: 12px;
+        line-height: 12px;
+    }
+}

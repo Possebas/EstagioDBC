@@ -1,0 +1,51 @@
+/* Banner */
+.banner{
+    position: relative;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0,0,0,0.9);
+    background: url('../img/banner.jpg') no-repeat center bottom / cover ;
+}   
+
+.banner::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.6;
+    background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(135deg, #0f7afd 0%,#34ae49 100%);
+
+    /*background: linear-gradient(to right, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.banner .container{
+    position: relative;
+    height: calc(100vh - 70px);
+    z-index: 2;
+}
+.banner h1{
+    margin-bottom: 30px;
+    font-size: 36px;
+    line-height: 36px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px){
+    .banner h1{
+        margin-bottom: 15px;
+        font-size: 25px;
+        line-height: 25px;
+    }
+
+    .banner p {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .banner br{
+        display: none;
+    }
+    
+}

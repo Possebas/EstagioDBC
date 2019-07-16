@@ -13,23 +13,20 @@ function cardapioIFood( veggie = true, comLactose = false ) {
       cardapio.push( 'pastel de queijo' )
     }
   
-    cardapio.concat( [
-      'pastel de carne',
-      'empada de legumes marabijosa'
-    ] )
-    var i = cardapio.length;
+    cardapio.push('pastel de carne', 'empada de legumes marabijosa')
+  
     if ( veggie ) {
       // TODO: remover alimentos com carne (é obrigatório usar splice!)
-      //const indiceEnroladinho = cardapio.indexOf( 'enroladinho de salsicha' )
+      const indiceEnroladinho = cardapio.indexOf( 'enroladinho de salsicha' )
+      arr = cardapio.splice(indiceEnroladinho, 1)
       const indicePastelCarne = cardapio.indexOf( 'pastel de carne' )
-      //arr = cardapio.splice( cardapio.indexOf( 'enroladinho de salsicha' ), indiceEnroladinho )
-      arr = cardapio.splice( cardapio.indexOf( 'pastel de carne' ), indicePastelCarne )
+      arr = cardapio.splice(indicePastelCarne, 1)
     }
     
     let resultadoFinal = []
-    while (i < arr.lenght - 1) {
-      resultadoFinal[i] = arr[i].toUpperCase()
-      i++
+
+    for (let i = 0; i < cardapio.length; i++) {
+      resultadoFinal[i] = cardapio[i].toUpperCase()
     }
     return resultadoFinal;
   }

@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/banner.css">
         <link rel="stylesheet" href="css/contact.css">
+        <script type="text/javascript"></script>
         <link rel="icon" href="http://www.dbccompany.com.br/wp-content/uploads/2018/09/favicon-32x32.png" sizes="32x32">
     </head>
 
@@ -57,18 +58,21 @@
                         </p>
                         <form>
                             <label for="name">Nome:</label>
-                            <input class="field" type="text" id="name" placeholder="Digite seu nome" />
+                            <input class="field" type="text" minlength="10" required id="name" pattern="[A-Za-z]+$"
+                                maxlength="100" placeholder="Digite seu nome" />
 
                             <label for="email">E-mail:</label>
-                            <input class="field" type="email" id="email" placeholder="seu@email.com" />
+                            <input class="field" type="email" required id="email" pattern="[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                    placeholder="Ex: seu@email.com" />
 
                             <label for="subject">Assunto:</label>
-                            <input class="field" type="text" id="subject" placeholder="Digite o assunto">
+                            <input class="field" type="text" required id="subject" pattern="[A-Za-z]+$"
+                                placeholder="Digite o assunto">
 
                             <label for="message">Mensagem:</label>
-                            <textarea class="field" id="message" placeholder="Mensagem"></textarea>
+                            <textarea class="field" id="message" required placeholder="Mensagem"></textarea>
                             <div class="clearfix">
-                                <a href="#" class="button button-green pull-right">Enviar</a>
+                                <button type="submit" href="#" class="button button-green pull-right" >Enviar</button>
                             </div>
                         </form>
                 </div>

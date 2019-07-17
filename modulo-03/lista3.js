@@ -3,7 +3,7 @@
 
 
 function cardapioIFood( veggie = true, comLactose = false ) {
-    const cardapio = [
+    let cardapio = [
       'enroladinho de salsicha',
       'cuca de uva'
     ]
@@ -17,18 +17,39 @@ function cardapioIFood( veggie = true, comLactose = false ) {
   
     if ( veggie ) {
       // TODO: remover alimentos com carne (é obrigatório usar splice!)
-      const indiceEnroladinho = cardapio.indexOf( 'enroladinho de salsicha' )
-      arr = cardapio.splice(indiceEnroladinho, 1)
-      const indicePastelCarne = cardapio.indexOf( 'pastel de carne' )
-      arr = cardapio.splice(indicePastelCarne, 1)
+      cardapio.splice(cardapio.indexOf('enroladinho de salsicha'),1)
+      cardapio.splice(cardapio.indexOf('pastel de carne'),1)
     }
-    
-    let resultadoFinal = []
 
-    for (let i = 0; i < cardapio.length; i++) {
-      resultadoFinal[i] = cardapio[i].toUpperCase()
-    }
+    let resultadoFinal = cardapio
+                  //.filter(alimento => alimento === 'cuca de uva')
+                  .map(alimento => alimento.toUpperCase())
+    console.log(resultadoFinal);
     return resultadoFinal;
-  }
-  
-  console.log(cardapioIFood()) // esperado: [ 'CUCA DE UVA', 'PASTEL DE QUEIJO', 'EMPADA DE LEGUMES MARABIJOSA' ]
+}
+
+//console.log(cardapioIFood(true, false)) // esperado: [ 'CUCA DE UVA', 'PASTEL DE QUEIJO', 'EMPADA DE LEGUMES MARABIJOSA' ]
+
+function criarSanduiche(pao, recheio, queijo){
+  //console.log(`Seu sanduiche tem o pão ${pao} com recheio de ${recheio} e queijo ${queijo}`)
+}
+
+const ingredientes = ['3 queijos', 'frango', 'cheddar']
+//criarSanduiche(...ingredientes);
+
+function receberValoresIndefinidos(...valores) {
+  valores.map(valor => console.log(valor));
+}
+
+//receberValoresIndefinidos([1, 3, 4, 5]);
+
+/* let inputTest = document.getElementById('campoTeste');
+inputTest.addEventListener('blur', cardapioIFood(true, false));
+ */
+
+String.prototype.correr = function(upper = false){
+  let texto = `${this} estou correndo`;
+  return upper ? texto.toUpperCase() : texto;
+}
+
+console.log("ola".correr(true));

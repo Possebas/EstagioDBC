@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/banner.css">
         <link rel="stylesheet" href="css/contact.css">
-        <script type="text/javascript"></script>
         <link rel="icon" href="http://www.dbccompany.com.br/wp-content/uploads/2018/09/favicon-32x32.png" sizes="32x32">
     </head>
 
@@ -38,7 +37,7 @@
                 </ul>
             </nav>
         </header>
-        
+
         <section class="container">
             <div class="row">
                 <div class="col col-sm-100 col-md-50 col-lg-50">
@@ -57,22 +56,21 @@
                             <a href="mailto:oportunidades@dbccompany.com.br">oportunidades@dbccompany.com.br</a>
                         </p>
                         <form>
-                            <label for="name">Nome:</label>
-                            <input class="field" type="text" minlength="10" required id="name" pattern="[A-Za-z]+$"
-                                maxlength="100" placeholder="Digite seu nome" />
+                            <label for="name">Nome</label>
+                            <input class="field" id="name" type="text" placeholder="Nome">
 
-                            <label for="email">E-mail:</label>
-                            <input class="field" type="email" required id="email" pattern="[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                                    placeholder="Ex: seu@email.com" />
+                            <label for="email">Email</label>
+                            <input class="field" id="email" type="email" placeholder="seu@email.com">
 
-                            <label for="subject">Assunto:</label>
-                            <input class="field" type="text" required id="subject" pattern="[A-Za-z]+$"
-                                placeholder="Digite o assunto">
+                            <label for="subject">Assunto</label>
+                            <input class="field" id="subject" type="text" placeholder="Assunto">
 
-                            <label for="message">Mensagem:</label>
-                            <textarea class="field" id="message" required placeholder="Mensagem"></textarea>
+                            <label for="message">Mensagem</label>
+                            <textarea class="field" id="message" placeholder="Digite sua mensagem"></textarea>
+
                             <div class="clearfix">
-                                <button type="submit" href="#" class="button button-green pull-right" >Enviar</button>
+                                <button type="submit" href="#" class="button button-green pull-right"
+                                    onclick="validarCamposEmBranco()">Enviar</button>
                             </div>
                         </form>
                 </div>
@@ -111,6 +109,7 @@
                 </div>
             </div>
         </footer>
+        <script src="js/contatoForm.js"></script>
     </body>
 
 </html>

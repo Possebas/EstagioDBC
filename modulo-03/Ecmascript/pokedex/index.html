@@ -10,6 +10,7 @@
         <script src="./src/pokeApi.js" async></script>
         <script src="./src/pokemon.js" async></script>
         <script src="./src/index.js" async></script>
+        <script src="./src/trainer.js" async></script>
 
     </head>
 
@@ -17,8 +18,8 @@
         <section class="container text-center">
             <img id="logo" src="img/pokemon-logo.png" alt="Logo Pokemon">
             <div class="pokedex">
-                <input type="text" placeholder="Busque pelo ID do Pokemon! Ex: 123" id="receberId"> <br>
-                <button id="random">Sortear</button>
+                <input type="text" placeholder="Busque pelo ID do Pokemon! Ex: 123" id="identify">
+                <button id="random">Estou com sorte!</button>
                 <div class="inter">
                     <h1 id="name"></h1>
                     <p id="id"></p>
@@ -28,10 +29,12 @@
 
                     <h3 id="weight"></h3>
                     <h3 id="height"></h3>
-                    <div class="types">Tipos
+                    <div class="types">
+                        <p>Tipos</p>
                         <ul id="types"></ul>
                     </div>
-                    <div class="stats">Estatísticas
+                    <div class="stats">
+                        <p>Estatísticas</p>
                         <ul id="stats"></ul>
                     </div>
                 </div>

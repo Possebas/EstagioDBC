@@ -1,10 +1,13 @@
-/* let pokeApi = new PokeApi();
-
+ let pokeApi = new PokeApi();
+/*
 pokemonEspecifoco.then(pokemon =>{
     //console.log(pokemon);
     let poke = new Pokemon(pokemon)
     renderizacaoPokemon(poke);
 }) */
+
+
+let pokemonNaTela;
 
 function renderizacaoPokemon(pokemon){
     let name = document.getElementById("name");
@@ -14,8 +17,11 @@ function renderizacaoPokemon(pokemon){
     let weight = document.getElementById("weight");
     let types = document.getElementById("types");
     let stats= document.getElementById("stats");
+    
+    let newName = pokemon.name.toUpperCase();
 
-    name.textContent = `Nome: ${pokemon.name}`;
+    pokemonNaTela = pokemon.id;
+    name.textContent = `Nome: ${newName}`;
     id.textContent = `ID: ${pokemon.id}`;
     image.src = pokemon.image;
     height.textContent = `Altura: ${pokemon.height} cm`;
@@ -26,7 +32,7 @@ function renderizacaoPokemon(pokemon){
     }
     pokemon.stats.forEach( estatistica => {
         let elem = document.createElement("li");
-        elem.textContent = ` ${estatistica.stat.name} base: ${estatistica.base_stat} `;
+        elem.textContent = ` ${estatistica.stat.name} : ${estatistica.base_stat}%`;
         stats.appendChild(elem);
     });
 
@@ -38,21 +44,30 @@ function renderizacaoPokemon(pokemon){
         elem.textContent = tipo.type.name;
         types.appendChild(elem);
     });
-    
 }
 
 function getPokemon(id) {
     let pokeApi = new PokeApi();
-    let pokemonEspecifico = pokeApi.buscarEspecifico(id);
+    let pokemonEspecifico = pokeApi.buscarPorID(id);
     pokemonEspecifico.then(pokemon =>{
         let poke = new Pokemon(pokemon)
         renderizacaoPokemon(poke);
     })
 }
 
+function verificaIgual(idInt){
+    return idInt == pokemonNaTela;
+}
+
+
+
 function pokemonAleatorio() {
     let idAleatorio = Math.floor( 802 * Math.random() ) + 1;
-    getPokemon(idAleatorio);
+    if(verificaIgual(idAleatorio)){
+        alert("ID do pokemon digitado ja está na tela");
+    } else{
+        getPokemon(idAleatorio);
+    }
 }
 
 function loadEvent() {
@@ -61,12 +76,16 @@ function loadEvent() {
     inputID.addEventListener('blur',function(){
         let inputID = document.getElementById("identify");
         let id = inputID.value;
-        getPokemon(id);  
+        if(verificaIgual(id)){
+            alert("ID do pokemon digitado ja está na tela");
+        }else{
+            getPokemon(id);
+        }
     })
 
     let button = document.getElementById("random")
-    button.addEventListener('click',pokemonAleatorio); // cada vez que um click for feito, gera um numero aleatorio 
-                                                       // e renderiza o pokemon
+    button.addEventListener('click',pokemonAleatorio);
 }
 
 addEventListener('load',loadEvent);
+

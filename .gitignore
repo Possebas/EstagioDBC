@@ -1,2 +1,4 @@
 *.class
-modulo-01/*.ctxt
+*.ctxt
+.vscode
+node_modules

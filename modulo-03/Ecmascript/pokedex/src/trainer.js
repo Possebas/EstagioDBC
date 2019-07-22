@@ -11,10 +11,11 @@ class Trainer {
       response => {
         const { data } = response;
         const { name } = data;
+        const [, , n3, n4, n5] = data.stats
         const sprite = data.sprites.front_default;
         const id = data.game_indices[0].game_index;
         const ability = data.abilities[0].ability.name;
-        const hp = data.stats[5].base_stat;
+        const hp = n5.base_stat;
         const attk = data.stats[4].base_stat;
         const def = data.stats[3].base_stat;
         this.pokemonTeam.push(

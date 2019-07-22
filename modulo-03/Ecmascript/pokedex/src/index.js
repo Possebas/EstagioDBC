@@ -1,4 +1,4 @@
-/* eslint-disable no-alert */
+
 let pokemonNaTela;
 
 function renderizacaoPokemon( pokemon ) {
@@ -16,8 +16,8 @@ function renderizacaoPokemon( pokemon ) {
   name.textContent = `Nome: ${ newName }`;
   id.textContent = `ID: ${ pokemon.id }`;
   image.src = pokemon.image;
-  height.textContent = `Altura: ${ pokemon.height } cm`;
-  weight.textContent = `Peso: ${ pokemon.weight } kg`;
+  height.textContent = `Altura: ${ pokemon.convertHeight(10) } cm`;
+  weight.textContent = `Peso: ${ pokemon.convertWeight(10) } kg`;
 
   while ( stats.hasChildNodes() ) {
     stats.removeChild( stats.firstChild );
@@ -48,7 +48,6 @@ function getPokemon( id ) {
 }
 
 function verificaIgual( idInt ) {
-  // eslint-disable-next-line eqeqeq
   return idInt == pokemonNaTela;
 }
 
@@ -66,11 +65,12 @@ function loadEvent() {
   getPokemon( 1 );
   const inputID = document.getElementById( 'identify' );
   inputID.addEventListener( 'blur', () => {
-    // eslint-disable-next-line no-shadow
     const inputID = document.getElementById( 'identify' );
     const id = inputID.value;
     if ( verificaIgual( id ) ) {
       alert( 'ID do pokemon digitado ja está na tela' );
+    } else if( id < 1 || id > 802 ) {
+      alert('ID inválido');
     } else {
       getPokemon( id );
     }
@@ -80,5 +80,4 @@ function loadEvent() {
   button.addEventListener( 'click', pokemonAleatorio );
 }
 
-// eslint-disable-next-line no-restricted-globals
 addEventListener( 'load', loadEvent );

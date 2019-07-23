@@ -16,8 +16,8 @@ function renderizacaoPokemon( pokemon ) {
   name.textContent = `Nome: ${ newName }`;
   id.textContent = `ID: ${ pokemon.id }`;
   image.src = pokemon.image;
-  height.textContent = `Altura: ${ pokemon.convertHeight(10) } cm`;
-  weight.textContent = `Peso: ${ pokemon.convertWeight(10) } kg`;
+  height.textContent = `Altura: ${ pokemon.convertHeight( 10 ) } cm`;
+  weight.textContent = `Peso: ${ pokemon.convertWeight( 10 ) } kg`;
 
   while ( stats.hasChildNodes() ) {
     stats.removeChild( stats.firstChild );
@@ -48,13 +48,19 @@ function getPokemon( id ) {
 }
 
 function verificaIgual( idInt ) {
+  // eslint-disable-next-line eqeqeq
   return idInt == pokemonNaTela;
+}
+
+function testaLimites( idInt ) {
+  return ( idInt > 0 || idInt < 803 );
 }
 
 
 function pokemonAleatorio() {
   const idAleatorio = Math.floor( 802 * Math.random() ) + 1;
   if ( verificaIgual( idAleatorio ) ) {
+    // eslint-disable-next-line no-alert
     alert( 'ID do pokemon digitado ja está na tela' );
   } else {
     getPokemon( idAleatorio );
@@ -65,12 +71,16 @@ function loadEvent() {
   getPokemon( 1 );
   const inputID = document.getElementById( 'identify' );
   inputID.addEventListener( 'blur', () => {
+    // eslint-disable-next-line no-shadow
     const inputID = document.getElementById( 'identify' );
     const id = inputID.value;
+    inputID.value = '';
     if ( verificaIgual( id ) ) {
+      // eslint-disable-next-line no-alert
       alert( 'ID do pokemon digitado ja está na tela' );
-    } else if( id < 1 || id > 802 ) {
-      alert('ID inválido');
+    } else if ( testaLimites( id ) ) {
+      // eslint-disable-next-line no-alert
+      alert( 'ID inválido para buscar!' );
     } else {
       getPokemon( id );
     }
@@ -80,4 +90,5 @@ function loadEvent() {
   button.addEventListener( 'click', pokemonAleatorio );
 }
 
+// eslint-disable-next-line no-restricted-globals
 addEventListener( 'load', loadEvent );

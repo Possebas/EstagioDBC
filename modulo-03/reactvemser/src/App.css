@@ -2,32 +2,82 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.episodio{
+  width: 100%;
+  max-width: 800px;
+  margin: 13px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding: 0.5em 0.5em;
+  color: black;
+  border: 5px solid #ccc;
+  border-radius: 20px;  
+  background: #6aa9e4;
 }
 
-.App-link {
-  color: #61dafb;
+#nome{
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#nome:hover{
+  font-weight: bold;
+  color: gold;
+}
+
+#imagem{
+  height: 43vmin;
+}
+
+#temporada{
+  font-size: 1.2em;
+  font-weight: bold;
+  color: black;
+}
+
+#temporada:hover{
+  font-weight: bold;
+  color: gold;
+}
+
+#duracao{
+  font-size: 1.3em;
+  font-weight: bold;
+  color: black;
+} 
+
+#duracao:hover{
+  font-weight: bold;
+  color: gold;
+}
+
+#sequencia{
+  font-size: 1.3em;
+  font-weight: bold;
+  color: black;
+}
+
+#sequencia:hover{
+  font-size: 0.5;
+  font-weight: bold;
+  color: gold;
+}
+
+#sortear{
+  font-size: 1.3em;
+}
+
+#sortear:hover{
+  transform: scale(1.1);
+}
+
+#assistido{
+  font-size: 1.3em;
+}
+
+#assistido:hover{
+  transform: scale(1.1);
 }

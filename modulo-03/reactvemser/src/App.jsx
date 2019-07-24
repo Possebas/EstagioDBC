@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import ListaEpisodios from './models/ListaEpisodios';
-//import CompA, { CompB } from './ExemploComponenteBasico';
-//import  Filho from './exemplos/Filhos';
-//import Familia from './exemplos/Familia'
+// import EpisodioPadrao from './components/EpisodioPadrao';
+import TesteRenderizacao from './components/TesteRenderizacao';
+
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +11,8 @@ class App extends Component {
     this.listaEpisodios = new ListaEpisodios()
     // this.sortear = this.sortear.bind( this );
     this.state = {
-      episodio: this.listaEpisodios.episodiosAleatorios
+      episodio: this.listaEpisodios.episodiosAleatorios,
+      exibirMensagem: false
     }
     // console.log(ListaEpisodios) 
   }
@@ -23,7 +24,7 @@ class App extends Component {
     })
   }
 
-  marcarComoAssistido() {
+  marcarComoAssistido = () => {
     const { episodio } = this.state
     this.listaEpisodios.marcarComoAssistido(episodio)
     this.setState({
@@ -31,21 +32,49 @@ class App extends Component {
     })
   }
 
-  render() {
+  registrarNota(event) {
     const { episodio } = this.state
+    episodio.avaliar(event.target.value)
+    this.setState({
+      episodio,
+      exibirMensagem: true
+    })
+    setTimeout ( () => {
+      this.setState({
+        exibirMensagem:false
+      })
+    }, 4000)
+  }
+
+  gerarCampoNota() {
+    return (
+      <div>
+        {
+          this.state.episodio.assistido && ( 
+            <div>
+              <span id="pergunta">Qual sua nota para este episodio ? </span>
+              <input id="nota" maxLength="1" min="1" max="5" type="number"  onBlur= { this.registrarNota.bind( this ) } placeholder="1~5"/>
+            </div>
+          )
+        }
+      </div>
+    )
+  }
+  
+
+  render() {
+    const { episodio,exibirMensagem } = this.state
     return (
       <div className="App">
-        <div className="App-Header">
           <div className="episodio">
-            <p id="nome">Nome: {episodio.nome}</p>
-            <img id="imagem" src={episodio.thumbUrl} alt={episodio.nome}></img>
-            <p id="temporada" >N° temporada: {episodio.temporada}</p>
-            <p id="duracao" >Duração: {episodio.duracao} minutos</p>
-            <p id="sequencia" >Sequência: {episodio.ordemEpisodio} </p>
-            <button id="sortear" onClick={this.sortear.bind(this)}>Sortear!</button> <br></br>
-            <button id="assistido" onClick={() => this.marcarComoAssistido(episodio)}>Já assisti</button>
+            {/* <EpisodioPadrao episodio= { episodio } 
+            sortearNoComp={ this.sortear.bind(this) } marcarNoComp={ this.marcarComoAssistido} ></EpisodioPadrao>
+            { this.gerarCampoNota() }
+            <h5> { exibirMensagem ? 'Nota registrada com sucesso!' : ''} </h5> */}
+            <TesteRenderizacao nome='Gustavo'>
+              <h4>Aqui novamente</h4>
+            </TesteRenderizacao>
           </div>
-        </div>
       </div>
     );
   }

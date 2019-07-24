@@ -1,3 +1,5 @@
+import Episodio from './Episodios';
+
 function _sortear(min, max) {
     min = Math.ceil(min)
     max = Math.ceil(max)
@@ -27,7 +29,7 @@ export default class ListaTime {
             { nome: 'The Waldo Moment', duracao: 44, temporada: 2, ordemEpisodio: 3, thumbUrl: 'https://occ-0-678-559.1.nflxso.net/art/f5694/edcafaec5cd271131b245254c3106f7cd92f5694.jpg' },
             { nome: 'White Bear', duracao: 42, temporada: 2, ordemEpisodio: 2, thumbUrl: 'https://occ-0-678-559.1.nflxso.net/art/abf16/6090599058bb80cae847951d5273f00e874abf16.jpg' },
             { nome: 'White Christmas', duracao: 74, temporada: 2, ordemEpisodio: 4, thumbUrl: 'https://occ-0-678-559.1.nflxso.net/art/0b465/db9e48d9e27a99396cb9202601159454f6e0b465.jpg' }
-        ]
+        ].map( e => new Episodio( e.nome, e.duracao, e.temporada, e.ordemEpisodio, e.thumbUrl, e.qtdVezesAssistido) )
     }
     get episodiosAleatorios() {
         const indice = _sortear(0, this.todos.length)
@@ -37,5 +39,6 @@ export default class ListaTime {
     marcarComoAssistido( episodio ){
         const episodioParaMarcar = this.todos.find (e => e.nome === episodio.nome) 
         episodioParaMarcar.assistido = true
+        episodioParaMarcar.qtdVezesAssistido += 1
     }
 }

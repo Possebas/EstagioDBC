@@ -1,73 +1,68 @@
 .App {
   text-align: center;
+  background-image: url(./img/background.jpg);
+  background-size: 100%;
+  background-position: right 100% left 0%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.button{
+  margin: 0px 10px;
 }
 
 .episodio{
-  width: 100%;
-  max-width: 800px;
+  width: 600px;
   margin: 13px auto;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 0.5em 0.5em;
   color: black;
   border: 5px solid #ccc;
   border-radius: 20px;  
-  background: #6aa9e4;
+  background: #98c1e7;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #nome{
-  font-size: 2em;
   font-weight: bold;
   color: black;
 }
 
-#nome:hover{
-  font-weight: bold;
-  color: gold;
-}
 
 #imagem{
   height: 43vmin;
 }
 
 #temporada{
-  font-size: 1.2em;
+  font-size: 18px;
   font-weight: bold;
   color: black;
 }
 
-#temporada:hover{
-  font-weight: bold;
-  color: gold;
-}
+
 
 #duracao{
-  font-size: 1.3em;
+  font-size: 18px;
   font-weight: bold;
   color: black;
 } 
 
-#duracao:hover{
-  font-weight: bold;
-  color: gold;
-}
 
 #sequencia{
-  font-size: 1.3em;
+  font-size: 18px;
   font-weight: bold;
   color: black;
 }
 
-#sequencia:hover{
-  font-size: 0.5;
-  font-weight: bold;
-  color: gold;
-}
 
 #sortear{
-  font-size: 1.3em;
+  padding: 10px 10px;
+  margin-right: 10px;
+  font-size: 18px;
+  background-color: rgb(51, 121, 57);
+  color: black;
 }
 
 #sortear:hover{
@@ -75,9 +70,28 @@
 }
 
 #assistido{
-  font-size: 1.3em;
+  padding: 10px 10px;
+  margin-left: 10px;
+  background-color: rgb(39, 91, 233);
+  font-size: 18px;
+  color: black;
 }
 
 #assistido:hover{
   transform: scale(1.1);
+}
+
+#nota{
+  min-width: 50px;
+  padding: 4px 4px;
+  margin: 10px 10px;
+  background-color: #ccc;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+}
+
+#pergunta{
+  font-size: 16px;
+  
 }

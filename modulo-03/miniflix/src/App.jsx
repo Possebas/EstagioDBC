@@ -16,13 +16,18 @@ import './css/section.css';
 import './css/banner.css';  */
 import './css/header.css';
 import './css/footer.css';
+import ListaSeries from './models/ListaSeries';
 
 
 
 class App extends Component {
-  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props)
+    this.listaSeries = new ListaSeries()
+    let exemplo = this.listaSeries
+    let resultado = this.listaSeries.invalidas()
+    console.log(exemplo)
+    console.log(resultado)
   }
 
   renderizarHeader() {
@@ -33,7 +38,7 @@ class App extends Component {
             <Nav.Link className="ml-4 mr-2" href="/home"><h6>Inicio</h6></Nav.Link>
             <Nav.Link className="mr-2" href="/catalogo"><h6>Catálogo</h6></Nav.Link>
             <Nav.Link className="mr-2" href="/quemsomos"><h6>Sobre nós</h6></Nav.Link>
-            <Nav.Link className="ml-2" disabled href="/contato"><h6>Contato</h6></Nav.Link>
+            <Nav.Link className="ml-2"  href="/contato"><h6>Contato</h6></Nav.Link>
           </Nav>
           <Image className="align-top mr-auto" width="250px" src={logo} alt="Logo" />
           <Form className="" inline>
@@ -59,24 +64,24 @@ class App extends Component {
                 </MDBCol>
                 <MDBCol md="6" lg="7" className="text-md-right">
                   <a
-                    href="https://www.facebook.com/" style={{ color:"rgb(31, 52, 100)"}} 
-                      className="facebook social">
+                    href="https://www.facebook.com/" style={{ color: "rgb(31, 52, 100)" }}
+                    className="facebook social">
                     <FontAwesomeIcon className="mr-lg-5"
                       icon={faFacebook} size="2x" />
                   </a>
-                  <a 
-                    href="https://www.youtube.com/" style={{ color:"red"}} 
-                      className="ml-0 youtube social">
+                  <a
+                    href="https://www.youtube.com/" style={{ color: "red" }}
+                    className="ml-0 youtube social">
                     <FontAwesomeIcon className="mr-lg-5"
                       icon={faYoutube} size="2x" />
                   </a>
                   <a
-                    href="https://www.instagram.com/" style={{ color:"black"}} className="instagram social">
+                    href="https://www.instagram.com/" style={{ color: "black" }} className="instagram social">
                     <FontAwesomeIcon className="mr-lg-5"
                       icon={faInstagram} size="2x" />
                   </a>
                   <a href="https://www.twitter.com/" className="twitter social">
-                    <FontAwesomeIcon className="mr-lg-5" 
+                    <FontAwesomeIcon className="mr-lg-5"
                       icon={faTwitter} size="2x" />
                   </a>
                 </MDBCol>
@@ -84,14 +89,14 @@ class App extends Component {
             </MDBContainer>
           </div>
           <MDBContainer id="containerbaixo" className="mt-5 mb-4 text-center text-md-left">
-            <MDBRow fluid className="mt-3">
+            <MDBRow className="mt-3">
               <MDBCol md="3" lg="3" xl="3" className="mb-4">
                 <h6 className="text-uppercase font-weight-bold">
                   <strong>Contato</strong>
                 </h6>
-                <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }}/>
+                <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
                 <p>
-                  <i className="fa fa-contact"/> Porto Alegre, RS, Brazil
+                  <i className="fa fa-contact" /> Porto Alegre, RS, Brazil
                 </p>
                 <p>
                   <i className="fa fa-envelope" /> miniflix@melhorquenetflix.com
@@ -145,11 +150,7 @@ class App extends Component {
     return (
       <div id="maisdefora" >
         {this.renderizarHeader()}
-        <div className="text-center mt-5 mb-5">
-          <div className><h1>.</h1>
-            <div><h1>Vamo Dale!</h1></div>
-          </div>
-        </div>
+        {/* this.renderizarBody() */}
         {this.renderizarFooter()}
       </div>
     );

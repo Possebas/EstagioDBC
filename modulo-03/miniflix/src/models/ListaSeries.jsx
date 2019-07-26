@@ -40,14 +40,60 @@ export default class ListaSeries {
             }
         }
         let resultado = init.concat(todasInvalidas).replace(",", "").replace()
-        
         return resultado
-    
+    }
+
+    filtrarPorAno( ano ) {
+        let filtradosAno = this.todos.map(serie => serie.anoEstreia >= ano ? serie : null)
+        filtradosAno = filtradosAno.filter(serie => serie != null)
+        return filtradosAno
+    }
+
+    procurarPorNome(nome) {
+        const verifica = this.todos.map(serie => serie.elenco.includes( nome ) )
+        return verifica != null ? `Contém ${nome} em um dos elencos`  : `Não contém ${nome} em um dos elencos`
+    }
+
+    mediaDeEpisodios() {
+        let qtdEpisodioSeries = 0
+        let qtdSerie = this.todos.length
+        this.todos.forEach(serie => qtdEpisodioSeries += serie.numeroEpisodios)
+        return (qtdEpisodioSeries / qtdSerie)
+    }
+
+    totalSalarios( indice ) {
+        let serieNoIndice = this.todos[indice]
+        let qtdDiretores = serieNoIndice.diretor.length
+        let qtdElenco = serieNoIndice.elenco.length
+        let salarioDiretores = qtdDiretores * 100000
+        let salarioElenco = qtdElenco * 40000
+        return salarioElenco + salarioDiretores
+    }
+
+    queroGenero( genero ) {
+        let final = []
+        // eslint-disable-next-line no-unused-vars
+        let porGenero = this.todos.map(serie => serie.genero.includes( genero ) ? serie : null).filter( serie => serie != null )
+        porGenero = porGenero.forEach(serie => final.push( serie.titulo ) )
+        return final
+    }
+
+    queroTitulo( prefix ) {
+        let final = []
+        // eslint-disable-next-line no-unused-vars
+        let porGenero = this.todos.map(serie => serie.titulo.includes( prefix ) ? serie : null).filter( serie => serie != null )
+        porGenero = porGenero.forEach(serie => final.push( serie.titulo ) )
+        return final
     }
 }
 
 ListaSeries.propTypes = {
-    invalidas: PropTypes.array
+    invalidas: PropTypes.array,
+    filtrarPorAno: PropTypes.array,
+    procurarPorNome: PropTypes.array,
+    mediaDeEpisodios: PropTypes.array,
+    queroGenero: PropTypes.array,
+    queroTitulo: PropTypes.array
 }
 
 

@@ -12,8 +12,8 @@ import {
 
 
 /* import './css/general.css';
-import './css/section.css';
 import './css/banner.css';  */
+import './css/section.css';
 import './css/header.css';
 import './css/footer.css';
 import ListaSeries from './models/ListaSeries';
@@ -25,15 +25,21 @@ class App extends Component {
     super(props)
     this.listaSeries = new ListaSeries()
     let exemplo = this.listaSeries
-    let resultado = this.listaSeries.invalidas()
+    // let resultado = this.listaSeries.invalidas()
+    // let resultado = this.listaSeries.filtrarPorAno(2017)
+    // let resultado = this.listaSeries.procurarPorNome("Andrew Lincoln")
+    // let resultado = this.listaSeries.mediaDeEpisodios()
+    // let resultado = this.listaSeries.queroGenero("Caos")
+    // let resultado = this.listaSeries.queroTitulo("The")
+
     console.log(exemplo)
-    console.log(resultado)
+    // console.log(resultado)
   }
 
   renderizarHeader() {
     return (
       <div className="mb-5" id="header">
-        <Navbar id="navetop" fixed="top" bg="dark" variant="red">
+        <Navbar className="mb-5" id="navetop" fixed="top" bg="dark" variant="red">
           <Nav className="mr-auto" variant="pills" defaultActiveKey="/home">
             <Nav.Link className="ml-4 mr-2" href="/home"><h6>Inicio</h6></Nav.Link>
             <Nav.Link className="mr-2" href="/catalogo"><h6>Catálogo</h6></Nav.Link>
@@ -46,6 +52,57 @@ class App extends Component {
             <Button className="mr-4" variant="outline-info">Buscar</Button>
           </Form>
         </Navbar>
+      </div>
+    );
+  }
+
+  renderizarContainer(){
+    return (
+      <div id="content" style={{ backgroundColor: "#343a40" }}>
+        <div className="container mt-5">
+          <div className="row mt-5 justify-content-center">
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.hulu.com">
+                <img src="https://apprecs.com/ios-meta/app-icons/256/376510438.jpg" alt="" className="card-img"></img>
+              </a>
+            </div>
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.netflix.com/fr/">
+                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
+              </a>
+            </div>
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.hulu.com">
+                <img src="https://apprecs.com/ios-meta/app-icons/256/376510438.jpg" alt="" className="card-img"></img>
+              </a>
+            </div>
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.netflix.com/fr/">
+                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
+              </a>
+            </div>
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.hulu.com">
+                <img src="https://apprecs.com/ios-meta/app-icons/256/376510438.jpg" alt="" className="card-img"></img>
+              </a>
+            </div>
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.netflix.com/fr/">
+                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
+              </a>
+            </div>
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.hulu.com">
+                <img src="https://apprecs.com/ios-meta/app-icons/256/376510438.jpg" alt="" className="card-img"></img>
+              </a>
+            </div>
+            <div className="card card-custom mx-2 mb-3">
+              <a href="https://www.netflix.com/fr/">
+                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -150,7 +207,7 @@ class App extends Component {
     return (
       <div id="maisdefora" >
         {this.renderizarHeader()}
-        {/* this.renderizarBody() */}
+        {this.renderizarContainer()}
         {this.renderizarFooter()}
       </div>
     );

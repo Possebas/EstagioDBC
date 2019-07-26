@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export default class Serie {
-    constructor(titulo, anoEstreia, diretor, genero, elenco, temporadas, numeroEpisodios, distribuidora) {
+    constructor(titulo, anoEstreia, diretor, genero, elenco, temporadas, numeroEpisodios, distribuidora, imagem) {
         this.titulo = titulo
         this.anoEstreia = anoEstreia
         this.diretor = diretor
@@ -10,6 +10,7 @@ export default class Serie {
         this.temporadas = temporadas
         this.numeroEpisodios = numeroEpisodios
         this.distribuidora = distribuidora
+        this.imagem = imagem
     }
 }
 

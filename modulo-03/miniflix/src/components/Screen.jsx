@@ -1,88 +1,57 @@
-import React, { Component } from 'react';
-import CardDeck from 'react-bootstrap/CardDeck';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-has-content */
+import React from 'react';
+import '../css/screen.css'
+import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBRow, MDBCol } from 'mdbreact';
 
 
-
-
-export default class Screen extends Component {
-
-  
-
-  render(){
-    const 
-    return (
-      <div>
-        
-      </div>
-    );
-  }
+function formatarDiretores(serie) {
+  let diretores = serie.diretor.toString()
+  let final = diretores.replace(',', ', ')
+  return final
 }
 
+function formatarGenero(serie) {
+  let generos = serie.genero.toString()
+  let final = generos.replace(",", ", ")
+  return final
+}
 
-/* 
-<CardDeck>
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This is a wider card with supporting text below as a natural lead-in to
-        additional content. This content is a little bit longer.
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
-</CardDeck> 
+function formatarElenco(serie) {
+  let elenco = serie.elenco.toString()
+  let final = elenco.replace(",", ", ")
+  return final
+}
 
-const Example = (props) => {
+const Screen = (props) => {
   return (
+    <React.Fragment>
+      <MDBRow id="cardGrupo">
+        {props.series.map( (serie, index )=> {
+          return (
+            <MDBCol id="cardCol" key={index}>
+              <MDBCard id="cardizinho" reverse>
+                <MDBCardImage cascade id="cardImage" style={{ height: '20rem' }} alt="Imagem falhou!" src={serie.imagem} />
+                <MDBCardBody cascade className="text-center">
+                  <MDBCardTitle><h1>{serie.titulo}</h1></MDBCardTitle>
+                  <MDBCardText id="infos">
+                    <strong>Diretores: </strong> {formatarDiretores(serie)}<br></br>
+                    <strong>Gênero: </strong> {formatarGenero(serie)}<br></br>
+                    <strong>Estréia:</strong> {serie.anoEstreia}<br></br>
+                    <strong>Temporada(s):</strong> {serie.temporadas}<br></br>
+                    <strong>N° Episodios:</strong> {serie.numeroEpisodios}<br></br>
+                    <strong>Distribuidora: </strong>{serie.distribuidora}<br></br>
+                    <strong>Elenco:</strong> {formatarElenco(serie)}
+                  </MDBCardText>
+                  <button type="button" id="saiba"className="btn btn-lg btn-block btn-rounded">Saiba mais</button>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
+          )
+        })}
+      </MDBRow>
+    </React.Fragment>
+  )
+}
 
-  );
-};
-
-
-
-
-*/
-
-
-
-
-
-{/* <div className="card card-custom mt-5 mx-2 mb-3">
-              <a href="https://www.netflix.com/fr/">
-                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
-              </a>
-            </div>
-            <div className="card card-custom mt-5 mx-2 mb-3">
-              <a href="https://www.hulu.com">
-                <img src="https://apprecs.com/ios-meta/app-icons/256/376510438.jpg" alt="" className="card-img"></img>
-              </a>
-            </div>
-            <div className="card card-custom mt-5 mx-2 mb-3">
-              <a href="https://www.netflix.com/fr/">
-                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
-              </a>
-            </div>
-            <div className="card card-custom mt-5 mx-2 mb-3">
-              <a href="https://www.hulu.com">
-                <img src="https://apprecs.com/ios-meta/app-icons/256/376510438.jpg" alt="" className="card-img"></img>
-              </a>
-            </div>
-            <div className="card card-custom mt-5 mx-2 mb-3">
-              <a href="https://www.netflix.com/fr/">
-                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
-              </a>
-            </div>
-            <div className="card card-custom mt-5 mx-2 mb-3">
-              <a href="https://www.hulu.com">
-                <img src="https://apprecs.com/ios-meta/app-icons/256/376510438.jpg" alt="" className="card-img"></img>
-              </a>
-            </div>
-            <div className="card card-custom mt-5 mx-2 mb-3">
-              <a href="https://www.netflix.com/fr/">
-                <img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/256/Netflix.png" alt="" className="card-img"></img>
-              </a>
-            </div> */}
+export default Screen;

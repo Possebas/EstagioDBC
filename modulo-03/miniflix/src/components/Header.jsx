@@ -1,80 +1,44 @@
 import React from 'react';
 import '../css/header.css';
 import logo from '../img/logo.png';
-import { Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-
-
+import { Image, Nav, Navbar, NavDropdown, Form, FormControl} from 'react-bootstrap';
 
 const Header = props => {
 
-    function gerarInputAno() {
-        return (
-            <div>
-                {
-                    <input id="parametroRecebido" type="search" placeholder="Um ano!" onChange={props.exibirPorAnos} />
-                }
-            </div>
-        )
+
+    function pegarAno(){
+        let numero1 = document.querySelector("#campo").value
+        props.exibirPorAnos(numero1)
     }
 
-    function gerarInputNome() {
-        return (
-            <div>
-                {
-                    <input id="parametroRecebido" type="search" placeholder="Um nome!" onChange={props.exibirPorNomes} />
-                }
-            </div>
-        )
+    function pegarNome(){
+        let numero1 = document.querySelector("#campo").value
+        props.exibirPorNomes(numero1)
     }
 
-    function gerarInputGenero() {
-        return (
-            <div>
-                {
-                    <input id="parametroRecebido" type="search" placeholder="Um gênero!" onChange={props.exibirGeneros} />
-                }
-            </div>
-        )
+    function pegarSalarios(){
+        let numero1 = document.querySelector("#campo").value
+        props.exibirTotalSalarios(numero1)
     }
 
-    function gerarInputTitulo() {
-        return (
-            <div>
-                {
-                    <input id="parametroRecebido" type="search" placeholder="Um prefixo titulo!" onChange={props.exibirTitulos} />
-                }
-            </div>
-        )
+    function pegarGenero(){
+        let numero1 = document.querySelector("#campo").value
+        props.exibirGeneros(numero1)
     }
 
-    function gerarInputCredito() {
-        return (
-            <div>
-                {
-                    <input id="parametroRecebido" type="search" placeholder="Uma série!" onChange={props.exibirCreditos} />
-                }
-            </div>
-        )
+    function pegarTitulo(){
+        let numero1 = document.querySelector("#campo").value
+        props.exibirTitulos(numero1)
     }
 
-    function gerarInputHashTag() {
-        return (
-            <div>
-                {
-                    <input id="parametroRecebido" type="search" placeholder="Uma hastag!" onChange={props.exibirHashTag} />
-                }
-            </div>
-        )
+    function pegarCredito(){
+        let numero1 = document.querySelector("#campo").value
+        props.exibirCreditos(numero1)
     }
 
-    function gerarInputSalarios() {
-        return (
-            <div>
-                {
-                    <input id="parametroRecebido" type="search" placeholder="Uma série!" onChange={props.exibirTotalSalarios} />
-                }
-            </div>
-        )
+    function pegarHash(){
+        let numero1 = document.querySelector("#campo").value
+        props.exibirHashTag(numero1)
     }
 
 
@@ -89,17 +53,20 @@ const Header = props => {
                     <Nav.Link className="ml-2" disabled href="/contato"><h6>Contato</h6></Nav.Link>
                 </Nav>
                 <Image className="align-top mr-auto" width="250px" src={logo} alt="Logo" />
+                <Form inline>
+                    <FormControl type="text" id="campo" placeholder="Valor e clique no método" className="mr-sm-2" />
+                </Form>
                 <NavDropdown id="collasible-nav-dropdown" className="mr-4" title="Escolha um filtro">
                     <NavDropdown.Item href="#" onClick={() => props.exibirTodas()}>Listar todas</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => props.exibirInvalidas()} href="#">Inválidas</NavDropdown.Item>
-                    <NavDropdown.Item onClick={gerarInputAno()} href="#">Filtrar por ano</NavDropdown.Item>
-                    <NavDropdown.Item onClick={gerarInputNome()} href="#">Buscar por nome</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => pegarAno()} href="#">Filtrar por ano</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => pegarNome()} href="#">Buscar por nome</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => props.exibirMediaEpisodios()} href="#">Média episodios</NavDropdown.Item>
-                    <NavDropdown.Item onClick={gerarInputSalarios()} href="#">Total salários</NavDropdown.Item>
-                    <NavDropdown.Item onClick={gerarInputGenero()} href="#">Por gênero</NavDropdown.Item>
-                    <NavDropdown.Item onClick={gerarInputTitulo()} href="#">Por título</NavDropdown.Item>
-                    <NavDropdown.Item onClick={gerarInputCredito()} href="#">Créditos</NavDropdown.Item>
-                    <NavDropdown.Item onClick={gerarInputHashTag()} href="#">Hashtag secreta</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => pegarSalarios()} href="#">Total salários</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => pegarGenero()} href="#">Por gênero</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => pegarTitulo()} href="#">Por título</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => pegarCredito()} href="#">Créditos</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => pegarHash()} href="#">Hashtag secreta</NavDropdown.Item> 
                 </NavDropdown>
             </Navbar>
         </React.Fragment>

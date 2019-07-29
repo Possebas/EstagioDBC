@@ -14,11 +14,6 @@
     color: #b1235e;
 }
 
-#cardizinho:hover{
-    columns: 100%;
-    transform: scale(0.9);
-}
-
 #cardCol{
     margin: 10px 10px;
     padding: 0;

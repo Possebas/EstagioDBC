@@ -25,7 +25,6 @@ function ordenaPorUltimoNome( aux ) {
         if (a[a.length-1] < b[b.length-1]) {
           return -1;
         }
-        // a must be equal to b
         return 0;
     });
 }
@@ -102,7 +101,7 @@ export default class ListaSeries {
         let qtdElenco = serieNoIndice.elenco.length
         let salarioDiretores = qtdDiretores * 100000
         let salarioElenco = qtdElenco * 40000
-        return salarioElenco + salarioDiretores
+        return ( salarioElenco + salarioDiretores ).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) 
     }
 
     queroGenero( genero ) {

@@ -47,14 +47,14 @@ const Header = props => {
         <React.Fragment>
             <Navbar className="m3-5" id="navetop" bg="dark" variant="red">
                 <Nav className="mr-auto" variant="pills" defaultActiveKey="/">
-                    <Nav.Link className="ml-4 mr-2" href="/"><h6>Inicio</h6></Nav.Link>
+                    <Nav.Link className="ml-2 mr-2" href="/"><h6>Inicio</h6></Nav.Link>
                     <Nav.Link className="mr-2" disabled href="/catalogo"><h6>Catálogo</h6></Nav.Link>
                     <Nav.Link className="mr-2" disabled href="/quemsomos"><h6>Sobre nós</h6></Nav.Link>
                     <Nav.Link className="ml-2" disabled href="/contato"><h6>Contato</h6></Nav.Link>
                 </Nav>
-                <Image className="align-top mr-auto" width="250px" src={logo} alt="Logo" />
-                <Form inline>
-                    <FormControl type="text" id="campo" placeholder="Valor e clique no método" className="mr-sm-2" />
+                <Image className="align-top mr-3" width="250px" src={logo} alt="Logo" />
+                <Form id="formu" inline className="ml-5 mr-0">
+                    <FormControl type="text" id="campo" placeholder="Parâmetro" />
                 </Form>
                 <NavDropdown id="collasible-nav-dropdown" className="mr-4" title="Escolha um filtro">
                     <NavDropdown.Item href="#" onClick={() => props.exibirTodas()}>Listar todas</NavDropdown.Item>

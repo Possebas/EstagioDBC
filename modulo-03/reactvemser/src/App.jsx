@@ -63,7 +63,7 @@ class App extends Component {
   
 
   render() {
-    const { episodio,exibirMensagem } = this.state
+    // const { episodio,exibirMensagem } = this.state
     return (
       <div className="App">
           <div className="episodio">

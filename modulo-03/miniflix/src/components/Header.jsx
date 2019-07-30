@@ -46,8 +46,8 @@ const Header = props => {
     return (
         <React.Fragment>
             <Navbar className="m3-5" id="navetop" bg="dark" variant="red">
-                <Nav className="mr-auto" variant="pills" defaultActiveKey="/home">
-                    <Nav.Link className="ml-4 mr-2" href="/home"><h6>Inicio</h6></Nav.Link>
+                <Nav className="mr-auto" variant="pills" defaultActiveKey="/">
+                    <Nav.Link className="ml-4 mr-2" href="/"><h6>Inicio</h6></Nav.Link>
                     <Nav.Link className="mr-2" disabled href="/catalogo"><h6>Catálogo</h6></Nav.Link>
                     <Nav.Link className="mr-2" disabled href="/quemsomos"><h6>Sobre nós</h6></Nav.Link>
                     <Nav.Link className="ml-2" disabled href="/contato"><h6>Contato</h6></Nav.Link>

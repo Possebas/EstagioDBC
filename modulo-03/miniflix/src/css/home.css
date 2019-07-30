@@ -1,0 +1,30 @@
+/* Home */
+
+#projeto1{
+    background: url(https://pbs.twimg.com/profile_images/1135422877153615872/8Ls_iR3_.png) no-repeat center center;
+
+}
+
+#projeto1info{
+    color: #fff;
+}
+
+#projeto2{
+    background: url(http://images.impresa.pt/visao/2018-10-15-GettyImages-1007903778.jpg-1/original/mw-860) no-repeat center center;
+}
+
+#linke{
+    color: black;
+    text-decoration:none; 
+}
+
+#especial{
+    color: black;
+    background: rgb(61, 167, 131);
+}
+
+#botao{
+    background-color: rgb(47, 62, 200);
+    color: black;
+    text-decoration:none;
+}

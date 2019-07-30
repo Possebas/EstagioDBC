@@ -1,0 +1,90 @@
+#contact{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgsPirUgpaZBPLUhRqLSyFUbAFRkLWoWMzxLMkqKX7li6U7MWe);
+  width: auto;
+  height: auto;
+}
+
+.button{
+  margin: 0px 10px;
+}
+
+.episodio{
+  width: 600px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 0.5em 0.5em;
+  color: black;
+  border: 5px solid #ccc;
+  border-radius: 20px;  
+  background: #98c1e7;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#nome{
+  font-weight: bold;
+  color: black;
+}
+
+
+#temporada{
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+#duracao{
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+} 
+
+
+#sequencia{
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+
+#sortear{
+  padding: 10px 10px;
+  margin-right: 10px;
+  font-size: 18px;
+  background-color: rgb(51, 121, 57);
+  color: black;
+}
+
+#sortear:hover{
+  transform: scale(1.1);
+}
+
+#assistido{
+  padding: 10px 10px;
+  margin-left: 10px;
+  background-color: rgb(39, 91, 233);
+  font-size: 18px;
+  color: black;
+}
+
+#assistido:hover{
+  transform: scale(1.1);
+}
+
+#nota{
+  min-width: 50px;
+  padding: 4px 4px;
+  margin: 10px 10px;
+  background-color: #ccc;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+}
+
+#pergunta{
+  font-size: 16px;
+  
+}

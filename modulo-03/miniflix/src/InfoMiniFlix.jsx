@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 // import './css/section.css';
 import ListaSeries from './models/ListaSeries';
 import Footer from './components/Footer';
 import Screen from './components/Screen';
 import Header from './components/Header';
+import RoutesBar from './components/RoutesBar';
 
 
 export default class InfoMiniFlix extends Component {
@@ -88,7 +88,9 @@ export default class InfoMiniFlix extends Component {
         const { series, campo, listagem } = this.state
         return (
             <div id="maisdefora" >
-                <Link to="/test">Testando</Link>
+                <div>
+                    <RoutesBar></RoutesBar>
+                </div>
                 <Header exibirTodas={this.exibirTodas.bind(this)} campo={campo} alterarCampo={this.alterarCampo.bind(this)} exibirInvalidas={this.exibirInvalidas.bind(this)}
                         exibirPorAnos={this.exibirPorAnos.bind(this)} exibirPorNomes={this.exibirPorNomes.bind(this)}
                         exibirMediaEpisodios={this.exibirMediaEpisodios.bind(this)} exibirTotalSalarios={this.exibirTotalSalarios.bind(this)}

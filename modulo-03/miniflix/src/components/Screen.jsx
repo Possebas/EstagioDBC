@@ -35,13 +35,13 @@ const listazona = (series) => {
                 <MDBCardBody cascade className="text-center">
                   <MDBCardTitle>{serie.titulo}</MDBCardTitle>
                   <MDBCardText id="infos">
-                    <strong>Diretores: </strong> {serie.diretor}<br></br>
-                    <strong>Gênero: </strong> {serie.genero}<br></br>
+                    <strong>Diretores: </strong> {serie.diretor.toString()}<br></br>
+                    <strong>Gênero: </strong> {serie.genero.toString()}<br></br>
                     <strong>Estréia:</strong> {serie.anoEstreia}<br></br>
                     <strong>Temporada(s):</strong> {serie.temporadas}<br></br>
                     <strong>N° Episodios:</strong> {serie.numeroEpisodios}<br></br>
                     <strong>Distribuidora: </strong>{serie.distribuidora}<br></br>
-                    <strong>Elenco:</strong> {serie.elenco}
+                    <strong>Elenco:</strong> {serie.elenco.toString()}
                   </MDBCardText>
                   <button type="button" id="saiba" className="btn btn-lg btn-block btn-rounded">Saiba mais</button>
                 </MDBCardBody>

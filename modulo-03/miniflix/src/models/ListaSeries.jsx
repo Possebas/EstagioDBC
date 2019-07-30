@@ -83,8 +83,8 @@ export default class ListaSeries {
     }
 
     procurarPorNome(nome) {
-        const verifica = this.todos.map(serie => serie.elenco.includes( nome ) )
-        let resultado = verifica != null ? `Contém ${nome} em um dos elencos`  : `Não contém ${nome} em um dos elencos`
+        let resultado = this.todos.map(serie => serie.elenco.includes( nome ) ? serie : null )
+        resultado = resultado.filter(serie => serie != null)
         return resultado
     }
 
@@ -105,20 +105,12 @@ export default class ListaSeries {
     }
 
     queroGenero( genero ) {
-        let final = []
-        // eslint-disable-next-line no-unused-vars
-        let porGenero = this.todos.map(serie => serie.genero.includes( genero ) ? serie : null).filter( serie => serie != null )
-        let resultado = porGenero.forEach(serie => final.push( serie.titulo ) )
-        console.log(final)
+        let resultado = this.todos.map(serie => serie.genero.includes( genero ) ? serie : null).filter( serie => serie != null )
         return resultado
     }
 
     queroTitulo( prefix ) {
-        let final = []
-        // eslint-disable-next-line no-unused-vars
-        let porGenero = this.todos.map(serie => serie.titulo.includes( prefix ) ? serie : null).filter( serie => serie != null )
-        let resultado = porGenero.forEach(serie => final.push( serie.titulo ) )
-        console.log(final)
+        let resultado = this.todos.map(serie => serie.titulo.includes( prefix ) ? serie : null).filter( serie => serie != null )
         return resultado
     }
 
@@ -129,7 +121,7 @@ export default class ListaSeries {
         return [
             diretores,
             elenco
-        ];
+        ]
     }
     
     hashTag() {

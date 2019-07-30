@@ -52,7 +52,7 @@ const Header = props => {
                     <Nav.Link className="mr-2" disabled href="/quemsomos"><h6>Sobre nós</h6></Nav.Link>
                     <Nav.Link className="ml-2" disabled href="/contato"><h6>Contato</h6></Nav.Link>
                 </Nav>
-                <Image className="align-top mr-3" width="250px" src={logo} alt="Logo" />
+                <Image className="mr-auto ml-auto" width="250px" src={logo} alt="Logo" />
                 <Form id="formu" inline className="ml-5 mr-0">
                     <FormControl type="text" id="campo" placeholder="Parâmetro" />
                 </Form>

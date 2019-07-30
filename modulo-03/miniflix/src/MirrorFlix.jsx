@@ -3,6 +3,7 @@ import './css/mirrorFlix.css';
 import ListaEpisodios from './models/ListaEpisodios';
 import EpisodioPadrao from './components/EpisodioPadrao';
 import RoutesBar from './components/RoutesBar';
+import MensagemFlash from './components/MensagemFlash';
 
 
 export default class MirrorFlix extends Component {
@@ -11,15 +12,18 @@ export default class MirrorFlix extends Component {
     this.listaEpisodios = new ListaEpisodios()
     this.state = {
       episodio: this.listaEpisodios.episodiosAleatorios,
-      exibirMensagem: false
+      assistido: false,
+      exibirMensagem: false,
+      mensagemTipo: true
     }
     // console.log(ListaEpisodios) 
   }
 
-  sortear() {
+  sortear () {
     const episodio = this.listaEpisodios.episodiosAleatorios
     this.setState({
-      episodio
+      episodio,
+      assistido: this.state.assistido
     })
   }
 
@@ -27,42 +31,44 @@ export default class MirrorFlix extends Component {
     const { episodio } = this.state
     this.listaEpisodios.marcarComoAssistido(episodio)
     this.setState({
-      episodio
+      episodio: episodio,
+      assistido: true
+    })
+  }
+
+  notaValida( nota ){
+    return nota >= 1 && nota <= 5
+  }
+
+  alterarExibirMensagem(){
+    this.setState({
+      exibirMensagem: !this.state.exibirMensagem
     })
   }
 
   registrarNota(event) {
     const { episodio } = this.state
-    episodio.avaliar(event.target.value)
+    const nota = event.target.value
+    if(this.notaValida(nota)){
+
+      episodio.avaliar(nota)
+      this.setState({
+        mensagemTipo: true
+      })
+    } else {
+      this.setState({
+        mensagemTipo: false
+      })
+    }
+
     this.setState({
       episodio,
-      exibirMensagem: true
+      exibirMensagem: true,
     })
-    setTimeout(() => {
-      this.setState({
-        exibirMensagem: false
-      })
-    }, 4000)
   }
-
-  gerarCampoNota() {
-    return (
-      <div>
-        {
-          this.state.episodio.assistido && (
-            <div>
-              <span id="pergunta">Qual sua nota para este episodio ? </span>
-              <input id="nota" maxLength="1" min="1" max="5" type="number" onBlur={this.registrarNota.bind(this)} placeholder="1~5" />
-            </div>
-          )
-        }
-      </div>
-    )
-  }
-
 
   render() {
-    const { episodio, exibirMensagem } = this.state
+    const { episodio, exibirMensagem, assistido, mensagemTipo } = this.state
     return (
       <div id="contact">
         <div id="links">
@@ -71,8 +77,9 @@ export default class MirrorFlix extends Component {
         <div className="episodio">
           <EpisodioPadrao episodio={episodio}
             sortearNoComp={this.sortear.bind(this)} marcarNoComp={this.marcarComoAssistido} ></EpisodioPadrao>
-          {this.gerarCampoNota()}
-          <h5> {exibirMensagem ? 'Nota registrada com sucesso!' : ''} </h5>
+          <MensagemFlash exibirMensagem={exibirMensagem} registrarNota={this.registrarNota.bind(this)} assistido={assistido} episodio={episodio} mensagemTipo={mensagemTipo}
+                         alterarExibirMensagem={this.alterarExibirMensagem.bind(this)}>               
+          </MensagemFlash>
         </div>
       </div>
     );

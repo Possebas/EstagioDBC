@@ -1,15 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class MeuInputNumero extends Component {
+const MeuInputNumero = props => {
+    const { assistido, episodio, obrigatorio } = props
 
-    
-    render() {
+    const campoNota = ( cor = "white", obrigatorio ) => {
+        const corAplicar = cor
+        const estilo = `3px solid ${corAplicar}`
+        return (
+            episodio.assistido && (
+                <div className="mr-1 ml-1 mt-4">
+                    {typeof props.mensagemSpan !== undefined ? <span>{props.mensagemSpan}</span> : ''}
+                    <input className="mb-3" type="number" style={{ border: estilo }} placeholder={props.placeholderInput} onBlur={props.registrarNota} />
+                    { obrigatorio ? <span>*obrigatório*</span> : ''}
+                </div>
+            )
+        )
+    }
+
+    function gerarCampoNota(obrigatorio) {
         return (
             <div>
-                
+                {
+                    obrigatorio ? campoNota( "red", obrigatorio ) : campoNota(obrigatorio)
+                }
             </div>
         )
     }
-}
 
-export default MeuInputNumero
+    return (
+        <React.Fragment>
+            <div className="novoInput">
+                {assistido ? gerarCampoNota(obrigatorio) : ''}
+            </div>
+        </React.Fragment>
+    )
+}
+export default MeuInputNumero;

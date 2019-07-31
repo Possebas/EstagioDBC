@@ -1,10 +1,9 @@
 import React from 'react';
-import '../css/header.css';
-import logo from '../img/logo.png';
+import '../../css/miniflix/header.css';
+import logo from '../../img/logo.png';
 import { Image, Nav, Navbar, NavDropdown, Form, FormControl} from 'react-bootstrap';
 
 const Header = props => {
-
 
     function pegarAno(){
         let numero1 = document.querySelector("#campo").value
@@ -54,9 +53,9 @@ const Header = props => {
                 </Nav>
                 <Image className="mr-auto ml-auto" width="250px" src={logo} alt="Logo" />
                 <Form id="formu" inline className="ml-5 mr-0">
-                    <FormControl type="text" id="campo" placeholder="Parâmetro" />
+                    <FormControl type="text" id="campo" className="text-center" placeholder="Parâmetro" />
                 </Form>
-                <NavDropdown id="collasible-nav-dropdown" className="mr-4" title="Escolha um filtro">
+                <NavDropdown id="collasible-nav-dropdown" className="mr-4 dark" title="Escolha um filtro">
                     <NavDropdown.Item href="#" onClick={() => props.exibirTodas()}>Listar todas</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => props.exibirInvalidas()} href="#">Inválidas</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => pegarAno()} href="#">Filtrar por ano</NavDropdown.Item>

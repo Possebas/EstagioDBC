@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 // import './css/section.css';
-import ListaSeries from './models/ListaSeries';
-import Footer from './components/Footer';
-import Screen from './components/Screen';
-import Header from './components/Header';
-import RoutesBar from './components/RoutesBar';
+import ListaSeries from '../models/ListaSeries';
+import Footer from './miniflix/Footer';
+import Screen from './miniflix/Screen';
+import Header from './miniflix/Header';
+import RoutesBar from './RoutesBar';
 
 
 export default class InfoMiniFlix extends Component {
@@ -23,7 +23,6 @@ export default class InfoMiniFlix extends Component {
         this.setState({
             campo: valor
         })
-
     }
 
     exibirTodas() {

@@ -1,12 +1,14 @@
 import React from 'react';
-import '../css/mensagemflash.css'
+import '../../css/mirrorFlix/mensagemflash.css'
 
 const MensagemFlash = (props) => {
     const { exibirMensagem, mensagemTipo } = props
-    const sucesso = <span id="sucesso">Nota registrada com sucesso!</span>
-    const falha = <span id="falha">Informar uma nota válida (entre 1 e 5)</span>
-    
+    const sucesso = <span id="sucesso" >Nota registrada com sucesso!</span>
+    const falha = <span id="falha" >Informar uma nota válida (entre 1 e 5)</span>
 
+    function informarCor( cor ) {
+        return <span style={{"background-color": cor}}>Exemplo!</span>
+    }
 
     function definirTempo( valor ){
         setTimeout(() => {
@@ -17,7 +19,6 @@ const MensagemFlash = (props) => {
     function gerarMensagem() {
         return ( mensagemTipo ? sucesso : falha)
     }
-
 
     return (
         <div>

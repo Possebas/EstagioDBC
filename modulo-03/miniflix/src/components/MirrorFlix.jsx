@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './css/mirrorFlix.css';
-import ListaEpisodios from './models/ListaEpisodios';
-import EpisodioPadrao from './components/EpisodioPadrao';
-import RoutesBar from './components/RoutesBar';
-import MensagemFlash from './components/MensagemFlash';
-import MeuInputNumero from './components/MeuInputNumero';
+import '../css/mirrorFlix/mirrorFlix.css';
+import ListaEpisodios from '../models/ListaEpisodios';
+import EpisodioPadrao from './mirrorFlix/EpisodioPadrao';
+import RoutesBar from './RoutesBar';
+import MensagemFlash from './mirrorFlix/MensagemFlash';
+import MeuInputNumero from './mirrorFlix/MeuInputNumero';
 
 
 export default class MirrorFlix extends Component {
@@ -16,7 +16,6 @@ export default class MirrorFlix extends Component {
       assistido: false,
       exibirMensagem: false,
       mensagemTipo: true,
-      obrigatorio: true
     }
     // console.log(ListaEpisodios) 
   }
@@ -79,9 +78,9 @@ export default class MirrorFlix extends Component {
           <EpisodioPadrao episodio={episodio}
             sortearNoComp={this.sortear.bind(this)} marcarNoComp={this.marcarComoAssistido} />
           <MeuInputNumero assistido={assistido} episodio={ episodio } registrarNota={ this.registrarNota.bind(this) }
-                          placeholderInput="Nota de 1 a 5" mensagemSpan="Nota: " obrigatorio={obrigatorio} />
-          <MensagemFlash exibirMensagem={exibirMensagem} registrarNota={this.registrarNota.bind(this)} assistido={assistido} episodio={episodio} mensagemTipo={mensagemTipo}
-                         alterarExibirMensagem={this.alterarExibirMensagem.bind(this)}/>               
+                          placeholderInput="Nota de 1 a 5" mensagemSpan="Nota: " obrigatorio={true} />
+          <MensagemFlash exibirMensagem={exibirMensagem} registrarNota={this.registrarNota.bind(this)} assistido={assistido} episodio={episodio} 
+                         mensagemTipo={mensagemTipo} alterarExibirMensagem={this.alterarExibirMensagem.bind(this)}/>               
         </div>
       </div>
     );

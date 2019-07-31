@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import InfoMiniFlix from './InfoMiniFlix';
-import MirrorFlix from './MirrorFlix';
-import Home from './Home';
+import InfoMiniFlix from './components/InfoMiniFlix';
+import MirrorFlix from './components/MirrorFlix';
+import Home from './components/Home';
 import './css/app.css';
 
 

@@ -7,7 +7,7 @@ import {
   faTwitter,
   faInstagram
 } from '@fortawesome/free-brands-svg-icons';
-import '../css/footer.css';
+import '../../css/miniflix/footer.css';
 
 
 export default class Footer extends Component {

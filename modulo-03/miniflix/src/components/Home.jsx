@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBJumbotron, MDBCardTitle, MDBBtn} from 'mdbreact';
-import './css/home.css'
-import RoutesBar from './components/RoutesBar';
+import '../css/home.css';
+import RoutesBar from './RoutesBar';
 
 export default class Home extends Component {
 

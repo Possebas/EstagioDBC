@@ -2,11 +2,25 @@
 #sucesso{
     background-color: green;
     color: #fff;
-    transition: all 3s ease-in-out;
 }
 
 #falha{
     background-color: red;
     color: #fff;
-    transition: all 3s ease-in-out;
+}
+
+.fade-in{
+    animation: fadein 1s linear forwards;
+}
+
+.fade-out{
+    animation: fadeout 1s linear forwards;
+}
+
+@keyframes fade-in {
+    from { opacity: 0;} to { opacity: 1; visibility: visible;}
+}
+
+@keyframes fade-out {
+    from { opacity: 1;} to { opacity: 0; visibility: hidden;}
 }

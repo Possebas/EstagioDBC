@@ -7,10 +7,15 @@ export default class Episodio{
         this.thumbUrl = thumbUrl
         this.qtdVezesAssistido = qtdVezesAssistido || 0
         this.nota = nota
+        this.assistido = false
     }
 
     avaliar ( nota ) {
         this.nota = parseInt( nota )
+    }
+
+    get jaFoiAssistido() {
+        return this.assistido === true
     }
 
     get duracaoEmMin(){
@@ -18,7 +23,7 @@ export default class Episodio{
     }
     
     get temporadaEpisodio(){
-        return ` ${ this.temporada.toString().padStart(2,'0') } / ${ this.ordemEpisodio.toString().padStart(2,'0')} `
+        return `${ this.ordemEpisodio.toString().padStart(2,'0')} / ${ this.temporada.toString().padStart(2,'0') } `
     }
 
 }

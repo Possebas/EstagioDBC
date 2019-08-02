@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 import '../css/routes.css'
 
 
-const RoutesBar = () => {
+const RoutesBar = (  ) => {
+
+    function logout( ) {
+        localStorage.removeItem('Authorization');
+    }
+
     return (
         <MDBRow id="linha">
             <MDBCol style={{ background: "black", width: "100%"}} xl="12" md="12" sm="12" className="mb-xl-0">
@@ -12,6 +17,7 @@ const RoutesBar = () => {
                     <MDBBtn color="primary"><Link  id="linke" to="/">| Início |</Link></MDBBtn>
                     <MDBBtn color="warning"><Link id="linke" to="/mirror"> | MirrorFlix |</Link></MDBBtn>
                     <MDBBtn color="danger"><Link id="linke" to="/miniflix"> | MiniFlix |</Link></MDBBtn>
+                    <MDBBtn color="light" className="mr-1" ><Link id="linke" onClick={logout.bind(this)} to="/miniflix"> | Deslogar |</Link></MDBBtn>
                 </MDBBtnGroup>
             </MDBCol>
         </MDBRow>

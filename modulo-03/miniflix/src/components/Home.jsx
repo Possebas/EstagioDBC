@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBJumbotron, MDBCardTitle, MDBBtn} from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBJumbotron, MDBCardTitle, MDBBtn } from 'mdbreact';
 import '../css/home.css';
 import RoutesBar from './RoutesBar';
+import { Button } from 'react-bootstrap';
 
 export default class Home extends Component {
 
@@ -40,13 +41,18 @@ export default class Home extends Component {
         )
     }
 
+    logout() {
+        localStorage.removeItem('Authorization');
+    }
+
     render() {
         return (
-            <div style={{background: "#343a40"}}>
-                <div> 
+            <div style={{ background: "#343a40" }}>
+                <div>
                     <RoutesBar></RoutesBar>
                 </div>
                 {this.renderizarDoisProjetos()}
+
             </div>
         )
     }

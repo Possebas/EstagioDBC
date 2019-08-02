@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+// Components
 import InfoMiniFlix from './components/InfoMiniFlix';
 import MirrorFlix from './components/MirrorFlix';
 import Home from './components/Home';
+import Login from './components/Login';
+import { PrivateRoute } from './components/PrivateRoute';
+
+// CSS
 import './css/app.css';
 
 
@@ -14,9 +20,10 @@ class App extends Component {
                 <Router>
                     <React.Fragment>
                         <section>
-                            <Route path="/" exact component={Home} />
-                            <Route path="/miniflix" exact component={InfoMiniFlix} />
-                            <Route path="/mirror" extact component={MirrorFlix} />
+                            <PrivateRoute path="/" exact component={Home} />
+                            <Route path="/login"  component={Login} />
+                            <PrivateRoute path="/miniflix" component={InfoMiniFlix} />
+                            <PrivateRoute path="/mirror"  component={MirrorFlix} />
                         </section>
                     </React.Fragment>
                 </Router>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../../css/mirrorFlix/mensagemflash.css'
 
 const MensagemFlash = (props) => {
@@ -6,14 +7,14 @@ const MensagemFlash = (props) => {
     const sucesso = <span id="sucesso" >Nota registrada com sucesso!</span>
     const falha = <span id="falha" >Informar uma nota válida (entre 1 e 5)</span>
 
-    function informarCor( cor ) {
+/*     function informarCor( cor ) {
         return <span style={{"background-color": cor}}>Exemplo!</span>
-    }
+    } */
 
     function definirTempo( valor ){
         setTimeout(() => {
             props.alterarExibirMensagem()
-          }, valor || 3000)
+        }, valor || 3000)
     }
 
     function gerarMensagem() {
@@ -26,6 +27,11 @@ const MensagemFlash = (props) => {
             { exibirMensagem ? definirTempo() : ''}
         </div>
     )
+}
+
+MensagemFlash.propType = {
+    exibirMensagem: PropTypes.bool.isRequired,
+    mensagemTipo: PropTypes.bool.isRequired
 }
 
 export default MensagemFlash 

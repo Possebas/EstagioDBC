@@ -88,3 +88,11 @@
   font-size: 16px;
   
 }
+
+#listarAvaliados{
+  padding: 10px 10px;
+  margin-right: 10px;
+  font-size: 18px;
+  background-color: rgb(92, 13, 165);
+  color: black;
+}

@@ -5,7 +5,7 @@ import EpisodioPadrao from './mirrorFlix/EpisodioPadrao';
 import RoutesBar from './RoutesBar';
 import MensagemFlash from './mirrorFlix/MensagemFlash';
 import MeuInputNumero from './mirrorFlix/MeuInputNumero';
-import ListaAvaliacoes from './ListaAvaliacoes';
+import ListaAvaliacoes from './mirrorFlix/ListaAvaliacoes';
 
 export default class MirrorFlix extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class MirrorFlix extends Component {
       assistido: false,
       exibirMensagem: false,
       mensagemTipo: true,
-      listaAvaliados: []
+      mostrarAvaliados: false
     }
     // console.log(ListaEpisodios) 
   }
@@ -69,8 +69,16 @@ export default class MirrorFlix extends Component {
     })
   }
 
+
+  mostrarListaAvaliados() {
+    this.setState({
+      mostrarAvaliados: !this.state.mostrarAvaliados
+    })
+  }
+
+
   render() {
-    const { episodio, exibirMensagem, assistido, mensagemTipo,listaAvaliados} = this.state
+    const { episodio, exibirMensagem, assistido, mensagemTipo, mostrarAvaliados } = this.state
     return (
       <div id="contact">
         <div id="links">
@@ -83,7 +91,8 @@ export default class MirrorFlix extends Component {
             placeholderInput="Nota de 1 a 5" mensagemSpan="Nota: " obrigatorio={true} />
           <MensagemFlash exibirMensagem={exibirMensagem} registrarNota={this.registrarNota.bind(this)} assistido={assistido} episodio={episodio}
             mensagemTipo={mensagemTipo} alterarExibirMensagem={this.alterarExibirMensagem.bind(this)} />
-        <ListaAvaliacoes listaAvaliados={listaAvaliados} />
+          <button id="listarAvaliados" type="button" className="my-2" onClick={this.mostrarListaAvaliados.bind(this)}>Mostrar Avaliados</button>
+          <ListaAvaliacoes lista={this.listaEpisodios.todos} mostrarAvaliados={mostrarAvaliados} />
         </div>
       </div>
     );

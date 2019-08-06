@@ -1,17 +1,24 @@
-/* Login */
 
-#login{
+#linha{
     background: #283c86;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #45a247, #283c86);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #45a247, #283c86); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#titulo{
-    color: #FF9800;
+#cardzinho{
+    margin-right: 0; 
+    margin-left: 0; 
+    justify-content: center;
+    background-color: rgb(141, 93, 187);
+    color: black;
     font-weight: bold;
-    text-align: center;
 }
 
-#welcome{
-    color: #fff;
+#title{
+    color: #FF9800;
+    font-weight: bold;
+}
+
+#load{
+    text-align: center;
 }

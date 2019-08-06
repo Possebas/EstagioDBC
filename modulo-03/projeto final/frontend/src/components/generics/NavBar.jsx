@@ -29,11 +29,11 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const { body, src } = this.props
     return (
       <div>
-        <header>
           <Router>
-            <MDBNavbar color="bg-primary" fixed="top" dark expand="md" scrolling transparent>
+            <MDBNavbar className="pl-0 pr-0" color="bg-dark" fixed="top" dark expand="md" scrolling transparent>
               <MDBIcon className="mr-3 text-center" icon="piggy-bank" size="2x" />
               {!this.state.isWideEnough && <MDBNavbarToggler onClick={this.onClick} />}
               <MDBCollapse isOpen={this.state.collapse} navbar>
@@ -75,10 +75,7 @@ class NavBar extends React.Component {
               </MDBCollapse>
             </MDBNavbar>
           </Router>
-        </header>
-        <MDBView src={this.props.src} alt="Image fail">
-          {this.props.body ? bodyHome : ''}
-        </MDBView>
+        { header(src, body) }
       </div>
     );
   }
@@ -92,6 +89,12 @@ const bodyHome = () => (
     <p>That's why we came together in 2013 to redefine people's relationship with money through a more efficient and transparent experience. <br />If you have tired of the same solutions to old problems, if you want to come up with new ideas, and <br />if you believe design, technology, and good service solve any problem, learn about our careers. <br />We are looking for people to simplify the world. </p><br />
     <p>Our goal is to end complexity and give back control of one's financial life.</p>
   </MDBMask>
+)
+
+const header = (src, body) => (
+  <MDBView src={src} alt="Image fail">
+    {body ? bodyHome() : ''}
+  </MDBView>
 )
 
 export default NavBar;

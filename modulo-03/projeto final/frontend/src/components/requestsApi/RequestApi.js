@@ -6,7 +6,7 @@ export default class RequestApi {
         this.baseUrl = `http://localhost:${port}`
     }
 
-    reqApi( url, id ) {
+    async reqApi( url, id ) {
         url += id ? `:${id}` : ''
         axios.get(`${this.baseUrl}${url}`, { 
             headers: {

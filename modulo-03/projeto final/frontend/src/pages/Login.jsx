@@ -41,7 +41,9 @@ export default class Login extends Component {
         return  (
             <div id="login">
                 <React.Fragment>
+                    <h2 id="titulo" className="pt-3 pb-2"><span id="welcome" > Welcome, </span> Digital Bank - ComeBe </h2>
                     <TemplateLogin logar={ this.logar.bind( this ) } trocaValoresState={ this.trocaValoresState } />
+                    <div className="my-5 text-center">© 1996-2019, comebebank.com, Inc. or its affiliates</div>
                 </React.Fragment>
             </div>
         )

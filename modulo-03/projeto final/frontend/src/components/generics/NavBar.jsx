@@ -1,9 +1,10 @@
 import React from 'react';
 import {
   MDBNavbar, MDBNavbarNav, MDBNavbarToggler, MDBCollapse,
-  MDBNavItem, MDBNavLink, MDBContainer, MDBMask, MDBView, MDBIcon,
+  MDBNavItem, MDBNavLink, MDBMask, MDBView, MDBIcon,
   MDBDropdown, MDBDropdownToggle, MDBDropdownItem, MDBDropdownMenu
 } from 'mdbreact';
+import '../../css/navbar.css';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -33,24 +34,24 @@ class NavBar extends React.Component {
         <header>
           <Router>
             <MDBNavbar color="bg-primary" fixed="top" dark expand="md" scrolling transparent>
-              <MDBIcon className="mr-3" icon="piggy-bank" size="2x" />
+              <MDBIcon className="mr-3 text-center" icon="piggy-bank" size="2x" />
               {!this.state.isWideEnough && <MDBNavbarToggler onClick={this.onClick} />}
               <MDBCollapse isOpen={this.state.collapse} navbar>
-                <MDBNavbarNav className="ml-2" left>
+                <MDBNavbarNav className="ml-3" left>
                   <MDBNavItem className="mr-1" active>
-                    <MDBNavLink to="/"> Home </MDBNavLink>
+                    <a className="nav-link Ripple-parent" href="/"> Home </a>
                   </MDBNavItem>
                   <MDBNavItem className="mr-1">
-                    <MDBNavLink to="/agencies">  Agencies </MDBNavLink>
+                    <a className="nav-link Ripple-parent" href="/agencies"> Agencies </a>
                   </MDBNavItem>
                   <MDBNavItem className="mr-1">
-                    <MDBNavLink to="/costumers"> Customers </MDBNavLink>
+                    <a className="nav-link Ripple-parent" href="/customers"> Customers </a>
                   </MDBNavItem>
                   <MDBNavItem className="mr-1">
-                    <MDBNavLink to="/typeacc"> Account Type </MDBNavLink>
+                    <a className="nav-link Ripple-parent" href="/typeacc"> Account Type </a>
                   </MDBNavItem>
                   <MDBNavItem className="mr-1">
-                    <MDBNavLink to="/clientsacc"> Customer account </MDBNavLink>
+                    <a className="nav-link Ripple-parent" href="/clientsacc"> Customer account </a>
                   </MDBNavItem>
                 </MDBNavbarNav>
                 <MDBNavbarNav right>
@@ -74,25 +75,23 @@ class NavBar extends React.Component {
               </MDBCollapse>
             </MDBNavbar>
           </Router>
-
-          <MDBView src="https://mdbootstrap.com/img/Photos/Others/img%20(40).jpg">
-            <MDBMask overlay="purple-light" className="flex-center flex-column text-white text-center">
-              <h2>This Navbar is fixed</h2>
-              <h5>It will always stay visible on the top, even when you scroll down</h5>
-              <p>Navbar's background will switch from transparent to solid color while scrolling down</p><br />
-              <p>Full page intro with background image will be always displayed in full screen mode, regardless of device </p>
-            </MDBMask>
-          </MDBView>
         </header>
-
-        <main>
-          <MDBContainer className="text-center my-5">
-            <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </MDBContainer>
-        </main>
+        <MDBView src={this.props.src} alt="Image fail">
+          {this.props.body ? bodyHome : ''}
+        </MDBView>
       </div>
     );
   }
 }
+
+const bodyHome = () => (
+  <MDBMask id="descricao" overlay="purple-light" className="flex-center flex-column text-white text-center ">
+    <h2>Digital Bank - ComeBe <span id="registered">®</span></h2>
+    <h5>We are different</h5>
+    <p>In Brazil, paying the world's highest rates and interest for its banking services. We know that technology and design can solve this problem. <br />We are a startup that develops simple, secure and 100% digital solutions for you to have control of your money literally in your hands.</p> <br />
+    <p>That's why we came together in 2013 to redefine people's relationship with money through a more efficient and transparent experience. <br />If you have tired of the same solutions to old problems, if you want to come up with new ideas, and <br />if you believe design, technology, and good service solve any problem, learn about our careers. <br />We are looking for people to simplify the world. </p><br />
+    <p>Our goal is to end complexity and give back control of one's financial life.</p>
+  </MDBMask>
+)
 
 export default NavBar;

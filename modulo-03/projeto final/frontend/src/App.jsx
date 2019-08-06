@@ -3,12 +3,12 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 /* Components */
-import Login from "./components/Login";
-import Home from "./components/Home";
-import AccountsClients from "./components/accountsClient/AccountsClients";
-import AccountsTypes from "./components/accountsTypes/AccountsTypes";
-import Agencies from "./components/agencies/Agencies";
-import Costumers from "./components/costumers/Costumers";
+import Login from "../src/pages/Login";
+import Home from "./pages/Home";
+import AccountsClients from "./pages/accountsClient/AccountsClients";
+import AccountsTypes from "./pages/accountsTypes/AccountsTypes";
+import Agencies from "./pages/agencies/Agencies";
+import Customers from "./pages/customers/Customers";
 import { PrivateRoute } from "./components/PrivateRoute";
 
 /* CSS */
@@ -22,9 +22,9 @@ export default class App extends Component {
           <PrivateRoute path="/" exact component={Home} />
           <PrivateRoute path="/clientsacc" exact component={AccountsClients} />
           <PrivateRoute path="/typeacc" exact component={AccountsTypes} />
-          <PrivateRoute path="/agencies"  component={Agencies} />
-          <PrivateRoute path="/costumers" exact component={Costumers} />
-          <Route path="/login" component={Login} />
+          <PrivateRoute path="/agencies"  exact component={Agencies} />
+          <PrivateRoute path="/customers" exact component={Customers} />
+          <Route path="/login" exact component={Login} />
         </React.Fragment>
       </Router>
     );

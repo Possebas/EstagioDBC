@@ -43,7 +43,7 @@ export default class AccountsClients extends Component {
                       } */}
                 
                 <div className="container-fluid">
-                    <div className="row col-sm-12 col-lg-12 py-2" >
+                    <div className="row col-lg-6 col-xl-6 col-sm-12 py-2" >
                         {clientsAcc ? clientsAcc.map((accClient, index) => {
                             return (
                                 <div className="col-sm-12 py-2 col-lg-6 col-xl-6" key={index}>

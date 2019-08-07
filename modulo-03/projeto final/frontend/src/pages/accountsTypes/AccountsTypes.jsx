@@ -42,11 +42,11 @@ export default class AccountsTypes extends Component {
                     nome: 'Salario'}, */}
                 <p id="title" className="my-2"> | Our account types | </p>
 
-                <div class="container-fluid">
-                    <div className="row col-sm-12 col-lg-12 py-2" >
+                <div className="container-fluid">
+                    <div className="row col-lg-12 col-xl-12 col-sm-12 py-2" >
                         {accTypes ? accTypes.map((types, index) => {
                             return (
-                                <div className="col-sm-12 py-2 col-lg-6 col-xl-6" key={index}>
+                                <div className="col-sm-12 py-2 col-lg-2 col-xl-2" key={index}>
                                     <div className="card deep-purple darken-2" id="cardzinho" >
                                         <div className="card-body">
                                             <h5 className="card-title"> {types.nome}</h5>

@@ -10,18 +10,28 @@
     margin-left: 0; 
     justify-content: center;
     background-color: rgb(141, 93, 187);
-    color: black;
-    font-weight: bold;
+    color: #fff;
+    font-weight: 150;
+    border-right: 5px solid rgb(7, 42, 107);
+    box-shadow: 3px 3px rgb(200, 115, 4);
+    background-color: lightgrey;
 }
+
+#cardzinho:hover{
+    transform: scale(1.01);
+}
+
 
 #title{
     color: #FF9800;
     font-weight: bold;
+    font-size: 32px;
+    line-height: 28px;
 }
 
 #load{
     text-align: center;
-    font-size: 30px;
+    font-size: 34px;
     line-height: 28px;
 }
 

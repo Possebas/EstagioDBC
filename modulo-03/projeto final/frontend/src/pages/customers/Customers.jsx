@@ -47,7 +47,7 @@ export default class Customers extends Component {
                 <p id="title" className="my-2"> | Our clients | </p>
 
                 <div class="container-fluid">
-                    <div className="row col-sm-12 col-lg-12 py-2" >
+                    <div className="row col-lg-6 col-xl-6 col-sm-12 py-2" >
                         {customersList ? customersList.map((client, index) => {
                             return (
                                 <div className="col-sm-12 py-2 col-lg-6 col-xl-6" key={index}>

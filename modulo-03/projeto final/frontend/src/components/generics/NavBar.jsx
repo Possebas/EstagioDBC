@@ -34,7 +34,7 @@ class NavBar extends React.Component {
       <div>
           <Router>
             <MDBNavbar className="pl-0 pr-0" color="bg-dark" fixed="top" dark expand="md" scrolling transparent>
-              <MDBIcon className="mr-3 text-center" icon="piggy-bank" size="2x" />
+              <MDBIcon className="ml-3 mr-3 text-center" icon="piggy-bank" size="2x" />
               {!this.state.isWideEnough && <MDBNavbarToggler onClick={this.onClick} />}
               <MDBCollapse isOpen={this.state.collapse} navbar>
                 <MDBNavbarNav className="ml-3" left>

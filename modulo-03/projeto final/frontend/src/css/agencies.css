@@ -21,4 +21,17 @@
 
 #load{
     text-align: center;
+    font-size: 30px;
+    line-height: 28px;
 }
+
+#isDigital{
+    align-self: flex-end;
+}
+
+#digital{
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;
+}
+

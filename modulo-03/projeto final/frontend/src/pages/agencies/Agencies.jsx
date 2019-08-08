@@ -96,7 +96,7 @@ export default class Agencies extends Component {
                     cidade: 'Porto Alegre',
                     uf: 'RS' */}
 
-                <h3 id="title" className="my-2"> | Our agencies | </h3>
+                <h3 id="title" className="my-2"> Our agencies </h3>
                 <div className="container-fluid">
                     <div className="text-center my-5" id="filtros">
                         <FilterBars placeholder={"Search by name"} className="mr-3" filter={this.searchInput.bind(this)} />
@@ -126,7 +126,7 @@ export default class Agencies extends Component {
                                     </div>
                                 </div>
                             )
-                        }) : <p id="load" className="">CARREGANDO...</p>}
+                        }) : <span id="load" className="text-center">CARREGANDO...</span>}
                     </div>
                 </div>
             </div>

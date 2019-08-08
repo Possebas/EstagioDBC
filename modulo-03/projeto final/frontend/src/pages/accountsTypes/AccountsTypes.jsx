@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FilterBars from '../../components/generics/FilterBars';
 import NavBar from '../../components/generics/NavBar';
 import RequestApi from '../../components/requestsApi/RequestApi';
 import '../../css/accTypes.css'
@@ -22,6 +23,21 @@ export default class AccountsTypes extends Component {
         }, 1000)
     }
 
+    searchInput = (evt) => {
+        const accTypes = this.state.accTypes
+        const pesquisa = evt.target.value
+        if (pesquisa) {
+            const filter = accTypes.filter(a => a.nome.toUpperCase().includes(pesquisa.toUpperCase()))
+            this.setState({
+                accTypes: filter
+            })
+        } else {
+            this.setState({
+                accTypes: this.backData.listDefaultTypesAcc
+            })
+        }
+    }
+
     render() {
         const { accTypes } = this.state
         return (
@@ -43,6 +59,9 @@ export default class AccountsTypes extends Component {
                 <p id="title" className="my-2"> | Our account types | </p>
 
                 <div className="container-fluid">
+                    <div className="text-center my-5" id="filtros">
+                        <FilterBars placeholder={"Search by name"} className="mr-3" filter={this.searchInput.bind(this)} />
+                    </div>
                     <div className="row col-lg-12 col-xl-12 col-sm-12 py-2" >
                         {accTypes ? accTypes.map((types, index) => {
                             return (
@@ -55,7 +74,7 @@ export default class AccountsTypes extends Component {
                                     </div>
                                 </div>
                             )
-                        }) : '' }
+                        }) : ''}
                     </div>
                 </div>
             </div>

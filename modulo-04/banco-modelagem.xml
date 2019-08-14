@@ -69,7 +69,7 @@
 		<type label="Enum" length="1" sql="enum" quote="'"/>
 		<type label="Money" length="1" sql="money" quote=""/>
 	</group>
-</datatypes><table x="56" y="118" name="BANCOS">
+</datatypes><table x="108" y="21" name="BANCOS">
 <row name="ID_BANCO" null="0" autoincrement="1">
 <datatype>integer</datatype>
 <default>0</default></row>
@@ -83,7 +83,7 @@
 <part>ID_BANCO</part>
 </key>
 </table>
-<table x="142" y="293" name="AGENCIAS">
+<table x="42" y="207" name="AGENCIAS">
 <row name="ID_AGENCIA" null="0" autoincrement="1">
 <datatype>integer</datatype>
 <default>0</default></row>
@@ -97,11 +97,15 @@
 <row name="NOME" null="0" autoincrement="0">
 <datatype>character varying(100)</datatype>
 <default>'NULL'</default></row>
+<row name="FK_ID_ENDERECO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="ENDERECOS" row="ID_ENDERECO" />
+</row>
 <key type="PRIMARY" name="">
 <part>ID_AGENCIA</part>
 </key>
 </table>
-<table x="372" y="65" name="ENDERECOS">
+<table x="350" y="82" name="ENDERECOS">
 <row name="ID_ENDERECO" null="0" autoincrement="1">
 <datatype>integer</datatype>
 <default>0</default></row>
@@ -114,13 +118,10 @@
 <row name="COMPLEMENTO" null="1" autoincrement="0">
 <datatype>character varying(100)</datatype>
 <default>NULL</default></row>
-<row name="FK_ID_AGENCIA" null="0" autoincrement="0">
-<datatype>integer</datatype>
-<default>0</default><relation table="AGENCIAS" row="ID_AGENCIA" />
-</row>
 <row name="FK_ID_BAIRRO" null="0" autoincrement="0">
 <datatype>integer</datatype>
 <default>0</default><relation table="BAIRROS" row="ID_BAIRRO" />
+<relation table="BAIRROS" row="ID_BAIRRO" />
 </row>
 <key type="PRIMARY" name="">
 <part>ID_ENDERECO</part>
@@ -141,22 +142,26 @@
 <part>ID_BAIRRO</part>
 </key>
 </table>
-<table x="402" y="491" name="CORRENTISTAS">
+<table x="132" y="554" name="CORRENTISTAS">
 <row name="ID_CORRENTISTA" null="0" autoincrement="1">
 <datatype>integer</datatype>
 <default>0</default></row>
-<row name="NOME" null="0" autoincrement="0">
-<datatype>character varying(100)</datatype>
-<default>'NULL'</default><relation table="CLIENTES" row="CPF" />
+<row name="RAZAO_SOCIAL" null="1" autoincrement="0">
+<datatype>character(11)</datatype>
+<default>NULL</default><relation table="CLIENTES" row="CPF" />
 </row>
-<row name="TIPO_ACC" null="0" autoincrement="0">
-<datatype>character varying(15)</datatype>
-<default>'NULL'</default></row>
+<row name="CNPJ" null="1" autoincrement="0">
+<datatype>character(20)</datatype>
+<default>NULL</default></row>
+<row name="TIPO" null="1" autoincrement="0">
+<datatype>enum</datatype>
+<default>NULL</default><comment>PJ, PF, CONJUNTA, INVESTIMENTO</comment>
+</row>
 <key type="PRIMARY" name="">
 <part>ID_CORRENTISTA</part>
 </key>
 </table>
-<table x="381" y="319" name="AGENCIAS_X_CORRENTISTAS">
+<table x="55" y="381" name="AGENCIAS_X_CORRENTISTAS">
 <row name="ID_AGENCIA_X_CORRENTISTA" null="0" autoincrement="1">
 <datatype>integer</datatype>
 <default>0</default></row>
@@ -213,18 +218,15 @@
 <part>ID_PAIS</part>
 </key>
 </table>
-<table x="803" y="492" name="CLIENTES">
-<row name="ID_CLIENT" null="0" autoincrement="1">
+<table x="428" y="362" name="CLIENTES">
+<row name="ID_CLIENTE" null="0" autoincrement="1">
 <datatype>integer</datatype>
 <default>0</default></row>
 <row name="CPF" null="1" autoincrement="0">
-<datatype>numeric(11)</datatype>
+<datatype>character(11)</datatype>
 <default>NULL</default></row>
 <row name="NOME" null="0" autoincrement="0">
 <datatype>character varying</datatype>
-<default>'NULL'</default></row>
-<row name="ENDERECO" null="0" autoincrement="0">
-<datatype>character varying(400)</datatype>
 <default>'NULL'</default></row>
 <row name="RG" null="0" autoincrement="0">
 <datatype>character varying(20)</datatype>
@@ -232,20 +234,84 @@
 <row name="CONJUGE" null="0" autoincrement="0">
 <datatype>character varying(50)</datatype>
 <default>'NULL'</default></row>
-<row name="ESTADO_CIVIL" null="1" autoincrement="0">
-<datatype>character varying</datatype>
-<default>NULL</default></row>
+<row name="ESTADO_CIVIL" null="0" autoincrement="0">
+<datatype>enum</datatype>
+<default>'NULL'</default><comment>SOLTEIRO, CASADO, VIUVO. DIVORCIADO</comment>
+</row>
 <row name="DATA_NASCIMENTO" null="0" autoincrement="0">
 <datatype>date</datatype>
 <default>'NULL'</default></row>
-<row name="TELEFONES" null="1" autoincrement="0">
-<datatype>numeric(10)</datatype>
-<default>NULL</default></row>
-<row name="EMAILS" null="1" autoincrement="0">
-<datatype>character varying(100)</datatype>
-<default>NULL</default></row>
+<row name="FK_ID_TELEFONE" null="0" autoincrement="0">
+<datatype>character varying(20)</datatype>
+<default>'NULL'</default></row>
+<row name="FK_ID_ENDERECO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="ENDERECOS" row="ID_ENDERECO" />
+</row>
 <key type="PRIMARY" name="">
-<part>CPF</part>
+<part>ID_CLIENTE</part>
+</key>
+</table>
+<table x="815" y="447" name="TELEFONES_CLIENTES">
+<row name="ID_TELEFONE" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>NULL</default></row>
+<row name="NUMERO" null="0" autoincrement="1">
+<datatype>character varying(20)</datatype>
+<default>'NULL'</default></row>
+<row name="TIPO" null="0" autoincrement="0">
+<datatype>enum</datatype>
+<default>'NULL'</default><comment>FIXO, CELULAR</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>ID_TELEFONE</part>
+</key>
+</table>
+<table x="700" y="561" name="EMAILS">
+<row name="ID_EMAIL" null="1" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="VALOR" null="1" autoincrement="0">
+<datatype>character varying(200)</datatype>
+<default>NULL</default></row>
+<row name="ID_CLIENTE_CLIENTES" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="CLIENTES" row="ID_CLIENTE" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID_EMAIL</part>
+</key>
+</table>
+<table x="700" y="328" name="CLIENTES_X_TELEFONES">
+<row name="ID" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="ID_CLIENTE_CLIENTES" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="CLIENTES" row="ID_CLIENTE" />
+</row>
+<row name="ID_TELEFONE_TELEFONES_CLIENTES" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>NULL</default><relation table="TELEFONES_CLIENTES" row="ID_TELEFONE" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="389" y="714" name="CORRENTISTAS_X_CLIENTES">
+<row name="ID" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="ID_CORRENTISTA_CORRENTISTAS" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="CORRENTISTAS" row="ID_CORRENTISTA" />
+</row>
+<row name="ID_CLIENTE_CLIENTES" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="CLIENTES" row="ID_CLIENTE" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
 </key>
 </table>
 </sql>

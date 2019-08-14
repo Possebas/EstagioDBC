@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<sql>
+<datatypes db="pgsql">
+	<group label="More Usual" color="rgb(138,138,270)">
+		<type label="Serial" length="0" sql="serial" re="seriali4" quote=""/>
+		<type label="Big Integer" length="0" sql="bigint" re="int8" quote=""/>
+		<type label="Text" length="0" sql="text" quote="'"/>
+	</group>
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Big Serial" length="0" sql="bigserial" re="serial8" quote=""/>
+		<type label="Small Integer" length="0" sql="smallint" re="int2" quote=""/>
+		<type label="Integer" length="0" sql="integer" re="int4" quote=""/>
+		<type label="Numeric" length="1" sql="numeric" re="decimal" quote=""/>
+		<type label="Real" length="0" sql="real" re="float4" quote=""/>
+		<type label="Double Precision" length="0" sql="double precision" re="float8" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Character" length="1" sql="character" re="char" quote="'"/>
+		<type label="Character Varying" length="1" sql="character varying" re="varchar" quote="'"/>
+		<type label="XML" length="0" sql="xml" quote="'"/>
+	</group>
+	
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Timestamp" length="0" sql="timestamp" quote="'"/>
+		<type label="Timestamp With Timezone" length="0" sql="timestamp with timezone" re="timestamptz" quote="'"/>
+		<type label="Interval" length="0" sql="interval" quote="'"/>
+		<type label="Date" length="0" sql="date" quote="'"/>
+		<type label="Time" length="0" sql="time" quote="'"/>
+		<type label="Time With Timezone" length="0" sql="time with timezone" re="timetz" quote="'"/>
+	</group>
+        
+	<!-- 
+	<group label="Geometric" color="rgb(100,155,100)">
+	FIXME 
+	</group>
+        -->
+
+        <!--
+        <group label="Network Address" color="rgb(100,155,100)">
+        FIXME
+        </group>
+        -->
+
+        <!--
+        <group label="Bit String" color="rgb(100,155,100)">
+        FIXME
+        </group>
+        -->
+
+        <!--
+        <group label="Text Search" color="rgb(100,155,100)">
+        FIXME
+        </group>
+        -->
+
+        <!--
+        <group label="Arrays" color="rgb(100,155,100)">
+        FIXME
+        </group>a
+        -->
+
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="Binary" length="0" sql="bytea" quote="'"/>
+		<type label="Boolean" length="0" sql="boolean" re="boll" quote="'"/>
+		<type label="UUID" length="0" sql="uuid" quote="'"/>
+		<type label="Enum" length="1" sql="enum" quote="'"/>
+		<type label="Money" length="1" sql="money" quote=""/>
+	</group>
+</datatypes><table x="56" y="118" name="BANCOS">
+<row name="ID_BANCO" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="CODIGO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>ID_BANCO</part>
+</key>
+</table>
+<table x="142" y="293" name="AGENCIAS">
+<row name="ID_AGENCIA" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="FK_ID_BANCO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="BANCOS" row="ID_BANCO" />
+</row>
+<row name="CODIGO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>ID_AGENCIA</part>
+</key>
+</table>
+<table x="372" y="65" name="ENDERECOS">
+<row name="ID_ENDERECO" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="LOGRADOURO" null="0" autoincrement="0">
+<datatype>character varying(255)</datatype>
+<default>'NULL'</default></row>
+<row name="NUMERO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="COMPLEMENTO" null="1" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>NULL</default></row>
+<row name="FK_ID_AGENCIA" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="AGENCIAS" row="ID_AGENCIA" />
+</row>
+<row name="FK_ID_BAIRRO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="BAIRROS" row="ID_BAIRRO" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID_ENDERECO</part>
+</key>
+</table>
+<table x="556" y="122" name="BAIRROS">
+<row name="ID_BAIRRO" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>'NULL'</default></row>
+<row name="FK_ID_CIDADE" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="CIDADES" row="ID_CIDADE" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID_BAIRRO</part>
+</key>
+</table>
+<table x="402" y="491" name="CORRENTISTAS">
+<row name="ID_CORRENTISTA" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>'NULL'</default><relation table="CLIENTES" row="CPF" />
+</row>
+<row name="TIPO_ACC" null="0" autoincrement="0">
+<datatype>character varying(15)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>ID_CORRENTISTA</part>
+</key>
+</table>
+<table x="381" y="319" name="AGENCIAS_X_CORRENTISTAS">
+<row name="ID_AGENCIA_X_CORRENTISTA" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="FK_ID_AGENCIA" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="AGENCIAS" row="ID_AGENCIA" />
+</row>
+<row name="FK_ID_CORRENTISTA" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="CORRENTISTAS" row="ID_CORRENTISTA" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID_AGENCIA_X_CORRENTISTA</part>
+</key>
+</table>
+<table x="714" y="89" name="CIDADES">
+<row name="ID_CIDADE" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>'NULL'</default></row>
+<row name="FK_ID_ESTADO" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="ESTADOS" row="ID_ESTADO" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID_CIDADE</part>
+</key>
+</table>
+<table x="862" y="52" name="ESTADOS">
+<row name="ID_ESTADO" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>'NULL'</default></row>
+<row name="FK_ID_PAIS" null="0" autoincrement="0">
+<datatype>integer</datatype>
+<default>0</default><relation table="PAISES" row="ID_PAIS" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID_ESTADO</part>
+</key>
+</table>
+<table x="1015" y="21" name="PAISES">
+<row name="ID_PAIS" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>ID_PAIS</part>
+</key>
+</table>
+<table x="803" y="492" name="CLIENTES">
+<row name="ID_CLIENT" null="0" autoincrement="1">
+<datatype>integer</datatype>
+<default>0</default></row>
+<row name="CPF" null="1" autoincrement="0">
+<datatype>numeric(11)</datatype>
+<default>NULL</default></row>
+<row name="NOME" null="0" autoincrement="0">
+<datatype>character varying</datatype>
+<default>'NULL'</default></row>
+<row name="ENDERECO" null="0" autoincrement="0">
+<datatype>character varying(400)</datatype>
+<default>'NULL'</default></row>
+<row name="RG" null="0" autoincrement="0">
+<datatype>character varying(20)</datatype>
+<default>'NULL'</default></row>
+<row name="CONJUGE" null="0" autoincrement="0">
+<datatype>character varying(50)</datatype>
+<default>'NULL'</default></row>
+<row name="ESTADO_CIVIL" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="DATA_NASCIMENTO" null="0" autoincrement="0">
+<datatype>date</datatype>
+<default>'NULL'</default></row>
+<row name="TELEFONES" null="1" autoincrement="0">
+<datatype>numeric(10)</datatype>
+<default>NULL</default></row>
+<row name="EMAILS" null="1" autoincrement="0">
+<datatype>character varying(100)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>CPF</part>
+</key>
+</table>
+</sql>

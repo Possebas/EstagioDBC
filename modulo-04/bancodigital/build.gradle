@@ -1,0 +1,11 @@
+plugins {
+   id 'java'
+}
+repositories {
+   mavenCentral()
+}
+dependencies {
+   testImplementation 'junit:junit:4.12'
+   compile files("../ojdbc8.jar")
+   compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.3.1.Final'
+}

@@ -28,7 +28,7 @@ public class Cidades {
 	@ManyToOne
 	@JoinColumn( name = "fk_id_estado" )
 	private Estados estado;
-
+	
 	public Integer getIdCidade() {
 		return idCidade;
 	}

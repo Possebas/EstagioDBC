@@ -1,11 +1,16 @@
 package br.com.dbccompany.bancodigital.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -17,9 +22,13 @@ public class Bairros {
 	private Integer idBairro;
 	private String nome;
 	
+	@OneToMany( mappedBy = "bairro", cascade = CascadeType.ALL )
+	private List<Enderecos> endereco = new ArrayList<>();
+	
 	@ManyToOne
 	@JoinColumn(name = "fk_id_cidade")
 	private Cidades cidade;
+
 
 	public Integer getIdBairro() {
 		return idBairro;

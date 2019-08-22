@@ -16,10 +16,13 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator( allocationSize = 1, name ="CIDADES_SEQ", sequenceName = "CIDADES_SEQ" )
 
-public class Cidades {
+public class Cidades extends AbstractEntity{
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue( generator = "CIDADES_SEQ", strategy = GenerationType.SEQUENCE )
-	private Integer idCidade;
+	private Integer id;
 	private String nome;
 	
 	@OneToMany( mappedBy = "cidade", cascade = CascadeType.ALL )
@@ -28,14 +31,6 @@ public class Cidades {
 	@ManyToOne
 	@JoinColumn( name = "fk_id_estado" )
 	private Estados estado;
-	
-	public Integer getIdCidade() {
-		return idCidade;
-	}
-
-	public void setIdCidades(Integer idCidade) {
-		this.idCidade = idCidade;
-	}
 
 	public String getNome() {
 		return nome;
@@ -51,5 +46,11 @@ public class Cidades {
 
 	public void setEstados(Estados estado) {
 		this.estado = estado;
+	}
+
+	@Override
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return id;
 	}
 }

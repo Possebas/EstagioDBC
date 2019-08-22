@@ -15,10 +15,13 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator( allocationSize = 1, name ="ENDERECOS_SEQ", sequenceName = "ENDERECOS_SEQ" )
-public class Enderecos {
+public class Enderecos extends AbstractEntity{
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(generator = "ENDERECOS_SEQ", strategy = GenerationType.SEQUENCE)
-	private Integer idEndereco;
+	private Integer id;
 	private String logradouro;
 	private Integer numero;
 	private String complemento;
@@ -29,14 +32,6 @@ public class Enderecos {
 
 	@OneToMany( mappedBy = "endereco", cascade = CascadeType.ALL )
 	private List<Clientes> cliente = new ArrayList<>();
-	
-	public Integer getIdEndereco() {
-		return idEndereco;
-	}
-
-	public void setIdEndereco(Integer idEndereco) {
-		this.idEndereco = idEndereco;
-	}
 
 	public String getLogradouro() {
 		return logradouro;
@@ -68,6 +63,12 @@ public class Enderecos {
 
 	public void setBairro(Bairros bairro) {
 		this.bairro = bairro;
+	}
+
+	@Override
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return id;
 	}
 	
 }

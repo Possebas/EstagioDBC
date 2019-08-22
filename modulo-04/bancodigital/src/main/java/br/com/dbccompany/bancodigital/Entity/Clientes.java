@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,16 +17,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator( allocationSize = 1, name ="CLIENTES_SEQ", sequenceName = "CLIENTES_SEQ" )
-public class Clientes {
+
+public class Clientes extends AbstractEntity{
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
+	@Column( name = "ID_CLIENTES",length = 100, nullable = false)
+	@SequenceGenerator( allocationSize = 1, name ="CLIENTES_SEQ", sequenceName = "CLIENTES_SEQ" )
 	@GeneratedValue(generator = "CLIENTES_SEQ", strategy = GenerationType.SEQUENCE)
-	private Integer idCliente;
+	private Integer id;
+	
+	@Column( name = "cpf",length = 100, nullable = false)
 	private String cpf;
+	
+	@Column( name = "nome",length = 100, nullable = false)
 	private String nome;
+	
+	@Column( name = "rg",length = 100, nullable = false)
 	private String rg;
+	
+	@Column( name = "data_nascimento",length = 100, nullable = false)
 	private String dataNascimento;
+	
+	@Column( name = "conjuge",length = 100, nullable = false)
 	private String conjuge;
+	
+	@Enumerated (EnumType.STRING)
 	private EstadoCivil tipo;
 	
 	@ManyToOne
@@ -39,14 +59,6 @@ public class Clientes {
 
 	public void setTipo(EstadoCivil tipo) {
 		this.tipo = tipo;
-	}
-
-	public Integer getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
 	}
 
 	public String getCpf() {
@@ -95,6 +107,12 @@ public class Clientes {
 
 	public void setEndereco(Enderecos endereco) {
 		this.endereco = endereco;
+	}
+
+	@Override
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return id;
 	}
 	
 }

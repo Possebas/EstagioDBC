@@ -13,26 +13,27 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator( allocationSize = 1, name ="PAISES_SEQ", sequenceName = "PAISES_SEQ" )
-public class Paises {
+public class Paises extends AbstractEntity {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue( generator = "PAISES_SEQ", strategy = GenerationType.SEQUENCE )
-	private Integer idPais;
+	private Integer id;
 	private String nome;
 	
 	@OneToMany( mappedBy = "pais", cascade = CascadeType.ALL )
 	private List<Estados> estados = new ArrayList<>();
 	
-	public Integer getIdPais() {
-		return idPais;
-	}
-	public void setIdPais(Integer idPais) {
-		this.idPais = idPais;
-	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	@Override
+	public Integer getId() {
+		return id;
 	}
 }

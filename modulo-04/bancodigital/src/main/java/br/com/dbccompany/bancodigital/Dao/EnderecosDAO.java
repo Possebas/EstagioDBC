@@ -8,5 +8,4 @@ public class EnderecosDAO extends AbstractDAO<Enderecos>{
 	protected Class<Enderecos> getEntityClass() {
 		return Enderecos.class;
 	}
-
 }

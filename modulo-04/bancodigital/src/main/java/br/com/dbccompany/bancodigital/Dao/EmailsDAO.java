@@ -1,12 +1,11 @@
 package br.com.dbccompany.bancodigital.Dao;
 
-import br.com.dbccompany.bancodigital.Entity.Correntistas;
+import br.com.dbccompany.bancodigital.Entity.Emails;
 
-public class EmailsDAO extends AbstractDAO<Correntistas>{
+public class EmailsDAO extends AbstractDAO<Emails>{
 
 	@Override
-	protected Class<Correntistas> getEntityClass() {
-		return Correntistas.class;
+	protected Class<Emails> getEntityClass() {
+		return Emails.class;
 	}
-
 }

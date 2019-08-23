@@ -8,5 +8,4 @@ public class PaisesDAO extends AbstractDAO<Paises>{
 	protected Class<Paises> getEntityClass() {
 		return Paises.class;
 	}
-
 }

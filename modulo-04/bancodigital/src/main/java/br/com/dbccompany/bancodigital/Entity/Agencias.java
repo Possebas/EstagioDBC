@@ -12,42 +12,40 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator( allocationSize = 1, name ="AGENCIAS_SEQ", sequenceName = "AGENCIAS_SEQ" )
+@SequenceGenerator( allocationSize = 1, name = "AGENCIAS_SEQ", sequenceName = "AGENCIAS_SEQ" )
 public class Agencias extends AbstractEntity {
-	private static final long serialVersionUID = 1L;a
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
+	@Column( name = "id_agencia" )	
 	@GeneratedValue( generator = "AGENCIAS_SEQ", strategy = GenerationType.SEQUENCE )
-	@Column(name = "ID_AGENCIAS")
 	private Integer id;
 	
-	@Column(name = "codigo", length = 100, nullable = false)
+	@Column( name = "codigo", nullable = false )		
 	private Integer codigo;
 	
-	@Column(name = "nome", length = 100, nullable = false)
+	@Column( name = "nome", length = 100, nullable = false )		
 	private String nome;
 	
-	@OneToOne
-	@JoinColumn(name = "fk_id_banco")
+	@ManyToOne
+	@JoinColumn( name = "fk_id_banco" )
 	private Bancos banco;
 	
-	@OneToOne
-	@JoinColumn(name = "fk_id_endereco")
+	@ManyToOne
+	@JoinColumn( name = "fk_id_endereco" )
 	private Enderecos endereco;
-	
-	@OneToOne
-	@JoinColumn(name = "fk_id_telefone")
-	private Telefones telefone;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable( name = "agencias_x_correntistas",
-					joinColumns = { @JoinColumn( name = "id_agencias")},
-					inverseJoinColumns = { @JoinColumn( name = "id_correntistas" ) })
-	private List<Correntistas> correntistas = new ArrayList<>();
 
+	@ManyToMany( cascade = CascadeType.ALL )
+	@JoinTable( name = "agencias_x_correntistas", 
+					joinColumns = { @JoinColumn( name = "id_agencia" ) },
+					inverseJoinColumns = { @JoinColumn( name = "id_correntista" ) } )
+	private List<Correntistas> correntistas = new ArrayList<>();	
+	
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -78,14 +76,6 @@ public class Agencias extends AbstractEntity {
 
 	public void setEndereco(Enderecos endereco) {
 		this.endereco = endereco;
-	}
-
-	public Telefones getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Telefones telefone) {
-		this.telefone = telefone;
 	}
 
 	@Override

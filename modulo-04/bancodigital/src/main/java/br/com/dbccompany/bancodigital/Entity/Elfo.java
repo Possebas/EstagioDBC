@@ -9,22 +9,22 @@ import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) 
+@Inheritance( strategy = InheritanceType.JOINED )  //para outros elfos que herdarem implementam o id do pai  (Elfo)
 public class Elfo {
-	
+
 	@Id
-	@SequenceGenerator( allocationSize = 1, name ="ELFO_SEQ", sequenceName = "ELFO_SEQ" )
-	@GeneratedValue( generator = "ELFO_SEQ", strategy = GenerationType.SEQUENCE )
-	private Integer id_elfo;
+	@SequenceGenerator( allocationSize = 1, name = "ELFOS_SEQ", sequenceName = "ELFOS_SEQ" )
+	@GeneratedValue( generator = "ELFOS_SEQ", strategy = GenerationType.SEQUENCE )	
+	private Integer idElfo;
 	
 	private String nome;
 
-	public Integer getId_elfo() {
-		return id_elfo;
+	public Integer getIdElfo() {
+		return idElfo;
 	}
 
-	public void setId_elfo(Integer id_elfo) {
-		this.id_elfo = id_elfo;
+	public void setIdElfo(Integer idElfo) {
+		this.idElfo = idElfo;
 	}
 
 	public String getNome() {

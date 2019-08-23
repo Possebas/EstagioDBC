@@ -8,5 +8,4 @@ public class CorrentistasDAO extends AbstractDAO<Correntistas>{
 	protected Class<Correntistas> getEntityClass() {
 		return Correntistas.class;
 	}
-
 }

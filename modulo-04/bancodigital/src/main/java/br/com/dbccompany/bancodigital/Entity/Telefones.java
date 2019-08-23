@@ -16,48 +16,49 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import br.com.dbccompany.bancodigital.Enum.TiposTelefones;
 
 @Entity
-  //@Table(name = "TELEFONES_BANCO") EXEMPLO PARA RENOMEAR A TABELA
-@SequenceGenerator( allocationSize = 1, name ="TELEFONES_SEQ", sequenceName = "TELEFONES_SEQ" )
-public class Telefones extends AbstractEntity{
+@SequenceGenerator( allocationSize = 1, name = "TELEFONES_SEQ", sequenceName = "TELEFONES_SEQ" )
+public class Telefones extends AbstractEntity {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column( name = "id_telefone" )
 	@GeneratedValue( generator = "TELEFONES_SEQ", strategy = GenerationType.SEQUENCE )
-	@Column( name = "ID_TELEFONE" )
 	private Integer id;
-	
-	@Column(name = "numero", length = 100, nullable = false)
+
+	@Column( name = "numero", length = 10, nullable = false )
 	private String numero;
 	
-	@Enumerated(EnumType.STRING)
-	private TipoTelefone tiposTelefone;
+	@Enumerated( EnumType.STRING )
+	private TiposTelefones tipo;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable( name = "telefones_x_clientes",
-					joinColumns = { @JoinColumn( name = "id_telefones")},
-					inverseJoinColumns = { @JoinColumn( name = "id_clientes" ) })
-	
-	private List<Clientes> clientes = new ArrayList<>();
-	
-	
-	public TipoTelefone getTiposTelefone() {
-		return tiposTelefone;
-	}
-	public void setTiposTelefone(TipoTelefone tiposTelefone) {
-		this.tiposTelefone = tiposTelefone;
-	}
+	@ManyToMany( cascade = CascadeType.ALL )
+	@JoinTable( name = "telefones_x_clientes", 
+					joinColumns = { @JoinColumn( name = "id_telefone" ) },
+					inverseJoinColumns = { @JoinColumn( name = "id_cliente" ) } )
+	private List<Clientes> telefones_clientes = new ArrayList<>();
 	
 	public String getNumero() {
 		return numero;
 	}
+	
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+	
+	public TiposTelefones getTipo() {
+		return tipo;
+	}
+	
+	public void setTipo(TiposTelefones tipo) {
+		this.tipo = tipo;
+	}
+
 	@Override
 	public Integer getId() {
 		return id;
 	}
-	
 }

@@ -14,28 +14,34 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+
 @Entity
-@SequenceGenerator( allocationSize = 1, name ="ENDERECOS_SEQ", sequenceName = "ENDERECOS_SEQ" )
-public class Enderecos extends AbstractEntity{
+@SequenceGenerator( allocationSize = 1, name = "ENDERECOS_SEQ", sequenceName = "ENDERECOS_SEQ" )
+public class Enderecos extends AbstractEntity {
+
 	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(generator = "ENDERECOS_SEQ", strategy = GenerationType.SEQUENCE)
-	@Column(name = "ID_ENDERECOS")
+	@Column( name = "id_endereco" )	
+	@GeneratedValue( generator = "ENDERECOS_SEQ", strategy = GenerationType.SEQUENCE )
 	private Integer id;
 	
-	@Column(name = "logradouro", length = 100, nullable = false)
+	@Column( name = "nome", length = 255, nullable = false )	
 	private String logradouro;
+
+	@Column( name = "numero", nullable = false )	
+	private String numero;
 	
-	@Column(name = "numero", length = 100, nullable = false)
-	private Integer numero;
-	
-	@Column(name = "complemento", length = 100, nullable = false)
+	@Column( name = "complemento", length = 100, nullable = true )	
 	private String complemento;
 	
 	@ManyToOne
-	@JoinColumn(name = "fk_id_bairro")
+	@JoinColumn( name = "fk_id_bairro" )
 	private Bairros bairro;
-
+	
+	@OneToMany( mappedBy = "endereco", cascade = CascadeType.ALL )
+	private List<Agencias> agencia = new ArrayList<>();
+	
 	@OneToMany( mappedBy = "endereco", cascade = CascadeType.ALL )
 	private List<Clientes> cliente = new ArrayList<>();
 
@@ -47,11 +53,11 @@ public class Enderecos extends AbstractEntity{
 		this.logradouro = logradouro;
 	}
 
-	public Integer getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -71,9 +77,24 @@ public class Enderecos extends AbstractEntity{
 		this.bairro = bairro;
 	}
 
+	public List<Agencias> getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(List<Agencias> agencia) {
+		this.agencia = agencia;
+	}
+
+	public List<Clientes> getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(List<Clientes> cliente) {
+		this.cliente = cliente;
+	}
+
 	@Override
 	public Integer getId() {
 		return id;
-	}
-	
+	}	
 }

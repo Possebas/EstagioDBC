@@ -11,11 +11,12 @@ public class HibernateUtil {
 	private static final Session session;
 	
 	static {
+		
 		try {
-		sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-		session = sessionFactory.openSession();
-		} catch (Throwable e) {
-			System.err.println("Falhou" + e);
+			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+			session = sessionFactory.openSession();
+		} catch ( Throwable e ) {
+			System.err.println("Faiou" + e);
 			throw new ExceptionInInitializerError(e);
 		}
 	}
@@ -28,7 +29,7 @@ public class HibernateUtil {
 		Transaction transaction = session.getTransaction();
 		if (transaction == null || !transaction.isActive()) {
 			transaction = session.beginTransaction();
-			return true;			
+			return true;
 		}
 		return false;
 	}

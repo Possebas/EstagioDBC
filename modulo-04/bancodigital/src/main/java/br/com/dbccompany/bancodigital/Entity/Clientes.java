@@ -17,58 +17,50 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-@Entity
+import br.com.dbccompany.bancodigital.Enum.EstadoCivil;
 
-public class Clientes extends AbstractEntity{
+@Entity
+@SequenceGenerator( allocationSize = 1, name = "CLIENTES_SEQ", sequenceName = "CLIENTES_SEQ" )
+public class Clientes extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	@SequenceGenerator( allocationSize = 1, name ="CLIENTES_SEQ", sequenceName = "CLIENTES_SEQ" )
-	@GeneratedValue(generator = "CLIENTES_SEQ", strategy = GenerationType.SEQUENCE)
-	@Column(name = "ID_CLIENTES")
+	@Column( name = "id_cliente" )	
+	@GeneratedValue( generator = "CLIENTES_SEQ", strategy = GenerationType.SEQUENCE )
 	private Integer id;
 	
-	@Column(name = "nome", length = 100, nullable = false)
-	private String nome;
-	
-	@Column(name = "cpf", length = 100, nullable = false)
+	@Column( name = "cpf", length = 11, nullable = false )		
 	private String cpf;
 	
-	@Column(name = "rg", length = 100, nullable = false)
+	@Column( name = "nome", length = 100, nullable = false )		
+	private String nome;
+	
+	@Column( name = "rg", length = 100, nullable = false )		
 	private String rg;
 	
-	@Column(name = "data_nascimento", length = 100, nullable = false)
-	private String dataNascimento;
-	
-	@Column(name = "conjuge", length = 100, nullable = false)
+	@Column( name = "conjuge", length = 100, nullable = true )			
 	private String conjuge;
 	
-	@Enumerated(EnumType.STRING)
-	private EstadoCivil tipo;
+	@Column( name = "data_nascimento", length = 10, nullable = false )			
+	private String dataNascimento;
 	
-	@ManyToMany (mappedBy = "clientes")
-	private List<Telefones> telefones = new ArrayList<>();
+	@Enumerated( EnumType.STRING )
+	private EstadoCivil estadoCivil;
 	
-	@ManyToMany (mappedBy = "clientes")
+	@ManyToMany( mappedBy = "correntistas_clientes" )
 	private List<Correntistas> correntistas = new ArrayList<>();
 	
-	
+	@ManyToMany( mappedBy = "telefones_clientes" )
+	private List<Telefones> telefones = new ArrayList<>();
+		
 	@ManyToOne
-	@JoinColumn(name = "fk_id_endereco")
+	@JoinColumn( name = "fk_id_endereco" )
 	private Enderecos endereco;
 
 	@OneToMany( mappedBy = "cliente", cascade = CascadeType.ALL )
-	private List<Emails> email = new ArrayList<>();
-
-	public EstadoCivil getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(EstadoCivil tipo) {
-		this.tipo = tipo;
-	}
-
+	private List<Emails> email = new ArrayList<>();	
+	
 	public String getCpf() {
 		return cpf;
 	}
@@ -93,6 +85,14 @@ public class Clientes extends AbstractEntity{
 		this.rg = rg;
 	}
 
+	public String getConjuge() {
+		return conjuge;
+	}
+
+	public void setConjuge(String conjuge) {
+		this.conjuge = conjuge;
+	}
+
 	public String getDataNascimento() {
 		return dataNascimento;
 	}
@@ -101,12 +101,12 @@ public class Clientes extends AbstractEntity{
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getConjuge() {
-		return conjuge;
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
 	}
 
-	public void setConjuge(String conjuge) {
-		this.conjuge = conjuge;
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
+		this.estadoCivil = estadoCivil;
 	}
 
 	public Enderecos getEndereco() {
@@ -117,9 +117,16 @@ public class Clientes extends AbstractEntity{
 		this.endereco = endereco;
 	}
 
+	public List<Emails> getEmail() {
+		return email;
+	}
+
+	public void setEmail(List<Emails> email) {
+		this.email = email;
+	}
+
 	@Override
 	public Integer getId() {
 		return id;
 	}
-	
 }

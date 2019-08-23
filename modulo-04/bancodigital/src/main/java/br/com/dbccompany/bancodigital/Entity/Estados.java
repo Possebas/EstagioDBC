@@ -15,24 +15,21 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator( allocationSize = 1, name ="ESTADOS_SEQ", sequenceName = "ESTADOS_SEQ" )
+@SequenceGenerator( allocationSize = 1, name = "ESTADOS_SEQ", sequenceName = "ESTADOS_SEQ" )
 public class Estados extends AbstractEntity {
+
 	private static final long serialVersionUID = 1L;
+	
 	@Id
+	@Column( name = "id_estado" )		
 	@GeneratedValue( generator = "ESTADOS_SEQ", strategy = GenerationType.SEQUENCE )
-	@Column(name = "ID_ESTADOS")
 	private Integer id;
 	
-	@Column(name = "nome", length = 100, nullable = false)
+	@Column( name = "nome", length = 100, nullable = false )	
 	private String nome;
 	
 	@OneToMany( mappedBy = "estado", cascade = CascadeType.ALL )
-	private List<Cidades> cidades = new ArrayList<>();
-	
-	//@OneToOne
-	//@OneToMany
-	//@ManyToOne
-	//@ManyToMany
+	private List<Cidades> cidades = new ArrayList<>();	
 	
 	@ManyToOne
 	@JoinColumn( name = "fk_id_pais" )
@@ -44,6 +41,14 @@ public class Estados extends AbstractEntity {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Cidades> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidades> cidades) {
+		this.cidades = cidades;
 	}
 
 	public Paises getPais() {
@@ -58,6 +63,4 @@ public class Estados extends AbstractEntity {
 	public Integer getId() {
 		return id;
 	}
-	
-	
 }

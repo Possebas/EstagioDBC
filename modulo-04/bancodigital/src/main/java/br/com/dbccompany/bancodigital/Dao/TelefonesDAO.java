@@ -8,5 +8,4 @@ public class TelefonesDAO extends AbstractDAO<Telefones>{
 	protected Class<Telefones> getEntityClass() {
 		return Telefones.class;
 	}
-
 }

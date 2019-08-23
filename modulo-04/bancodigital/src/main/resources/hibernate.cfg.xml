@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-<hibernate-configuration>
-	<session-factory>
-		<property name="hibernate.connection.drive_class">oracle.jdbc.driver.OracleDrive</property>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:49161:xe</property>
-		<property name="hibernate.connection.username">system</property>
-		<property name="hibernate.connection.password">123456</property>
-		<property name="hibernate.hbm2ddl.auto">create-drop</property>
-		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
-	</session-factory>
-</hibernate-configuration>
+ <hibernate-configuration>
+ 	<session-factory>
+ 	
+ 		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+ 		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:49161:xe</property>
+ 		<property name="hibernate.connection.username">system</property>
+ 		<property name="hibernate.connection.password">123456</property>
+ 		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+ 		<property name="hibernate.show_sql">true</property>
+ 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Paises"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Estados"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Cidades"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Bairros"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Enderecos"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Agencias"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Bancos"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Correntistas"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Clientes"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Emails"></mapping>
+		<mapping class="br.com.dbccompany.bancodigital.Entity.Telefones"></mapping>
+		
+ 	</session-factory>
+ 	
+ </hibernate-configuration>

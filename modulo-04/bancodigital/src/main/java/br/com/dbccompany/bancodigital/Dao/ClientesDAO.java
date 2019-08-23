@@ -8,5 +8,4 @@ public class ClientesDAO extends AbstractDAO<Clientes>{
 	protected Class<Clientes> getEntityClass() {
 		return Clientes.class;
 	}
-
 }

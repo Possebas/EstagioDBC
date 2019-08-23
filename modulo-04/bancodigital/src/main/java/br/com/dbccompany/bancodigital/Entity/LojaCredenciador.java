@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class LojaCredenciador {
-	
+
 	@EmbeddedId
 	private LojaCredenciadorId id;
 	
@@ -15,7 +15,8 @@ public class LojaCredenciador {
 		return id;
 	}
 
-	public void setId(LojaCredenciadorId id) {
+	//ao setar o id tenho que instanciar um "LojaCredenciadorId", passar os campos e ai sim setar
+	public void setId(LojaCredenciadorId id) {  
 		this.id = id;
 	}
 
@@ -26,5 +27,6 @@ public class LojaCredenciador {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	
 }

@@ -15,24 +15,25 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator( allocationSize = 1, name ="BAIRROS_SEQ", sequenceName = "BAIRROS_SEQ" )
-
-public class Bairros extends AbstractEntity{
+@SequenceGenerator( allocationSize = 1, name = "BAIRROS_SEQ", sequenceName = "BAIRROS_SEQ" )
+public class Bairros extends AbstractEntity {
+	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
+	@Column( name = "id_bairro" )		
 	@GeneratedValue( generator = "BAIRROS_SEQ", strategy = GenerationType.SEQUENCE )
-	@Column(name = "ID_BAIRROS")
 	private Integer id;
 	
-	@Column(name = "nome", length = 100, nullable = false)
+	@Column( name = "nome", length = 100, nullable = false )	
 	private String nome;
 	
+	@ManyToOne
+	@JoinColumn( name = "fk_id_cidade" )
+	private Cidades cidade;
+
 	@OneToMany( mappedBy = "bairro", cascade = CascadeType.ALL )
 	private List<Enderecos> endereco = new ArrayList<>();
-	
-	@ManyToOne
-	@JoinColumn(name = "fk_id_cidade")
-	private Cidades cidade;
 
 	public String getNome() {
 		return nome;
@@ -50,9 +51,16 @@ public class Bairros extends AbstractEntity{
 		this.cidade = cidade;
 	}
 
+	public List<Enderecos> getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(List<Enderecos> endereco) {
+		this.endereco = endereco;
+	}
+
 	@Override
 	public Integer getId() {
 		return id;
 	}
-	
 }

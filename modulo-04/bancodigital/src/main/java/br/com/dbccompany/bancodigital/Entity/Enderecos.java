@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +17,19 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator( allocationSize = 1, name ="ENDERECOS_SEQ", sequenceName = "ENDERECOS_SEQ" )
 public class Enderecos extends AbstractEntity{
-	
 	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(generator = "ENDERECOS_SEQ", strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID_ENDERECOS")
 	private Integer id;
+	
+	@Column(name = "logradouro", length = 100, nullable = false)
 	private String logradouro;
+	
+	@Column(name = "numero", length = 100, nullable = false)
 	private Integer numero;
+	
+	@Column(name = "complemento", length = 100, nullable = false)
 	private String complemento;
 	
 	@ManyToOne
@@ -67,7 +73,6 @@ public class Enderecos extends AbstractEntity{
 
 	@Override
 	public Integer getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 	

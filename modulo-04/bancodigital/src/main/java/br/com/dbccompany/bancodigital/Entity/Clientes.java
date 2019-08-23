@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -19,32 +20,39 @@ import javax.persistence.SequenceGenerator;
 @Entity
 
 public class Clientes extends AbstractEntity{
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column( name = "ID_CLIENTES",length = 100, nullable = false)
 	@SequenceGenerator( allocationSize = 1, name ="CLIENTES_SEQ", sequenceName = "CLIENTES_SEQ" )
 	@GeneratedValue(generator = "CLIENTES_SEQ", strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID_CLIENTES")
 	private Integer id;
 	
-	@Column( name = "cpf",length = 100, nullable = false)
-	private String cpf;
-	
-	@Column( name = "nome",length = 100, nullable = false)
+	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
 	
-	@Column( name = "rg",length = 100, nullable = false)
+	@Column(name = "cpf", length = 100, nullable = false)
+	private String cpf;
+	
+	@Column(name = "rg", length = 100, nullable = false)
 	private String rg;
 	
-	@Column( name = "data_nascimento",length = 100, nullable = false)
+	@Column(name = "data_nascimento", length = 100, nullable = false)
 	private String dataNascimento;
 	
-	@Column( name = "conjuge",length = 100, nullable = false)
+	@Column(name = "conjuge", length = 100, nullable = false)
 	private String conjuge;
 	
-	@Enumerated (EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 	private EstadoCivil tipo;
+	
+	@ManyToMany (mappedBy = "clientes")
+	private List<Telefones> telefones = new ArrayList<>();
+	
+	@ManyToMany (mappedBy = "clientes")
+	private List<Correntistas> correntistas = new ArrayList<>();
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "fk_id_endereco")
@@ -111,7 +119,6 @@ public class Clientes extends AbstractEntity{
 
 	@Override
 	public Integer getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 	

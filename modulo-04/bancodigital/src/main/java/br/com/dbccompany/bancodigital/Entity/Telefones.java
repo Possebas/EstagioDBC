@@ -15,48 +15,49 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+
 
 @Entity
-@Table ( name = "TELEFONES_BANCO")
-public class Telefones {
-	
+  //@Table(name = "TELEFONES_BANCO") EXEMPLO PARA RENOMEAR A TABELA
+@SequenceGenerator( allocationSize = 1, name ="TELEFONES_SEQ", sequenceName = "TELEFONES_SEQ" )
+public class Telefones extends AbstractEntity{
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column( name = "ID_TELEFONE" )
 	@GeneratedValue( generator = "TELEFONES_SEQ", strategy = GenerationType.SEQUENCE )
-	@SequenceGenerator( allocationSize = 1, name ="TELEFONES_SEQ", sequenceName = "TELEFONES_SEQ" )
-	private Integer idTelefone;
+	@Column( name = "ID_TELEFONE" )
+	private Integer id;
 	
-	@Column( name = "numero", length = 100, nullable = false)
+	@Column(name = "numero", length = 100, nullable = false)
 	private String numero;
 	
-	@Enumerated (EnumType.STRING)
-	private TipoTelefone tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoTelefone tiposTelefone;
 	
-	@ManyToMany( cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable( name = "telefones_x_clientes",
-					joinColumns = { @JoinColumn( name = "id_telefones" ) },
+					joinColumns = { @JoinColumn( name = "id_telefones")},
 					inverseJoinColumns = { @JoinColumn( name = "id_clientes" ) })
+	
 	private List<Clientes> clientes = new ArrayList<>();
 	
 	
-	public TipoTelefone getTipo() {
-		return tipo;
+	public TipoTelefone getTiposTelefone() {
+		return tiposTelefone;
 	}
-	public void setTipo(TipoTelefone tipo) {
-		this.tipo = tipo;
+	public void setTiposTelefone(TipoTelefone tiposTelefone) {
+		this.tiposTelefone = tiposTelefone;
 	}
-	public Integer getIdTelefone() {
-		return idTelefone;
-	}
-	public void setIdTelefone(Integer idTelefone) {
-		this.idTelefone = idTelefone;
-	}
+	
 	public String getNumero() {
 		return numero;
 	}
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	@Override
+	public Integer getId() {
+		return id;
 	}
 	
 }

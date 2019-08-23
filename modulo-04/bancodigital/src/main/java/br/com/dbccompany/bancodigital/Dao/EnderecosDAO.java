@@ -1,12 +1,12 @@
 package br.com.dbccompany.bancodigital.Dao;
 
-import br.com.dbccompany.bancodigital.Entity.Bairros;
+import br.com.dbccompany.bancodigital.Entity.Enderecos;
 
-public class EnderecosDAO extends AbstractDAO<Bairros>{
+public class EnderecosDAO extends AbstractDAO<Enderecos>{
 
 	@Override
-	protected Class<Bairros> getEntityClass() {
-		// TODO Auto-generated method stub
-		return Bairros.class;
+	protected Class<Enderecos> getEntityClass() {
+		return Enderecos.class;
 	}
+
 }

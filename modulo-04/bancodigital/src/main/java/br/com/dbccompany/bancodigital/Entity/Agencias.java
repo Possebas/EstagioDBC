@@ -1,20 +1,33 @@
 package br.com.dbccompany.bancodigital.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator( allocationSize = 1, name ="AGENCIAS_SEQ", sequenceName = "AGENCIAS_SEQ" )
-public class Agencias {
+public class Agencias extends AbstractEntity {
+	private static final long serialVersionUID = 1L;a
 	@Id
 	@GeneratedValue( generator = "AGENCIAS_SEQ", strategy = GenerationType.SEQUENCE )
-	private Integer idAgencia;
+	@Column(name = "ID_AGENCIAS")
+	private Integer id;
+	
+	@Column(name = "codigo", length = 100, nullable = false)
 	private Integer codigo;
+	
+	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
 	
 	@OneToOne
@@ -28,14 +41,12 @@ public class Agencias {
 	@OneToOne
 	@JoinColumn(name = "fk_id_telefone")
 	private Telefones telefone;
-
-	public Integer getIdAgencia() {
-		return idAgencia;
-	}
-
-	public void setIdAgencia(Integer idAgencia) {
-		this.idAgencia = idAgencia;
-	}
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable( name = "agencias_x_correntistas",
+					joinColumns = { @JoinColumn( name = "id_agencias")},
+					inverseJoinColumns = { @JoinColumn( name = "id_correntistas" ) })
+	private List<Correntistas> correntistas = new ArrayList<>();
 
 	public Integer getCodigo() {
 		return codigo;
@@ -75,5 +86,10 @@ public class Agencias {
 
 	public void setTelefone(Telefones telefone) {
 		this.telefone = telefone;
+	}
+
+	@Override
+	public Integer getId() {
+		return id;
 	}
 }

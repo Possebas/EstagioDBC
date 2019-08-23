@@ -1,5 +1,6 @@
 package br.com.dbccompany.bancodigital.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,19 +9,22 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator( allocationSize = 1, name ="BANCOS_SEQ", sequenceName = "BANCOS_SEQ" )
-public class Bancos {
+public class Bancos extends AbstractEntity{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue( generator = "BANCOS_SEQ", strategy = GenerationType.SEQUENCE )
-	private Integer idBanco;
+	@Column(name = "ID_BANCOS")
+	private Integer id;
+	
+	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
+	
+	@Column(name = "codigo", length = 100, nullable = false)
 	private Integer codigo;
 	
-	public Integer getIdBanco() {
-		return idBanco;
-	}
-	public void setIdBanco(Integer idBanco) {
-		this.idBanco = idBanco;
-	}
 	public String getNome() {
 		return nome;
 	}
@@ -32,6 +36,10 @@ public class Bancos {
 	}
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}
+	@Override
+	public Integer getId() {
+		return id;
 	}
 	
 

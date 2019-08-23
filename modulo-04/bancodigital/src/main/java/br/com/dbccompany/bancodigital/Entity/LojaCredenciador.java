@@ -1,14 +1,16 @@
 package br.com.dbccompany.bancodigital.Entity;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 
+@Entity
 public class LojaCredenciador {
 	
 	@EmbeddedId
 	private LojaCredenciadorId id;
 	
-	private String nomeString;
-	
+	private String nome;
+
 	public LojaCredenciadorId getId() {
 		return id;
 	}
@@ -17,12 +19,12 @@ public class LojaCredenciador {
 		this.id = id;
 	}
 
-	public String getNomeString() {
-		return nomeString;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeString(String nomeString) {
-		this.nomeString = nomeString;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }

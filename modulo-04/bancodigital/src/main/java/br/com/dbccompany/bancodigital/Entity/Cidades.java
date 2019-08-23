@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,12 +18,13 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator( allocationSize = 1, name ="CIDADES_SEQ", sequenceName = "CIDADES_SEQ" )
 
 public class Cidades extends AbstractEntity{
-	
 	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue( generator = "CIDADES_SEQ", strategy = GenerationType.SEQUENCE )
+	@Column(name = "ID_CIDADES")
 	private Integer id;
+	
+	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
 	
 	@OneToMany( mappedBy = "cidade", cascade = CascadeType.ALL )
@@ -31,7 +33,7 @@ public class Cidades extends AbstractEntity{
 	@ManyToOne
 	@JoinColumn( name = "fk_id_estado" )
 	private Estados estado;
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -50,7 +52,6 @@ public class Cidades extends AbstractEntity{
 
 	@Override
 	public Integer getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 }

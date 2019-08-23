@@ -4,24 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED) 
 public class Elfo {
 	
 	@Id
-	@GeneratedValue( generator  = "ELFO_SEQ", strategy = GenerationType.SEQUENCE )
 	@SequenceGenerator( allocationSize = 1, name ="ELFO_SEQ", sequenceName = "ELFO_SEQ" )
-	private Integer idElfo;
+	@GeneratedValue( generator = "ELFO_SEQ", strategy = GenerationType.SEQUENCE )
+	private Integer id_elfo;
 	
 	private String nome;
-	
-	public Integer getIdElfo() {
-		return idElfo;
+
+	public Integer getId_elfo() {
+		return id_elfo;
 	}
 
-	public void setIdElfo(Integer idElfo) {
-		this.idElfo = idElfo;
+	public void setId_elfo(Integer id_elfo) {
+		this.id_elfo = id_elfo;
 	}
 
 	public String getNome() {
@@ -31,5 +34,6 @@ public class Elfo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	
 }

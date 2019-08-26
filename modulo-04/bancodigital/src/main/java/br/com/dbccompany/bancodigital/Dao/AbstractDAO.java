@@ -27,7 +27,6 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
 		remover( entity.getId() );
 	}
 	
-
 	@SuppressWarnings("unchecked")
 	public E buscar( Integer id ) {
 		Session session = HibernateUtil.getSession();

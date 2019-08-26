@@ -5,20 +5,20 @@ import java.util.logging.Logger;
 
 import org.hibernate.Transaction;
 
-import br.com.dbccompany.bancodigital.Dao.PaisesDAO;
+import br.com.dbccompany.bancodigital.Dao.EnderecosDAO;
 import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
-import br.com.dbccompany.bancodigital.Entity.Paises;
+import br.com.dbccompany.bancodigital.Entity.Enderecos;
 
-public class PaisesService {
+public class EnderecosService {
 
-	private static final PaisesDAO PAISES_DAO = new PaisesDAO();
-	private static final Logger LOG = Logger.getLogger(PaisesService.class.getName());
+	private static final EnderecosDAO ENDERECOS_DAO = new EnderecosDAO();
+	private static final Logger LOG = Logger.getLogger(EnderecosService.class.getName());
 	
-	public void salvar(Paises paises) {
+	public void salvar(Enderecos endereco) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
 		try {
-			PAISES_DAO.criar(paises);
+			ENDERECOS_DAO.criar(endereco);
 			if(started) {
 				transaction.commit();
 			}
@@ -28,11 +28,11 @@ public class PaisesService {
 		}
 	}
 
-	public void remover(Paises pais) {
+    public void remover(Enderecos endereco) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
 		try {
-			PAISES_DAO.remover(pais);
+			ENDERECOS_DAO.remover(endereco);
 			if(started) {
 				transaction.commit();
 			}
@@ -46,7 +46,7 @@ public class PaisesService {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
 		try {
-			PAISES_DAO.remover(id);
+			ENDERECOS_DAO.remover(id);
 			if(started) {
 				transaction.commit();
 			}
@@ -56,11 +56,11 @@ public class PaisesService {
 		}
 	}
 
-	public void atualizar(Paises pais) {
+	public void atualizar(Enderecos endereco) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
 		try {
-			PAISES_DAO.atualizar(pais);
+			ENDERECOS_DAO.atualizar(endereco);
 			if(started) {
 				transaction.commit();
 			}
@@ -74,7 +74,7 @@ public class PaisesService {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
 		try {
-			PAISES_DAO.buscar(id);
+			ENDERECOS_DAO.buscar(id);
 			if(started) {
 				transaction.commit();
 			}
@@ -82,6 +82,6 @@ public class PaisesService {
 			transaction.rollback();
 			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
-	}
-	
+    }
+    
 }

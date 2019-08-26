@@ -21,7 +21,7 @@ public class Main {
 		PaisesService service = new PaisesService();
 		Paises paises = new Paises();
 		paises.setNome("Argentina");
-		service.salvarPaises(paises);
+		service.salvar(paises);
 		System.out.println("Pais salvo => "+ paises.getNome());
 	}
 	

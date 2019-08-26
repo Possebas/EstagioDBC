@@ -49,4 +49,9 @@ public class Paises extends AbstractEntity {
 	public Integer getId() {
 		return id;
 	}
+
+	public void setId(Integer id) {
+		// TODO Auto-generated method stub
+		this.id = id;
+	}
 }

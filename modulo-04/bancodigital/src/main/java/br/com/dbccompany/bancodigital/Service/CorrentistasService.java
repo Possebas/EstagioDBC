@@ -9,7 +9,7 @@ import br.com.dbccompany.bancodigital.Dao.CorrentistasDAO;
 import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
 import br.com.dbccompany.bancodigital.Entity.Correntistas;
 
-public class PaisesService {
+public class CorrentistasService {
 
 	private static final CorrentistasDAO CORRENTISTAS_DAO = new CorrentistasDAO();
 	private static final Logger LOG = Logger.getLogger(PaisesService.class.getName());

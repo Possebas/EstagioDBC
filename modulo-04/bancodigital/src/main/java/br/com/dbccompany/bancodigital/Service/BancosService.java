@@ -9,7 +9,7 @@ import br.com.dbccompany.bancodigital.Dao.BancosDAO;
 import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
 import br.com.dbccompany.bancodigital.Entity.Bancos;
 
-public class TelefonesService {
+public class BancosService {
 
 	private static final BancosDAO BANCOS_DAO = new BancosDAO();
 	private static final Logger LOG = Logger.getLogger(BairrosService.class.getName());

@@ -18,7 +18,7 @@ public class EstadosService {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
 		try {
-			ESTADOS_DAO.criar(Estados);
+			ESTADOS_DAO.criar(estados);
 			if(started) {
 				transaction.commit();
 			}

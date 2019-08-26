@@ -1,16 +1,8 @@
 package br.com.dbccompany.bancodigital;
 
-import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
-
-import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
-import br.com.dbccompany.bancodigital.Entity.Paises;
+import br.com.dbccompany.bancodigital.Dto.PaisesDTO;
 import br.com.dbccompany.bancodigital.Service.PaisesService;
 
 public class Main {
@@ -19,10 +11,11 @@ public class Main {
 	
 	public static void main(String[] args) {
 		PaisesService service = new PaisesService();
-		Paises paises = new Paises();
+		PaisesDTO paises = new PaisesDTO();
 		paises.setNome("Argentina");
-		service.salvar(paises);
+		service.salvarPaises(paises);
 		System.out.println("Pais salvo => "+ paises.getNome());
+		
 	}
 	
 /*	public static void main(String[] args) {

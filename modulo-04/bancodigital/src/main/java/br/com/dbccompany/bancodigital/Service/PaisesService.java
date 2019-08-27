@@ -15,20 +15,6 @@ public class PaisesService {
 	private static final PaisesDAO PAISES_DAO = new PaisesDAO();
 	private static final Logger LOG = Logger.getLogger(PaisesService.class.getName());
 	
-//	public void salvar(Paises paises) {
-//		boolean started = HibernateUtil.beginTransaction();
-//		Transaction transaction = HibernateUtil.getSession().getTransaction();
-//		try {
-//			PAISES_DAO.criar(paises);
-//			if(started) {
-//				transaction.commit();
-//			}
-//		} catch (Exception e) {
-//			transaction.rollback();
-//			LOG.log(Level.SEVERE, e.getMessage(), e);
-//		}
-//	}
-	
 	public void salvarPaises(PaisesDTO paisesDTO) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
@@ -36,16 +22,11 @@ public class PaisesService {
 		Paises paises = PAISES_DAO.parseFrom(paisesDTO);
 		
 		try {
-			Paises paisesRes = PAISES_DAO.buscar(1);
-			if(paisesRes == null) {
-				PAISES_DAO.criar(paises);
-			}else {
-				paises.setId(paisesRes.getId());
-				PAISES_DAO.atualizar(paises);
-			}
+			PAISES_DAO.criar(paises);
 			if (started) {
 				transaction.commit();
 			}
+			paisesDTO.setIdPaises(paises.getId());
 		} catch( Exception e ){
 			transaction.rollback();
 			LOG.log(Level.SEVERE, e.getMessage(), e);
@@ -95,18 +76,21 @@ public class PaisesService {
 		}
 	}
 
-	public void buscar(Integer id) {
+	public Paises buscar(Integer id) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
+		Paises pais = null;
 		try {
-			PAISES_DAO.buscar(id);
+			pais = PAISES_DAO.buscar(id);
 			if(started) {
 				transaction.commit();
 			}
+			return pais;
 		} catch (Exception e) {
 			transaction.rollback();
 			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
+		return pais;
 	}
 	
 }

@@ -31,6 +31,6 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
 	public E buscar( Integer id ) {
 		Session session = HibernateUtil.getSession();
 		return (E) session.createQuery( "select e from "+ getEntityClass().getSimpleName() 
-				                       +" where id = "+ id ).uniqueResult();
+				                       +" e where id = "+ id ).uniqueResult();
 	}
 }

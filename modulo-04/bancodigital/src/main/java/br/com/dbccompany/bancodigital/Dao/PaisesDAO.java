@@ -9,6 +9,8 @@ public class PaisesDAO extends AbstractDAO<Paises>{
 		Paises paises = null;
 		if (dto.getIdPaises() != null) {
 			paises = buscar(dto.getIdPaises());
+		} else {
+			paises = new Paises();
 		}
 		paises.setNome(dto.getNome());
 		

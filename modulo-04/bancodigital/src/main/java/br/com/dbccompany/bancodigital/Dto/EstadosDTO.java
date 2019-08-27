@@ -1,10 +1,9 @@
 package br.com.dbccompany.bancodigital.Dto;
 
 public class EstadosDTO {
-	
+
 	private Integer idEstados;
 	private String nome;
-	
 	private PaisesDTO paises;
 
 	public Integer getIdEstados() {

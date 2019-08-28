@@ -6,7 +6,9 @@ import java.util.logging.Logger;
 import org.hibernate.Transaction;
 
 import br.com.dbccompany.bancodigital.Dao.CorrentistasDAO;
+import br.com.dbccompany.bancodigital.Dto.CorrentistasDTO;
 import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
+import br.com.dbccompany.bancodigital.Entity.Clientes;
 import br.com.dbccompany.bancodigital.Entity.Correntistas;
 
 public class CorrentistasService {
@@ -14,11 +16,12 @@ public class CorrentistasService {
 	private static final CorrentistasDAO CORRENTISTAS_DAO = new CorrentistasDAO();
 	private static final Logger LOG = Logger.getLogger(PaisesService.class.getName());
 	
-	public void salvar(Correntistas correntista) {
+	public void salvar(CorrentistasDTO correntista) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
+		Correntistas correntistas  = CORRENTISTAS_DAO.parseFrom(correntista);
 		try {
-			CORRENTISTAS_DAO.criar(correntista);
+			CORRENTISTAS_DAO.criar(correntistas);
 			if(started) {
 				transaction.commit();
 			}

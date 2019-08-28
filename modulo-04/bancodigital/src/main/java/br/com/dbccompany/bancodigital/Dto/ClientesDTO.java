@@ -1,5 +1,7 @@
 package br.com.dbccompany.bancodigital.Dto;
 
+import br.com.dbccompany.bancodigital.Enum.EstadoCivil;
+
 public class ClientesDTO {
 
     private Integer idCliente;
@@ -7,7 +9,7 @@ public class ClientesDTO {
     private String cpf;
     private String dataNascimento;
     private String nome;
-    private String estadoCivil;
+    private EstadoCivil estadoCivil;
     private String rg;
 
     private EnderecosDTO enderecos;
@@ -52,11 +54,11 @@ public class ClientesDTO {
 		this.nome = nome;
 	}
 
-	public String getEstadoCivil() {
+	public EstadoCivil getEstadoCivil() {
 		return estadoCivil;
 	}
 
-	public void setEstadoCivil(String estadoCivil) {
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil;
 	}
 

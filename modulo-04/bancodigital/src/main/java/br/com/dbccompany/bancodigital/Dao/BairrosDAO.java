@@ -10,13 +10,13 @@ public class BairrosDAO extends AbstractDAO<Bairros> {
 	
 	public Bairros parseFrom( BairrosDTO dto) {
 		Bairros bairro = null;
-		if( dto.getId() != null ) {
-			bairro = buscar( dto.getId() );
+		if( dto.getIdBairros() != null ) {
+			bairro = buscar( dto.getIdBairros() );
 		} else {
 			bairro = new Bairros();
 		}
 		bairro.setNome(dto.getNome());
-		Cidades cidade = CIDADES_DAO.parseFrom(dto.getCidade());
+		Cidades cidade = CIDADES_DAO.parseFrom(dto.getCidades());
 		bairro.setCidade(cidade);
 		return bairro;
 	}

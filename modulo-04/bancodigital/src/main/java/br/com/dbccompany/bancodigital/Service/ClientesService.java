@@ -6,7 +6,9 @@ import java.util.logging.Logger;
 import org.hibernate.Transaction;
 
 import br.com.dbccompany.bancodigital.Dao.ClientesDAO;
+import br.com.dbccompany.bancodigital.Dto.ClientesDTO;
 import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
+import br.com.dbccompany.bancodigital.Entity.Agencias;
 import br.com.dbccompany.bancodigital.Entity.Clientes;
 
 public class ClientesService {
@@ -14,11 +16,12 @@ public class ClientesService {
 	private static final ClientesDAO CLIENTES_DAO = new ClientesDAO();
 	private static final Logger LOG = Logger.getLogger(BairrosService.class.getName());
 	
-	public void salvar(Clientes cliente) {
+	public void salvar(ClientesDTO cliente) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
+		Clientes clientes  = CLIENTES_DAO.parseFrom(cliente);
 		try {
-			CLIENTES_DAO.criar(cliente);
+			CLIENTES_DAO.criar(clientes);
 			if(started) {
 				transaction.commit();
 			}

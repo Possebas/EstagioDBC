@@ -6,7 +6,9 @@ import java.util.logging.Logger;
 import org.hibernate.Transaction;
 
 import br.com.dbccompany.bancodigital.Dao.EnderecosDAO;
+import br.com.dbccompany.bancodigital.Dto.EnderecosDTO;
 import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
+import br.com.dbccompany.bancodigital.Entity.Paises;
 import br.com.dbccompany.bancodigital.Entity.Enderecos;
 
 public class EnderecosService {
@@ -14,11 +16,12 @@ public class EnderecosService {
 	private static final EnderecosDAO ENDERECOS_DAO = new EnderecosDAO();
 	private static final Logger LOG = Logger.getLogger(EnderecosService.class.getName());
 	
-	public void salvar(Enderecos endereco) {
+	public void salvar(EnderecosDTO endereco) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
+		Enderecos enderecos= ENDERECOS_DAO.parseFrom(endereco);
 		try {
-			ENDERECOS_DAO.criar(endereco);
+			ENDERECOS_DAO.criar(enderecos);
 			if(started) {
 				transaction.commit();
 			}

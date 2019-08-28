@@ -1,6 +1,6 @@
 package br.com.dbccompany.bancodigital.Dto;
 
-import br.com.dbccompany.bancodigital.Enums.TiposCorrentistas;
+import br.com.dbccompany.bancodigital.Enum.TiposCorrentistas;
 
 public class CorrentistasDTO {
     
@@ -9,6 +9,7 @@ public class CorrentistasDTO {
 	private String cnpj;
 	private Double saldo = 0.0;
 	private TiposCorrentistas tipo;
+	
 	
 	public Integer getId() {
 		return id;

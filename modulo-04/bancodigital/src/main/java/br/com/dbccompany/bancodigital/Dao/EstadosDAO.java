@@ -10,13 +10,13 @@ public class EstadosDAO extends AbstractDAO<Estados>{
 	
 	public Estados parseFrom( EstadosDTO dto) {
 		Estados estado = null;
-		if( dto.getId() != null ) {
-			estado = buscar( dto.getId() );
+		if( dto.getIdEstados() != null ) {
+			estado = buscar( dto.getIdEstados() );
 		}else {
 			estado = new Estados();
 		}
 		estado.setNome(dto.getNome());
-		Paises pais = PAISES_DAO.parseFrom(dto.getPais());
+		Paises pais = PAISES_DAO.parseFrom(dto.getPaises());
 		estado.setPais(pais);
 		return estado;
 	}

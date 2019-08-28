@@ -11,15 +11,15 @@ public class EnderecosDAO extends AbstractDAO<Enderecos> {
 	
 	public Enderecos parseFrom( EnderecosDTO dto) {
 		Enderecos endereco = null;
-		if( dto.getId() != null ) {
-			endereco = buscar( dto.getId() );
+		if( dto.getIdEnderecos() != null ) {
+			endereco = buscar( dto.getIdEnderecos() );
 		}else {
 			endereco = new Enderecos();
 		}
 		endereco.setLogradouro(dto.getLogradouro());
 		endereco.setNumero(dto.getNumero());
 		endereco.setComplemento(dto.getComplemento());	
-		Bairros bairro = BAIRROS_DAO.parseFrom(dto.getBairro());
+		Bairros bairro = BAIRROS_DAO.parseFrom(dto.getBairros());
 		endereco.setBairro(bairro);
 		return endereco;
 	}

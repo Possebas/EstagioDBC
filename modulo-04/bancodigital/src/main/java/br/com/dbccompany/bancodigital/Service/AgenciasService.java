@@ -6,19 +6,22 @@ import java.util.logging.Logger;
 import org.hibernate.Transaction;
 
 import br.com.dbccompany.bancodigital.Dao.AgenciasDAO;
+import br.com.dbccompany.bancodigital.Dto.AgenciasDTO;
 import br.com.dbccompany.bancodigital.Entity.HibernateUtil;
 import br.com.dbccompany.bancodigital.Entity.Agencias;
+import br.com.dbccompany.bancodigital.Entity.Bairros;
 
 public class AgenciasService {
 
 	private static final AgenciasDAO AGENCIAS_DAO = new AgenciasDAO();
 	private static final Logger LOG = Logger.getLogger(BairrosService.class.getName());
 	
-	public void salvar(Agencias agencia) {
+	public void salvar(AgenciasDTO agencia) {
 		boolean started = HibernateUtil.beginTransaction();
 		Transaction transaction = HibernateUtil.getSession().getTransaction();
+		Agencias agencias  = AGENCIAS_DAO.parseFrom(agencia);
 		try {
-			AGENCIAS_DAO.criar(agencia);
+			AGENCIAS_DAO.criar(agencias);
 			if(started) {
 				transaction.commit();
 			}

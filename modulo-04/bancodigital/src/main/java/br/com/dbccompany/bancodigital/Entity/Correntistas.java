@@ -66,6 +66,10 @@ public class Correntistas extends AbstractEntity {
 		this.cnpj = cnpj;
 	}
 	
+	public void setTipo(TiposCorrentistas tipo) {
+		this.tipo = tipo;
+	}
+	
 	public TiposCorrentistas getTipo() {
 		return tipo;
 	}

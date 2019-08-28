@@ -7,8 +7,8 @@ public class BancosDAO extends AbstractDAO<Bancos> {
 
 	public Bancos parseFrom( BancosDTO dto) {
 		Bancos bancos = null;
-		if( dto.getId() != null ) {
-			bancos = buscar( dto.getId() );
+		if( dto.getIdBanco() != null ) {
+			bancos = buscar( dto.getIdBanco() );
 		}else {
 			bancos = new Bancos();
 		}

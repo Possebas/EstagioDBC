@@ -10,14 +10,14 @@ public class CidadesDAO extends AbstractDAO<Cidades> {
 	
 	public Cidades parseFrom( CidadesDTO dto) {
 		Cidades cidade= null;
-		if( dto.getId() != null ) {
-			cidade = buscar( dto.getId() );
+		if( dto.getIdCidades() != null ) {
+			cidade = buscar( dto.getIdCidades() );
 		}
 		else {
 			cidade = new Cidades();
 		}
 		cidade.setNome(dto.getNome());
-		Estados estado = ESTADOS_DAO.parseFrom(dto.getEstado());
+		Estados estado = ESTADOS_DAO.parseFrom(dto.getEstados());
 		cidade.setEstado(estado);
 		return cidade;
 	}

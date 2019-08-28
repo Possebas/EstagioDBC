@@ -10,14 +10,14 @@ public class AgenciasDAO extends AbstractDAO<Agencias> {
 	
 	public Agencias parseFrom( AgenciasDTO dto) {
 		Agencias agencia = null;
-		if( dto.getId() != null ) {
-			agencia = buscar( dto.getId() );
+		if( dto.getIdBancos() != null ) {
+			agencia = buscar( dto.getIdBancos() );
 		}else {
 			agencia = new Agencias();
 		}
 		agencia.setNome(dto.getNome());
 		agencia.setCodigo(dto.getCodigo());
-		Bancos banco = BANCOS_DAO.parseFrom(dto.getBanco());
+		Bancos banco = BANCOS_DAO.parseFrom(dto.getBancos());
 		agencia.setBanco(banco);
 		return agencia;
 	}

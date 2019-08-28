@@ -12,8 +12,8 @@ private static final EnderecosDAO ENDERECOS_DAO = new EnderecosDAO();
 	
 	public Clientes parseFrom( ClientesDTO dto) {
 		Clientes cliente = null;
-		if( dto.getId() != null ) {
-			cliente = buscar( dto.getId() );
+		if( dto.getIdCliente() != null ) {
+			cliente = buscar( dto.getIdCliente() );
 		}else {
 			cliente = new Clientes();
 		}
@@ -23,8 +23,8 @@ private static final EnderecosDAO ENDERECOS_DAO = new EnderecosDAO();
 		cliente.setConjuge(dto.getConjuge());
 		cliente.setDataNascimento(dto.getDataNascimento());
 		cliente.setEstadoCivil(dto.getEstadoCivil());
-		Enderecos endereco = ENDERECOS_DAO.parseFrom(dto.getEndereco());
-		cliente.setEnderecoCliente(endereco);
+		Enderecos endereco = ENDERECOS_DAO.parseFrom(dto.getEnderecos());
+		cliente.setEndereco(endereco);
 		return cliente;
 	}
 	

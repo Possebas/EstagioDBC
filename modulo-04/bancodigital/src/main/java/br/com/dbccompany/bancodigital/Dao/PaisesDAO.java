@@ -8,8 +8,8 @@ public class PaisesDAO extends AbstractDAO<Paises>{
 	
 	public Paises parseFrom( PaisesDTO dto) {
 		Paises paises = null;
-		if( dto.getId() != null ) {
-			paises = buscar( dto.getId() );
+		if( dto.getIdPaises() != null ) {
+			paises = buscar( dto.getIdPaises());
 		}else {
 			paises = new Paises();
 		}

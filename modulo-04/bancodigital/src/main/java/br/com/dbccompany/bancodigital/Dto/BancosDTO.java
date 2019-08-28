@@ -5,6 +5,7 @@ public class BancosDTO {
 	private Integer idBanco;
 	private Integer codigo;
 	private String nome;
+	
 	public Integer getIdBanco() {
 		return idBanco;
 	}

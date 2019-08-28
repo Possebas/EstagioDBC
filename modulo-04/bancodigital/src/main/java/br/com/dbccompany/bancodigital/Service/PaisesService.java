@@ -23,10 +23,10 @@ public class PaisesService {
 		
 		try {
 			PAISES_DAO.criar(paises);
+			paisesDTO.setIdPaises(paises.getId());
 			if (started) {
 				transaction.commit();
 			}
-			paisesDTO.setIdPaises(paises.getId());
 		} catch( Exception e ){
 			transaction.rollback();
 			LOG.log(Level.SEVERE, e.getMessage(), e);

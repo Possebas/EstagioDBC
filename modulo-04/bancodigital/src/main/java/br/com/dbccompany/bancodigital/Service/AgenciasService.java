@@ -22,6 +22,7 @@ public class AgenciasService {
 		Agencias agencias  = AGENCIAS_DAO.parseFrom(agencia);
 		try {
 			AGENCIAS_DAO.criar(agencias);
+			agencia.setIdBancos(agencias.getId());
 			if(started) {
 				transaction.commit();
 			}

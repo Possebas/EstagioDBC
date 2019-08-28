@@ -26,6 +26,7 @@ public class BairrosService {
 			if(started) {
 				transaction.commit();
 			}
+			bairro.setIdBairros(bairros.getId());
 		} catch (Exception e) {
 			transaction.rollback();
 			LOG.log(Level.SEVERE, e.getMessage(), e);

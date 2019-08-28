@@ -23,7 +23,7 @@ public class Bancos extends AbstractEntity {
 	@GeneratedValue( generator = "BANCOS_SEQ", strategy = GenerationType.SEQUENCE )
 	private Integer id;
 	
-	@Column( name = "codigo", nullable = false )		
+	@Column( name = "codigo", length = 20, nullable = false )		
 	private Integer codigo;
 	
 	@Column( name = "nome", length = 100, nullable = false )		

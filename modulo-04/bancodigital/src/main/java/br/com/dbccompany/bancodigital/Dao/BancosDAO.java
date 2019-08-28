@@ -13,6 +13,7 @@ public class BancosDAO extends AbstractDAO<Bancos> {
 			bancos = new Bancos();
 		}
 		bancos.setNome(dto.getNome());
+		bancos.setCodigo(dto.getCodigo());
 		return bancos;
 	}
 	

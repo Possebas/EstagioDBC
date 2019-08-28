@@ -22,7 +22,7 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
 	
 	public void remover(Integer id) {
 		Session session = HibernateUtil.getSession();
-		session.createQuery("delete from " +  getEntityClass().getSimpleName() + "where id = " + id).executeUpdate();
+		session.createQuery("delete from " +  getEntityClass().getSimpleName() + " e where id = " + id).executeUpdate();
 	}
 	
 	public void remover(E entity) {
@@ -30,10 +30,12 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public E buscar(Integer id) {
-		Session session = HibernateUtil.getSession();
-		return (E) session.createQuery("from " + getEntityClass().getSimpleName() + " where id = " + id).uniqueResult();
-	}
+    public E buscar(Integer id) {
+        Session session = HibernateUtil.getSession();
+        return (E) session.createQuery("select e from " +
+                            getEntityClass().getSimpleName() +
+                            " e where id = " + id).uniqueResult();
+    }
 	
 	@SuppressWarnings("unchecked")
 	public List<E> listar() {

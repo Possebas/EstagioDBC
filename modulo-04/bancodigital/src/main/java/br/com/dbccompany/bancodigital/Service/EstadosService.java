@@ -23,10 +23,10 @@ public class EstadosService {
 		
 		try {
 			ESTADOS_DAO.criar(estados);
+			dto.setIdEstados(estados.getId());
 			if(started) {
 				transaction.commit();
 			}
-			dto.setIdEstados(estados.getId());
 		} catch (Exception e) {
 			transaction.rollback();
 			LOG.log(Level.SEVERE, e.getMessage(), e);

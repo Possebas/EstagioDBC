@@ -25,6 +25,7 @@ public class BancosService {
 			if(started) {
 				transaction.commit();
 			}
+			banco.setIdBanco(bancos.getId());
 		} catch (Exception e) {
 			transaction.rollback();
 			LOG.log(Level.SEVERE, e.getMessage(), e);

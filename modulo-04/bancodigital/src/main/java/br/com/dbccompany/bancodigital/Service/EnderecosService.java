@@ -22,6 +22,7 @@ public class EnderecosService {
 		Enderecos enderecos= ENDERECOS_DAO.parseFrom(endereco);
 		try {
 			ENDERECOS_DAO.criar(enderecos);
+			endereco.setIdEnderecos(enderecos.getId());
 			if(started) {
 				transaction.commit();
 			}

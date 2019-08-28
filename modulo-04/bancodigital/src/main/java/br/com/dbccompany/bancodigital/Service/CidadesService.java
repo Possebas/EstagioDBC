@@ -22,6 +22,7 @@ public class CidadesService {
 		Cidades cidades  = CIDADES_DAO.parseFrom(cidade);
 		try {
 			CIDADES_DAO.criar(cidades);
+			cidade.setIdCidades(cidades.getId());
 			if(started) {
 				transaction.commit();
 			}

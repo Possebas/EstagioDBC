@@ -22,6 +22,7 @@ public class CorrentistasService {
 		Correntistas correntistas  = CORRENTISTAS_DAO.parseFrom(correntista);
 		try {
 			CORRENTISTAS_DAO.criar(correntistas);
+			correntista.setId(correntistas.getId());
 			if(started) {
 				transaction.commit();
 			}

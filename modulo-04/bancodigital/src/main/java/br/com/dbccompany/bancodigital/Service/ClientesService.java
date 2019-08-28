@@ -22,6 +22,7 @@ public class ClientesService {
 		Clientes clientes  = CLIENTES_DAO.parseFrom(cliente);
 		try {
 			CLIENTES_DAO.criar(clientes);
+			cliente.setIdCliente(clientes.getId());
 			if(started) {
 				transaction.commit();
 			}

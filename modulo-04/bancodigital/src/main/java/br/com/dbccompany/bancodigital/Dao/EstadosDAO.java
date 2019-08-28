@@ -5,22 +5,20 @@ import br.com.dbccompany.bancodigital.Entity.Estados;
 import br.com.dbccompany.bancodigital.Entity.Paises;
 
 public class EstadosDAO extends AbstractDAO<Estados>{
-
+	
 	private static final PaisesDAO PAISES_DAO = new PaisesDAO();
 	
-	public Estados parseFrom(EstadosDTO dto) {
-
-		Estados estados = null;
-		if (dto.getIdEstados() != null) {
-			estados = buscar(dto.getIdEstados());
-		} else {
-			estados = new Estados();
+	public Estados parseFrom( EstadosDTO dto) {
+		Estados estado = null;
+		if( dto.getId() != null ) {
+			estado = buscar( dto.getId() );
+		}else {
+			estado = new Estados();
 		}
-		Paises paises = PAISES_DAO.parseFrom(dto.getPaises());
-		estados.setPais(paises);
-		estados.setNome(dto.getNome());
-		
-		return estados;
+		estado.setNome(dto.getNome());
+		Paises pais = PAISES_DAO.parseFrom(dto.getPais());
+		estado.setPais(pais);
+		return estado;
 	}
 	
 	@Override

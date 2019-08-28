@@ -59,5 +59,4 @@ public class AgenciasDTO {
 	public void setTelefones(TelefonesDTO telefones) {
 		this.telefones = telefones;
 	}
-	
 }

@@ -35,6 +35,9 @@ public class Correntistas extends AbstractEntity {
 	@Column( name = "cnpj", length = 100, nullable = true )	
 	private String cnpj;
 	
+	@Column( name = "saldo" )
+	private Double saldo;
+
 	@Enumerated( EnumType.STRING )
 	private TiposCorrentistas tipo;
 	
@@ -66,11 +69,15 @@ public class Correntistas extends AbstractEntity {
 	public TiposCorrentistas getTipo() {
 		return tipo;
 	}
-	
-	public void setTipo(TiposCorrentistas tipo) {
-		this.tipo = tipo;
+
+	public Double getSaldo() {
+		return saldo;
 	}
 
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
+	
 	@Override
 	public Integer getId() {
 		return id;

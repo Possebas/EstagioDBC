@@ -4,28 +4,24 @@ import br.com.dbccompany.bancodigital.Dto.CidadesDTO;
 import br.com.dbccompany.bancodigital.Entity.Cidades;
 import br.com.dbccompany.bancodigital.Entity.Estados;
 
-public class CidadesDAO extends AbstractDAO<Cidades>{
 
+public class CidadesDAO extends AbstractDAO<Cidades> {
 	private static final EstadosDAO ESTADOS_DAO = new EstadosDAO();
 	
-	public Cidades parseFrom(CidadesDTO dto) {
-
-		Cidades cidades = null;
-
-		if (dto.getIdCidades() != null) {
-			cidades = buscar(dto.getIdCidades());
-		} else {
-			cidades = new Cidades();
+	public Cidades parseFrom( CidadesDTO dto) {
+		Cidades cidade= null;
+		if( dto.getId() != null ) {
+			cidade = buscar( dto.getId() );
 		}
-
-		Estados estados = ESTADOS_DAO.parseFrom(dto.getEstados());
-		
-		cidades.setEstado(estados);
-		cidades.setNome(dto.getNome());
-
-		return cidades;
+		else {
+			cidade = new Cidades();
+		}
+		cidade.setNome(dto.getNome());
+		Estados estado = ESTADOS_DAO.parseFrom(dto.getEstado());
+		cidade.setEstado(estado);
+		return cidade;
 	}
-
+	
 	@Override
 	protected Class<Cidades> getEntityClass() {
 		return Cidades.class;

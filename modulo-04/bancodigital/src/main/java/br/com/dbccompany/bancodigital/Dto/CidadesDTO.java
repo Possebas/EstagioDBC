@@ -24,6 +24,4 @@ public class CidadesDTO {
 	public void setEstados(EstadosDTO estados) {
 		this.estados = estados;
 	}
-
-		
 }

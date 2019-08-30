@@ -1,50 +1,27 @@
 package br.com.dbccompany.vemserSpring.Entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator( allocationSize = 1, name = "ITEM_SEQ", sequenceName = "ITEM_SEQ" )
-public class Item {
+
+public class Item  {
 
     @Id
-    @Column( name = "id_item" )
+    @SequenceGenerator( allocationSize = 1, name = "ITEM_SEQ", sequenceName = "ITEM_SEQ" )
     @GeneratedValue( generator = "ITEM_SEQ", strategy = GenerationType.SEQUENCE )
     private Integer id;
-
-    @Column( name = "quantidade" )
-    private Integer quantidade;
 
     @Column( name = "descricao" )
     private String descricao;
 
-    /*
+/*
     @ManyToOne
     @JoinColumn( name = "fk_id_inventario" )
     private Inventario inventario; 
     */
 
-    public Item(Integer quantidade, String descricao) {
-        this.quantidade = quantidade;
+    public Item(String descricao) {
         this.descricao = descricao;
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
     }
 
     public String getDescricao() {
@@ -53,5 +30,13 @@ public class Item {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

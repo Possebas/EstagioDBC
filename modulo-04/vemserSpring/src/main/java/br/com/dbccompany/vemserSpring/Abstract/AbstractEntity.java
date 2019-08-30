@@ -1,4 +1,4 @@
-package br.com.dbccompany.vemserSpring.Entity;
+package br.com.dbccompany.vemserSpring.Abstract;
 
 import java.io.Serializable;
 

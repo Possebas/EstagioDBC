@@ -2,13 +2,16 @@ package br.com.dbccompany.vemserSpring.Entity;
 
 import br.com.dbccompany.vemserSpring.Enum.Status;
 
-import java.io.Serializable;
+
+import br.com.dbccompany.vemserSpring.Entity.AbstractEntity;
+import br.com.dbccompany.vemserSpring.Enum.TipoPersonagem;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name="PERSONAGEM")
+@Table(name="Personagens")
 @SequenceGenerator( allocationSize = 1, name = "PERSONAGEM_SEQ", sequenceName = "PERSONAGEM_SEQ" )
-public abstract class Personagem extends <AbstractPersonagem>{
+public abstract class Personagem extends AbstractEntity{
 
     private static final long serialVersionUID = 1L;
 
@@ -20,21 +23,30 @@ public abstract class Personagem extends <AbstractPersonagem>{
     @Column(name = "nome", length = 100, nullable = false)
     protected String nome;
 
-    @Column(name = "vida", length = 100, nullable = true)
+    @Column(name = "tipo_personagem")
+    protected TipoPersonagem tipoPersonagem;
+
+    @Column(name = "vida", length = 100)
     protected Double vida;
 
-    @Column(name = "status", length = 100, nullable = true)
+    @Column(name = "status", length = 100)
     protected Status status;
 
-    @Column(name = "experiencia", length = 100, nullable = true)
+    @Column(name = "experiencia", length = 100)
     protected Integer experiencia;
 
-    @OneToOne
-    @JoinColumn(name = "id_inventario", fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+    @JoinColumn(name = "id_inventario")
     protected Inventario inventario;
 
-    @Column(name = "dano", length = 100, nullable = true)
+    @Column(name = "dano", length = 100)
     protected Double dano;
+
+    protected int qtdExperienciaPorAtaque;
+
+    protected double qtdDano;
+
+    protected int qtdAtaques;
 
     {
         status = Status.RECEM_CRIADO;
@@ -45,8 +57,14 @@ public abstract class Personagem extends <AbstractPersonagem>{
         qtdAtaques  = 0;
     }
 
-    protected Personagem(String nome) {
+    public Personagem(String nome) {
         this.nome = nome;
+        this.tipoPersonagem = TipoPersonagem.NAO_DEFINIDO;
+    }
+
+    public Personagem(String nome, TipoPersonagem tipo) {
+        this.nome = nome;
+        this.tipoPersonagem = tipo;
     }
 
     @Override
@@ -71,7 +89,7 @@ public abstract class Personagem extends <AbstractPersonagem>{
     }
 
     protected Inventario getInventario() {
-        return this.mochila;
+        return this.inventario;
     }
 
     @Override
@@ -88,11 +106,11 @@ public abstract class Personagem extends <AbstractPersonagem>{
     }
 
     protected void ganharItem(Item item) {
-        this.mochila.adicionar(item);
+        this.inventario.adicionarItem(item);
     }
 
     protected void perderItem(Item item) {
-        this.mochila.remover(item);
+        this.inventario.removerItem(item);
     }
 
     protected Double calcularDano() {

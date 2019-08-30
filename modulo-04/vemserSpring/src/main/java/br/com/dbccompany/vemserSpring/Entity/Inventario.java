@@ -1,11 +1,13 @@
 package br.com.dbccompany.vemserSpring.Entity;
 
-import java.io.Serializable;
+import br.com.dbccompany.vemserSpring.Enum.TipoOrdenacao;
+
+import java.util.ArrayList;
 import javax.persistence.*;
 
 @Entity
 @SequenceGenerator( allocationSize = 1, name = "INVENTARIO_SEQ", sequenceName = "INVENTARIO_SEQ" )
-public class Inventario extends AbstractEntity{
+public class Inventario {
 
     @Id
     @Column( name = "id_inventario" )
@@ -16,8 +18,8 @@ public class Inventario extends AbstractEntity{
     private Integer tamanho;
 
     @JoinColumn( name="itens" )
-    @OneToMany( mappedBy = "itens", cascade = CascadeType.ALL )
-	private List<Item> itens = new ArrayList<>();
+    @ManyToMany( mappedBy = "itens", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+	private ArrayList<Item> itens = new ArrayList<>();
 
     public Inventario(Integer quantidade){
         itens = new ArrayList<>(quantidade);
@@ -29,6 +31,14 @@ public class Inventario extends AbstractEntity{
    
     public int getTamanho(){
         return this.itens.size();
+    }
+
+    public void adicionarItem(Item e){
+        this.itens.add(e);
+    }
+
+    public void removerItem(Item e){
+        this.itens.remove(e);
     }
     
     public Item buscaItemPorDescricao(String descricao){
@@ -88,4 +98,3 @@ public class Inventario extends AbstractEntity{
 
 
 
-@OneToMany(mappedBy = "id_item", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

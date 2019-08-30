@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @SequenceGenerator( allocationSize = 1, name = "ITEM_SEQ", sequenceName = "ITEM_SEQ" )
-public class Item extends AbstractEntity{
+public class Item {
 
     @Id
     @Column( name = "id_item" )

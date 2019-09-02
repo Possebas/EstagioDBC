@@ -1,29 +1,25 @@
 package br.com.dbccompany.vemserSpring.Service;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import br.com.dbccompany.vemserSpring.Entity.Item;
+import br.com.dbccompany.vemserSpring.Repository.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
-import org.hibernate.Transaction;
+import java.util.List;
 
-public class ItemService {
+@Service
+public class ElfoService {
 
-	//private static final BairrosDAO BAIRROS_DAO = new BairrosDAO();
-	/* private static final Logger LOG = Logger.getLogger(BairrosService.class.getName());
+    @Autowired
+    private ItemRepository itemRepository;
 
-	public void salvar(BairrosDTO bairro) {
-		boolean started = HibernateUtil.beginTransaction();
-		Transaction transaction = HibernateUtil.getSession().getTransaction();
+    @Transactional( rollbackFor = Exception.class )
+    public Item salvar( Item item ) {
+        return itemRepository.save( item );
+    }
 
-		Bairros bairros  = BAIRROS_DAO.parseFrom(bairro);
-		try {
-			BAIRROS_DAO.criar(bairros);
-			if(started) {
-				transaction.commit();
-			}
-			bairro.setIdBairros(bairros.getId());
-		} catch (Exception e) {
-			transaction.rollback();
-			LOG.log(Level.SEVERE, e.getMessage(), e);
-		}
-	} */
+    public List<Item> todosPersonagens() {
+        return (List<Item>) itemRepository.findAll();
+    }
+    
 }

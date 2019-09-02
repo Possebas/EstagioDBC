@@ -9,7 +9,6 @@ import java.util.List;
 @Repository
 public interface InventarioRepository extends CrudRepository<Inventario, Integer> {
 
-    Inventario findByDano( Double dano );
     List<Inventario> findAll();
 
 }

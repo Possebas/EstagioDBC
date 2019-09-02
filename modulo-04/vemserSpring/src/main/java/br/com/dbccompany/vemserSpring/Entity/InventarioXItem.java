@@ -13,7 +13,7 @@ public class InventarioXItem {
     private Integer quantidade;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn( name = "fk_inventario_id")
+    @JoinColumn( name = "fk_id_inventario")
     private Inventario inventario;
 
     @ManyToOne(cascade = CascadeType.ALL)

@@ -16,37 +16,37 @@ public abstract class Personagem extends AbstractEntity {
     @SequenceGenerator( allocationSize = 1, name = "PERSONAGEM_SEQ", sequenceName = "PERSONAGEM_SEQ" )
     @Column(name = "id_personagem")
     @GeneratedValue( generator = "PERSONAGEM_SEQ", strategy = GenerationType.SEQUENCE )
-    private Integer id;
+    public Integer id;
 
     @Column(name = "nome", length = 100, nullable = false)
-    protected String nome;
+    public String nome;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_personagem")
-    protected RacaType tipoPersonagem;
+    public RacaType tipoPersonagem;
 
     @Column(name = "vida", length = 100)
-    protected Double vida;
+    public Double vida;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 100)
-    protected Status status;
+    public Status status;
 
     @Column(name = "experiencia", length = 100)
-    protected Double experiencia;
+    public Double experiencia;
 
 /*    @OneToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
     @JoinColumn(name = "id_inventario")
-    protected Inventario inventario;*/
+    public Inventario inventario;*/
 
     @Column(name = "dano", length = 100)
-    protected Double dano;
+    public Double dano;
 
-    protected int qtdExperienciaPorAtaque;
+    public int qtdExperienciaPorAtaque;
 
-    protected double qtdDano;
+    public double qtdDano;
 
-    protected int qtdAtaques;
+    public int qtdAtaques;
 
     {
         status = Status.RECEM_CRIADO;
@@ -56,29 +56,37 @@ public abstract class Personagem extends AbstractEntity {
         experiencia = 0.0;
         qtdAtaques  = 0;
     }
-    
+
+    public Personagem(String nome) {
+        this.nome = nome;
+    }
+
     @Override
 	public Integer getId() {
 		return id;
 	}
 
-    protected String getNome() {
+    public String getNome() {
         return this.nome;
     }
 
-    protected Double getVida() {
+    public Double getVida() {
         return this.vida;
     }
 
-    protected Status getStatus() {
+    public Status getStatus() {
         return this.status;
     }
 
-    protected Double getExperiencia() {
+    public RacaType getRaca() {
+        return this.tipoPersonagem;
+    }
+
+    public Double getExperiencia() {
         return this.experiencia;
     }
 
- /*   protected Inventario getInventario() {
+ /*   public Inventario getInventario() {
         return this.inventario;
     }*/
 
@@ -95,24 +103,24 @@ public abstract class Personagem extends AbstractEntity {
         this.id = id;
     }
 
-    protected void aumentarXp() {
+    public void aumentarXp() {
         this.experiencia++;
     }
     
-    protected boolean podeSofrerDano() {
+    public boolean podeSofrerDano() {
         return this.vida > 0;
     }
 
-/*    protected void ganharItem(Item item) {
+/*    public void ganharItem(Item item) {
         this.inventario.adicionarItem(item);
     }
 
-    protected void perderItem(Item item) {
+    public void perderItem(Item item) {
         this.inventario.removerItem(item);
     }*/
 
 
-    protected Double calcularDano() {
+    public Double calcularDano() {
         return this.dano;
     }
 

@@ -3,12 +3,13 @@ package br.com.dbccompany.vemserSpring.Service;
 import br.com.dbccompany.vemserSpring.Entity.Personagem;
 import br.com.dbccompany.vemserSpring.Repository.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class ElfoService {
+public class PersonagemService {
 
     @Autowired
     private PersonagemRepository personagemRepository;

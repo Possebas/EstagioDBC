@@ -14,6 +14,10 @@ public class Inventario {
     @Column( name = "tamanho",  length = 100, nullable = false)
     private Integer tamanho;
 
+/*    @JoinColumn( name="itens" )
+    @ManyToMany( mappedBy = "itens", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    private ArrayList<Item> itens = new ArrayList<>();*/
+
     public Integer getId() {
         return id;
     }
@@ -30,8 +34,8 @@ public class Inventario {
         this.tamanho = tamanho;
     }
 
-    /*@JoinColumn( name="itens" )
-    @ManyToMany( mappedBy = "itens", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
-	private ArrayList<Item> itens = new ArrayList<>();*/
+   /* public ArrayList<Item> getItens(){
+        return this.itens;
+    }*/
 
 }

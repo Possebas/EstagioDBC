@@ -22,5 +22,15 @@ public class DwarfService {
     public List<Dwarf> todosDwarfs() {
         return (List<Dwarf>) dwarfRepository.findAll();
     }
+
+    public void removerById(Integer id) {
+        dwarfRepository.deleteById(id);
+    }
+
+    @Transactional( rollbackFor = Exception.class )
+    public Dwarf editar(Integer id, Dwarf dwarf ) {
+        dwarf.setId( id );
+        return dwarfRepository.save( dwarf );
+    }
     
 }

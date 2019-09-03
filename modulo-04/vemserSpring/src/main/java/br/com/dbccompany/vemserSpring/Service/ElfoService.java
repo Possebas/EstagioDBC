@@ -20,6 +20,20 @@ public class ElfoService {
     }
 
     public List<Elfo> todosElfos() {
-        return (List<Elfo>) elfoRepository.findAll();
+        return elfoRepository.findAll();
+    }
+
+    public void removerById(Integer id) {
+        elfoRepository.deleteById(id);
+    }
+
+    public void removerElfo(Elfo elfo) {
+        elfoRepository.delete(elfo);
+    }
+
+    @Transactional( rollbackFor = Exception.class )
+    public Elfo editar( Integer id, Elfo elfo ) {
+        elfo.setId( id );
+        return elfoRepository.save( elfo );
     }
 }

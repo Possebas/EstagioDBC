@@ -7,8 +7,7 @@ import javax.persistence.Entity;
 @Entity
 public class Dwarf extends Personagem {
 
-	public Dwarf(String nome) {
-		super(nome);
+	public Dwarf() {
 		super.setTipoPersonagem(RacaType.DWARF);
 	}
 }

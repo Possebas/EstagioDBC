@@ -18,12 +18,12 @@ public abstract class Personagem extends AbstractEntity {
     @GeneratedValue( generator = "PERSONAGEM_SEQ", strategy = GenerationType.SEQUENCE )
     public Integer id;
 
-    @Column(name = "nome", length = 100, nullable = false)
+    @Column(name = "nome", length = 100)
     public String nome;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_personagem")
-    public RacaType tipoPersonagem;
+    public RacaType tipoPersonagem = RacaType.NAO_DEFINIDO;
 
     @Column(name = "vida", length = 100)
     public Double vida;
@@ -44,21 +44,14 @@ public abstract class Personagem extends AbstractEntity {
 
     public int qtdExperienciaPorAtaque;
 
-    public double qtdDano;
-
     public int qtdAtaques;
 
     {
         status = Status.RECEM_CRIADO;
         qtdExperienciaPorAtaque = 0;
         //inventario = new Inventario(0);
-        qtdDano = 0.0;
         experiencia = 0.0;
         qtdAtaques  = 0;
-    }
-
-    public Personagem(String nome) {
-        this.nome = nome;
     }
 
     @Override
@@ -76,10 +69,6 @@ public abstract class Personagem extends AbstractEntity {
 
     public Status getStatus() {
         return this.status;
-    }
-
-    public RacaType getRaca() {
-        return this.tipoPersonagem;
     }
 
     public Double getExperiencia() {

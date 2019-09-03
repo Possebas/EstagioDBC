@@ -22,5 +22,11 @@ public class PersonagemService {
     public List<Personagem> todosPersonagens() {
         return (List<Personagem>) personagemRepository.findAll();
     }
+
+    @Transactional( rollbackFor = Exception.class )
+    public Personagem editar(Integer id, Personagem personagem ) {
+        personagem.setId( id );
+        return personagemRepository.save( personagem );
+    }
     
 }

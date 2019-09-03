@@ -20,10 +20,6 @@ public class Item  {
     private Inventario inventario; 
     */
 
-    public Item(String descricao) {
-        this.descricao = descricao;
-    }
-
     public String getDescricao() {
         return descricao;
     }

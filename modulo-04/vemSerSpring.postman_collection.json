@@ -11,6 +11,16 @@
 				{
 					"name": "Todos elfos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "BearereyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU2ODQ4NTYxOH0.5xywmdRHIdXMwMLKlPyo4bZNlx1-HvVUmCaXheOg7I49q6kQXpvRgoy0KZkV_gKqiQUJr7CcfBnDdYptu5S7tA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -32,6 +42,16 @@
 				{
 					"name": "Adicionar elfo",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "BearereyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU2ODQ4MTk5Nn0.vHz7zn51VQwX9uLuHUtSgf7rBdjM0O4S3oeWhuiW-4Z9p4GUVGtFualw_nnUxsGm5tZH-9TwEZri8I9lqROsFw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -43,7 +63,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n    {\r\n    \t\"nome\": \"Tost\",\r\n    \t\"vida\": 100.0,\r\n    \t\"experiencia\": 1.0,\r\n    \t\"dano\": 10.0\t\r\n    }"
+							"raw": "\r\n    {\r\n    \t\"nome\": \"Tost\",\r\n    \t\"vida\": 100.0,\r\n    \t\"experiencia\": 1.0,\r\n    \t\"dano\": 10.0,\r\n    \t\"tipoPersonagem\": \"NAO_DEFINIDO\"\r\n    }"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/elfo/novo",
@@ -382,7 +402,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"tamanho\": 55\n}"
+							"raw": "{\n\t\"tamanho\": 5\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/inventario/novo",
@@ -450,6 +470,44 @@
 								"inventario",
 								"remover",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
 							]
 						}
 					},

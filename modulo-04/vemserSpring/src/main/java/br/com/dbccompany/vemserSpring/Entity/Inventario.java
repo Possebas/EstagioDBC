@@ -1,26 +1,29 @@
 package br.com.dbccompany.vemserSpring.Entity;
 
-import java.util.ArrayList;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@SequenceGenerator( allocationSize = 1, name = "INVENTARIOS_SEQ", sequenceName = "INVENTARIOS_SEQ" )
 public class Inventario {
 
     @Id
-    @GeneratedValue( generator = "INVENTARIO_SEQ", strategy = GenerationType.SEQUENCE )
-    @SequenceGenerator( allocationSize = 1, name = "INVENTARIO_SEQ", sequenceName = "INVENTARIO_SEQ" )
+    @Column( name = "id_inventario" )
+    @GeneratedValue( generator = "INVENTARIOS_SEQ", strategy = GenerationType.SEQUENCE )
     private Integer id;
-
-    @Column( name = "tamanho",  length = 100, nullable = false)
     private Integer tamanho;
 
-    @Column(name = "inventarioItem")
-    @OneToMany( mappedBy = "inventario", cascade = CascadeType.ALL )
-    private List<InventarioItem> inventarioItem = new ArrayList<>();
+    @OneToOne
+    @JoinColumn( name = "fk_id_personagem" )
+    private Personagem idPersonagem;
 
-    @Column(name = "id_personagem")
-    @OneToOne(mappedBy = "inventario")
-    private Personagem personagem;
+    @OneToMany ( mappedBy = "idInventario", cascade = CascadeType.ALL )
+    private List<InventarioXItem> listaInventariosItens = new ArrayList<>();
+
+    {
+        tamanho = 0;
+    }
 
     public Integer getId() {
         return id;
@@ -38,8 +41,19 @@ public class Inventario {
         this.tamanho = tamanho;
     }
 
-   /* public ArrayList<Item> getItens(){
-        return this.itens;
-    }*/
+    public List<InventarioXItem> getListaInventariosItens() {
+        return listaInventariosItens;
+    }
 
+    public void setListaInventariosItens(List<InventarioXItem> listaInventariosItens) {
+        this.listaInventariosItens = listaInventariosItens;
+    }
+
+    public Personagem getPersonagem() {
+        return idPersonagem;
+    }
+
+    public void setPersonagem(Personagem idPersonagem) {
+        this.idPersonagem = idPersonagem;
+    }
 }

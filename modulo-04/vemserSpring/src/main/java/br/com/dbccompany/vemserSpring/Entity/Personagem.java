@@ -49,7 +49,7 @@ public abstract class Personagem extends AbstractEntity {
     {
         status = Status.RECEM_CRIADO;
         qtdExperienciaPorAtaque = 0;
-        //inventario = new Inventario(0);
+        inventario = new Inventario();
         experiencia = 0.0;
         qtdAtaques  = 0;
     }

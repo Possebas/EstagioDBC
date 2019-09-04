@@ -1,24 +1,26 @@
 package br.com.dbccompany.vemserSpring.Entity;
 
-
 import javax.persistence.*;
 
 @Entity
+@Table( name = "inventarios_x_itens")
+@SequenceGenerator( allocationSize = 1, name = "INVENTARIOS_X_ITENS_SEQ", sequenceName = "INVENTARIOS_X_ITENS_SEQ" )
 public class InventarioXItem {
 
     @Id
-    @SequenceGenerator(allocationSize = 1, name = "INVENTARIO_ITEM_SEQ", sequenceName = "INVENTARIO_ITEM_SEQ")
-    @GeneratedValue( generator = "INVENTARIO_ITEM_SEQ", strategy = GenerationType.SEQUENCE)
+    @Column( name = "id_inventario_x_item")
+    @GeneratedValue( generator = "INVENTARIOS_X_ITENS_SEQ", strategy = GenerationType.SEQUENCE )
     private Integer id;
     private Integer quantidade;
+    private boolean equipado;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn( name = "fk_id_inventario")
-    private Inventario inventario;
+    @ManyToOne
+    @JoinColumn( name = "fk_id_item" )
+    private Item idItem;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn( name = "fk_item_id")
-    private Item item;
+    @ManyToOne
+    @JoinColumn( name = "fk_id_inventario" )
+    private Inventario idInventario;
 
     public Integer getId() {
         return id;
@@ -36,19 +38,27 @@ public class InventarioXItem {
         this.quantidade = quantidade;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public boolean isEquipado() {
+        return equipado;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
+    public void setEquipado(boolean equipado) {
+        this.equipado = equipado;
     }
 
-    public Item getItem() {
-        return item;
+    public Item getIdItem() {
+        return idItem;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setIdItem(Item idItem) {
+        this.idItem = idItem;
+    }
+
+    public Inventario getIdInventario() {
+        return idInventario;
+    }
+
+    public void setIdInventario(Inventario idInventario) {
+        this.idInventario = idInventario;
     }
 }

@@ -35,9 +35,9 @@ public abstract class Personagem extends AbstractEntity {
     @Column(name = "experiencia", length = 100)
     public Double experiencia;
 
-/*    @OneToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
     @JoinColumn(name = "id_inventario")
-    public Inventario inventario;*/
+    public Inventario inventario;
 
     @Column(name = "dano", length = 100)
     public Double dano;

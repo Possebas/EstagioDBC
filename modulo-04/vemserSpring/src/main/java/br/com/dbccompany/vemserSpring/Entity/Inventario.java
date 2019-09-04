@@ -14,9 +14,13 @@ public class Inventario {
     @Column( name = "tamanho",  length = 100, nullable = false)
     private Integer tamanho;
 
-/*    @JoinColumn( name="itens" )
-    @ManyToMany( mappedBy = "itens", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
-    private ArrayList<Item> itens = new ArrayList<>();*/
+    @Column(name = "inventarioItem")
+    @OneToMany( mappedBy = "inventario", cascade = CascadeType.ALL )
+    private List<InventarioItem> inventarioItem = new ArrayList<>();
+
+    @Column(name = "id_personagem")
+    @OneToOne(mappedBy = "inventario")
+    private Personagem personagem;
 
     public Integer getId() {
         return id;

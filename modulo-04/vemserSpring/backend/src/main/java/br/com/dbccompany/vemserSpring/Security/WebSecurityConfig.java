@@ -23,6 +23,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated().and()
 
+                //cors
+                .cors().and()
+
                 //filtra requisicao de login
                 .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
@@ -38,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.inMemoryAuthentication()
                 .withUser("admin")
-                .password("{noop}password")
+                .password("{noop}admin")
                 .roles("ADMIN");
     }
 }

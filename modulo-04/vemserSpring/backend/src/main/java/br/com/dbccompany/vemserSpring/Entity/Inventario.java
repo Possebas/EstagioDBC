@@ -49,7 +49,7 @@ public class Inventario {
         this.listaInventariosItens = listaInventariosItens;
     }
 
-    public Personagem getPersonagem() {
+    public Personagem getIdPersonagem() {
         return idPersonagem;
     }
 

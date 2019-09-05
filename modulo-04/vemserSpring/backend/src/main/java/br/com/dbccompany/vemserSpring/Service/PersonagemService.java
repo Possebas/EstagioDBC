@@ -23,6 +23,10 @@ public class PersonagemService {
         return (List<Personagem>) personagemRepository.findAll();
     }
 
+    public void removerById(Integer id) {
+        personagemRepository.deleteById(id);
+    }
+
     @Transactional( rollbackFor = Exception.class )
     public Personagem editar(Integer id, Personagem personagem ) {
         personagem.setId( id );

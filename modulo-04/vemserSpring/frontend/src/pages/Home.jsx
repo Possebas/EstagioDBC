@@ -4,30 +4,49 @@ import RoutesBar from "../components/RoutesBar";
 import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import api from "../services/api";
 import { isAuthenticated } from '../services/auth';
-// {listaRender ? '': ''}
+
 export default class Home extends Component {
 
-    constructor(props) {
+    constructor(props){
         super(props)
         this.state = {
-            listaRender: []
+            ListaRender : []
         }
     }
 
     componentDidMount() {
         if (isAuthenticated) {
             try {
-                api.get('/api/personagens/').then(resp => {
-                    console.log(resp)
+                api.get('/api/elfo/').then(resp => {
                     const lista = resp.data;
                     this.setState({
-                        listaRender: lista,
-                    })
-                }
+                        listaRender: lista
+                    })},
                 )
             } catch (err) {
                 console.log("Erro na requisição = > " + err)
             }
+        } else{
+            alert ("Usuário deslogado")
+        }
+    }
+
+    getTipos = async e => {
+        console.log(e)
+        if (isAuthenticated){
+            try{
+                api.get( `/api/${e}/`).then( resp => {
+                    const lista = resp.data;
+                    this.setState({
+                        listaRender: lista,
+                    })}
+                )
+                console.log(this.state.listaRender)
+            } catch (err){
+                console.log("Tentativar de pegar nao deu");
+            }
+        } else{
+            alert ("Usuário deslogado")
         }
     }
 
@@ -46,11 +65,11 @@ export default class Home extends Component {
         }) } */
 
     render() {
-        //const { listaRender } = this.state
+        const { ListaRender } = this.state
         return (
             <div className="text-center">
                 <div id="links">
-                    <RoutesBar />
+                    <RoutesBar getTipos={ this.getTipos.bind( this ) } />
                 </div>
                 <MDBContainer className="mt-2">
                     <MDBRow>
@@ -62,6 +81,7 @@ export default class Home extends Component {
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
-            </div>)
+            </div>
+        )
     }
 }

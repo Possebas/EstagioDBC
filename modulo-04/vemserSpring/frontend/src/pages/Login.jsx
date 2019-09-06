@@ -31,7 +31,7 @@ export default class Login extends Component {
             login(response.headers.authorization);
             this.props.history.push("/");
         }catch (err) {
-            console.log("Erro no login: "+err);
+            alert("Username or password wrong!!")
         }
     }
 

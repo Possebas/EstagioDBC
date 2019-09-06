@@ -1,8 +1,5 @@
 package br.com.dbccompany.vemserSpring;
 
-import br.com.dbccompany.vemserSpring.Controller.ElfoController;
-import br.com.dbccompany.vemserSpring.Entity.Elfo;
-import br.com.dbccompany.vemserSpring.Service.ElfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

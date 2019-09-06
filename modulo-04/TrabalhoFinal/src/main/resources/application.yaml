@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:oracle:thin:@localhost:49161:xe
+    username: system
+    password: 123456
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      dialect: org.hibernate.dialect.Oracle10gDialect
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+---
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:oracle:thin:@localhost:49161:xe
+    username: system
+    password: 123456
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      dialect: org.hibernate.dialect.Oracle10gDialect
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true

@@ -6,7 +6,7 @@ import { logout } from "../services/auth";
 import '../css/routes.css'
 
 
-const RoutesBar = () => {
+const RoutesBar = (props) => {
 
     return (
         <MDBRow id="linha">
@@ -17,7 +17,7 @@ const RoutesBar = () => {
                     <MDBBtn color="danger" className="mr-5" ><Link id="linke" onClick={logout.bind(this)} to="/login"> | Deslogar |</Link></MDBBtn>
                 </MDBBtnGroup>
                 <MDBBtnGroup className="ml-5">
-                    <RadioRace></RadioRace>
+                    <RadioRace getTipos={props.getTipos}></RadioRace>
                 </MDBBtnGroup>
             </MDBCol>
         </MDBRow>

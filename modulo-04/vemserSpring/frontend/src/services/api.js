@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "./auth";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080/"
+  baseURL: "http://localhost:8080"
 });
 
 api.interceptors.request.use(async config => {
@@ -12,5 +12,13 @@ api.interceptors.request.use(async config => {
   }
   return config;
 });
+
+/* function getTodos (tipo) {
+  axios.get(api.baseURL + tipo)
+  .then(function(response){
+    console.log(response.data); // ex.: { user: 'Your User'}
+    console.log(response.status); // ex.: 200
+  });  
+} */
 
 export default api;

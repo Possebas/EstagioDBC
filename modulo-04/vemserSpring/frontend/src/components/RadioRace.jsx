@@ -3,15 +3,16 @@ import { MDBFormInline, MDBInput } from "mdbreact";
 import "../css/radiorace.css"
 
 class RadioRace extends Component {
+
   state = {
     radio: "personagem"
   }
 
-  onClick = nr => () => {
-    console.log(nr)
+  onClick = nr => ( ) => {
     this.setState({
       radio: nr
     });
+    this.props.getTipos(nr)
   }
 
   render() {

@@ -1,6 +1,6 @@
 /* All librarys */
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 /* Components */
 import Login from "./pages/Login";
@@ -13,12 +13,13 @@ import "./App.css";
 export default class App extends Component {
   render() {
     return (
-      <Router>
-        <React.Fragment>
-          <PrivateRoute path="/" exact component={Home} /> 
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
-        </React.Fragment>
-      </Router>
+          <Route path="*" component={() => <h1>Page not found</h1>} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

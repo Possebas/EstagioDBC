@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { isAuthenticated } from '../services/auth';
 
-export const PrivateRoute = ( { component: Component, ...rest } ) => (
-    <Route { ...rest } render={ props => (
-        localStorage.getItem('@Bearer') ?
-        <Component { ...props } /> :
-        <Redirect to="/login" />
-    ) } />
+export const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={props => (
+        isAuthenticated ?
+            <Component {...props} /> :
+            <Redirect to="/login" />
+    )} />
 )

@@ -5,7 +5,6 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Clientes")
 public class Cliente extends AbstractEntity{
     
     @Id
@@ -31,7 +30,7 @@ public class Cliente extends AbstractEntity{
     @OneToMany(mappedBy = "cliente")
     private List<Contratacao> contratacoes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "id.cliente")
     private List<SaldoCliente> saldosClientes = new ArrayList<>();
 
     @Override

@@ -7,7 +7,6 @@ import javax.persistence.*;
 import com.br.dbccompany.trabalhofinal.Utils;
 
 @Entity
-@Table(name = "Pacotes")
 public class Pacote extends AbstractEntity {
 
     @Id

@@ -7,7 +7,6 @@ import com.br.dbccompany.trabalhofinal.Entity.Contato;
 import java.util.*;
 
 @Entity
-@Table(name = "Tipo_Contato")
 public class TipoContato extends AbstractEntity{
 
     @Id

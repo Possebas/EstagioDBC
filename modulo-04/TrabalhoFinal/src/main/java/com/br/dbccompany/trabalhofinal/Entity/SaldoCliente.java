@@ -7,7 +7,6 @@ import javax.persistence.*;
 import com.br.dbccompany.trabalhofinal.Enum.*;
 
 @Entity
-@Table(name = "Saldo_cliente")
 public class SaldoCliente {
 
     @EmbeddedId
@@ -22,7 +21,7 @@ public class SaldoCliente {
     @Column(nullable = false)
     private Date vencimento;
 
-    @OneToMany(mappedBy = "SaldoCliente")
+    @OneToMany(mappedBy = "saldoCliente")
     private List<Acesso> acessos = new ArrayList<>();
 
     public SaldoClienteID getId() {

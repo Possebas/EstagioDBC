@@ -3,7 +3,6 @@ package com.br.dbccompany.trabalhofinal.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Clientes_Pacotes")
 public class ClientePacote extends AbstractEntity {
 
     @Id

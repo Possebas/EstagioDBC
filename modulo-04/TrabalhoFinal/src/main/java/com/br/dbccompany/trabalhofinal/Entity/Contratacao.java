@@ -6,7 +6,6 @@ import com.br.dbccompany.trabalhofinal.Utils;
 import com.br.dbccompany.trabalhofinal.Enum.*;
 
 @Entity
-@Table(name = "Contratacoes")
 public class Contratacao extends AbstractEntity {
 
     @Id

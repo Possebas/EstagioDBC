@@ -6,7 +6,6 @@ import javax.persistence.*;
 import com.br.dbccompany.trabalhofinal.Enum.*;
 
 @Entity
-@Table(name = "Pagamentos")
 public class Pagamento extends AbstractEntity{
 
     @Id

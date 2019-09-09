@@ -7,7 +7,6 @@ import javax.persistence.*;
 import com.br.dbccompany.trabalhofinal.Utils;
 
 @Entity
-@Table(name = "Espacos")
 public class Espaco extends AbstractEntity{
 
     @Id
@@ -15,10 +14,10 @@ public class Espaco extends AbstractEntity{
     @GeneratedValue(generator = "ESPACO_SEQ", strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(unique = true, nullable = false, name = "Nome")
+    @Column(unique = true, nullable = false, name = "nome")
     private String nome;
 
-    @Column(name = "Qtd_pessoas", nullable = false)
+    @Column(name = "qtd_pessoas", nullable = false)
     private int qtdPessoas = 0;
 
     @Column(nullable = false, name = "Valor")

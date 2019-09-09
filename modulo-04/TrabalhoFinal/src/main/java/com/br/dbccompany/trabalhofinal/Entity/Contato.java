@@ -14,6 +14,7 @@ public class Contato extends AbstractEntity{
     @JoinColumn(name = "id_tipo_contato")
     private TipoContato tipoContato;
 
+    @Column(name = "Valor")
     private String valor;
 
     @ManyToOne(cascade = CascadeType.MERGE)

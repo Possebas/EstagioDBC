@@ -22,6 +22,7 @@ public class Contratacao extends AbstractEntity {
     private Cliente cliente;
 
     @Column(name = "Tipo_contratacao")
+    @Enumerated(EnumType.STRING)
     private TipoContratacao tipoContratacao;
 
     @Column(nullable = false)

@@ -21,12 +21,16 @@ public class Acesso extends AbstractEntity {
     @Column(name = "Is_Entrada")
     private boolean isEntrada = false;
 
+    private boolean isExcecao = false;
+
     private Date data = new Date();
 
+    @Override
     public Integer getId() {
         return id;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -53,5 +57,13 @@ public class Acesso extends AbstractEntity {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public boolean isExcecao() {
+        return isExcecao;
+    }
+
+    public void setExcecao(boolean excecao) {
+        isExcecao = excecao;
     }
 }

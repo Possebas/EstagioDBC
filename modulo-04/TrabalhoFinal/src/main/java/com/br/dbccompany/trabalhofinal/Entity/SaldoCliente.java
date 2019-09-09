@@ -21,6 +21,9 @@ public class SaldoCliente {
     @Column(nullable = false)
     private Date vencimento;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Espaco espaco;
+
     @OneToMany(mappedBy = "saldoCliente")
     private List<Acesso> acessos = new ArrayList<>();
 
@@ -66,5 +69,13 @@ public class SaldoCliente {
 
     public void adicionarAcessos(Acesso... acessos) {
         this.acessos.addAll(Arrays.asList(acessos));
+    }
+
+    public Espaco getEspaco() {
+        return espaco;
+    }
+
+    public void setEspaco(Espaco espaco) {
+        this.espaco = espaco;
     }
 }

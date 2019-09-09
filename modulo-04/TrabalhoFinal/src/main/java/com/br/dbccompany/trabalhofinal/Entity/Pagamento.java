@@ -22,6 +22,7 @@ public class Pagamento extends AbstractEntity{
     private Contratacao contratacao;
 
     @Column(name = "tipo_pagamento")
+    @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
 
     @Override

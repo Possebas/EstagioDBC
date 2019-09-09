@@ -17,7 +17,7 @@ public class TipoContato extends AbstractEntity{
     @Column(name = "Nome")
     private String nome;
 
-    @OneToMany(mappedBy = "TipoContato")
+    @OneToMany(mappedBy = "tipoContato")
     private List<Contato> contatos = new ArrayList<>();
     
     @Override

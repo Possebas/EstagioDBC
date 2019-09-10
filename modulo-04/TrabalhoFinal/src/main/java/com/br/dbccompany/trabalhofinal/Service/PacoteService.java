@@ -12,7 +12,7 @@ public class PacoteService extends AbstractService<PacoteRepository, Pacote> {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Pacote salvar(Pacote pacote) throws Exception{
-        pacote.setValor(Utils.parseToDouble(pacote.getValorReais());
+        pacote.setValor(Utils.parseToDouble(pacote.getValorReais()));
         return super.salvar(pacote);
     }
 

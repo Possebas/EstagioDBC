@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AcessoService extends AbstractService<AcessoRepository, Acesso> {
-    
+
     @Transactional
     public String acessar(Acesso acesso) throws Exception {
         repository.save(acesso);

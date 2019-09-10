@@ -14,26 +14,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        /* configuracao HTTP */
-        http.headers().frameOptions().sameOrigin().and()
-                .csrf().disable().authorizeRequests()
-                .antMatchers("/home").permitAll()
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+                http.csrf()
+                .disable()
+                .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .anyRequest().authenticated().and()
-
-                //cors
-                .cors().and()
-
-                //filtra requisicao de login
-                .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
-                        UsernamePasswordAuthenticationFilter.class)
-
-                //filtrar outras requisicoes e verifica JWT no Header
-                .addFilterBefore(new JWTAuthenticationFilter(),
-                        UsernamePasswordAuthenticationFilter.class);
-    }
+                .antMatchers(HttpMethod.POST, "/usuario/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilterAfter(new JWTLoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+            }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

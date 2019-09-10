@@ -1,4 +1,4 @@
-package br.com.dbccompany.Security;
+package com.br.dbccompany.trabalhofinal.Security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

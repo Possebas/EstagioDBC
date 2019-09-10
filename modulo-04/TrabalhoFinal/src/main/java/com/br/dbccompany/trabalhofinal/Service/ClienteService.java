@@ -10,12 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ClienteService extends AbstractService<ClienteRepository, Cliente> {
 
-    @Autowired
-    TipoContatoService tipoContatoService;
-
-    @Autowired
-    ContatoService contatoService;
-
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Cliente salvar(Cliente cliente) throws Exception {

@@ -1,5 +1,8 @@
 package com.br.dbccompany.trabalhofinal;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -47,6 +50,22 @@ public class Utils {
 
     public static boolean cpfValid(String cpf){
         return cpf.matches("(\\d){11}");
+    }
+
+    public static String md5 (String senha){
+        if(senha == null) return null;
+        String md5 = null;
+        try{
+            MessageDigest digest = MessageDigest.getInstance("MD5");
+
+            digest.update(senha.getBytes(), 0, senha.length());
+
+            md5 = new BigInteger(1, digest.digest()).toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("Erro ao criar criptografia");
+            return  null;
+        }
+        return md5;
     }
     
 }

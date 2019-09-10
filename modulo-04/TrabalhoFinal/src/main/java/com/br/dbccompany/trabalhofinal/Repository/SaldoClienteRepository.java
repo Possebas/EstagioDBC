@@ -8,5 +8,7 @@ import com.br.dbccompany.trabalhofinal.Entity.SaldoCliente;
 import com.br.dbccompany.trabalhofinal.Entity.SaldoClienteID;
 
 public interface SaldoClienteRepository extends CrudRepository<SaldoCliente, SaldoClienteID> {
-    List<SaldoCliente> findAll();
+    List<SaldoCliente> findAllById_Espaco(long idEspaco);
+
+    List<SaldoCliente> findAllById_Cliente(long idCliente);
 }

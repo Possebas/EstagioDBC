@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EspacoRepository extends CrudRepository<Espaco, Integer> {
     List<Espaco> findAll();
+    
+    Espaco findByNome(String nome);
 }

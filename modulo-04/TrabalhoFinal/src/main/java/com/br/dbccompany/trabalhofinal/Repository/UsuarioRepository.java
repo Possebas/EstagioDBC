@@ -7,5 +7,12 @@ import java.util.List;
 import com.br.dbccompany.trabalhofinal.Entity.Usuario;
 
 public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
-    List<Usuario> findAll();
+
+    Usuario findByUsername(String login);
+
+    Usuario findById(long id);
+
+    List<Usuario> findAllByNome(String nome);
+
+    Usuario findByEmail(String email);
 }

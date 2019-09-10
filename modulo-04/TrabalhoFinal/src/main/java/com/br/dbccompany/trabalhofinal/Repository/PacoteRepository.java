@@ -8,4 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PacoteRepository extends CrudRepository<Pacote, Integer> {
     List<Pacote> findAll();
+    Pacote findById(long id);
 }

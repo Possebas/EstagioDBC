@@ -16,7 +16,7 @@ public class Usuario extends AbstractEntity{
     @Column(name = "Email")
     private String email;
 
-    @Column(name = "Usuario")
+    @Column(name = "Usuario", unique = true)
     private String username;
 
     private String password;

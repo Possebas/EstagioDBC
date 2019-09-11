@@ -27,6 +27,4 @@ public class EspacoService extends AbstractService<EspacoRepository, Espaco> {
         espaco.setValorFormatado(espaco.getValorFormatado());
         return super.salvar(espaco);
     }
-
-   
 }

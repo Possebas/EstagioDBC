@@ -3,7 +3,6 @@ package com.br.dbccompany.trabalhofinal.Service;
 import  com.br.dbccompany.trabalhofinal.Entity.Cliente;
 import  com.br.dbccompany.trabalhofinal.Utils;
 import  com.br.dbccompany.trabalhofinal.Repository.ClienteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

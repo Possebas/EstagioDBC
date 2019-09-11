@@ -1,4 +1,4 @@
-package com.br.dbccompany.trabalhofinal.TrabalhoFinal;
+package com.br.dbccompany.trabalhofinal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -36,7 +36,7 @@ public class ContratacaoController {
     @PostMapping(value = "/adicionar")
     @ResponseBody
     public String adicionar(@RequestBody Contratacao contratacao) {
-        return service.salvarRetornarValor(contratacao);
+        return service.retornaValorContrato(contratacao);
     }
 
     @PutMapping(value = "/editar/{id}")

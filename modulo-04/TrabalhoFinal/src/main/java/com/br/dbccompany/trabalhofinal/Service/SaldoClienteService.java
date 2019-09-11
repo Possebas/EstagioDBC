@@ -15,7 +15,7 @@ import java.util.List;
 public class SaldoClienteService {
 
     @Autowired
-    SaldoClienteRepository repository;
+    SaldoClienteRepository selfRepository;
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -25,36 +25,34 @@ public class SaldoClienteService {
 
     @Transactional(rollbackFor = Exception.class)
     public SaldoCliente salvar(SaldoCliente saldoCliente){
-        return repository.save(saldoCliente);
+        return selfRepository.save(saldoCliente);
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public boolean removerPorId(Integer idCliente, Integer idEspaco){
+    public void removerPorId(Integer idCliente, Integer idEspaco){
         SaldoClienteID id = new SaldoClienteID();
         id.setCliente(clienteRepository.findById(idCliente).get());
         id.setEspaco(espacoRepository.findById(idEspaco).get());
-        boolean existia = (repository.findById(id).isPresent());
-        repository.deleteById(id);
-        return existia;
+        selfRepository.deleteById(id);
     }
 
     public SaldoCliente buscarPorId(Integer idCliente, Integer idEspaco){
         SaldoClienteID id = new SaldoClienteID();
         id.setCliente(clienteRepository.findById(idCliente).get());
         id.setEspaco(espacoRepository.findById(idEspaco).get());
-        return repository.findById(id).get();
+        return selfRepository.findById(id).get();
     }
 
     public List<SaldoCliente> listarTodos(){
-        return (List<SaldoCliente>) repository.findAll();
+        return (List<SaldoCliente>) selfRepository.findAll();
     }
 
     public List<SaldoCliente> listarTodosDoEspaco(Integer idEspaco){
-        return repository.findAllById_Espaco(idEspaco);
+        return selfRepository.findAllById_Espaco(idEspaco);
     }
 
     public List<SaldoCliente> listarTodosDoCliente(Integer idCliente){
-        return repository.findAllById_Cliente(idCliente);
+        return selfRepository.findAllById_Cliente(idCliente);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -63,6 +61,6 @@ public class SaldoClienteService {
         saldoID.setCliente(clienteRepository.findById(idCliente).get());
         saldoID.setEspaco(espacoRepository.findById(idEspaco).get());
         saldoCliente.setId(saldoID);
-        return repository.save(saldoCliente);
+        return selfRepository.save(saldoCliente);
     }
 }

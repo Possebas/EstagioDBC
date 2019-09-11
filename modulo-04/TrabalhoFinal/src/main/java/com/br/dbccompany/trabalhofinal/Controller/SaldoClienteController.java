@@ -15,7 +15,6 @@ public class SaldoClienteController {
     @Autowired
     SaldoClienteService service;
 
-
     @GetMapping(value = "/")
     @ResponseBody
     public List<SaldoCliente> listarTodos(){
@@ -42,8 +41,8 @@ public class SaldoClienteController {
 
     @DeleteMapping(value = "/deletar/{idCliente}-{idEspaco}")
     @ResponseBody
-    public boolean deletar(@PathVariable Integer idCliente, @PathVariable Integer idEspaco){
-        return service.removerPorId(idCliente, idEspaco);
+    public void deletar(@PathVariable Integer idCliente, @PathVariable Integer idEspaco){
+        service.removerPorId(idCliente, idEspaco);
     }
 
 }

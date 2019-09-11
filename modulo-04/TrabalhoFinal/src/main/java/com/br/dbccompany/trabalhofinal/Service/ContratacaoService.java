@@ -26,24 +26,24 @@ public class ContratacaoService extends AbstractService<ContratacaoRepository, C
     }
 
     @Transactional
-    public String retornaValorContrato(Contratacao entidade) {
+    public String retornaValorContrato(Contratacao contrato) {
 
-        entidade.setDesconto(Utils.parseToDouble(entidade.getValorFormatado()));
+        contrato.setDesconto(Utils.parseToDouble(contrato.getValorFormatado()));
 
         Espaco espaco = null;
-        if(entidade.getEspaco().getId() != 0){
-            espaco = espacoService.buscarPorId(entidade.getEspaco().getId());
+        if(contrato.getEspaco().getId() != 0){
+            espaco = espacoService.buscarPorId(contrato.getEspaco().getId());
         } 
 
-        Contratacao contratacao = repository.save(entidade);
+        Contratacao contratacao = repository.save(contrato);
         double diariaEspaco = 0.0;
         if(espaco != null) {
             diariaEspaco = espaco.getValor();
         }
 
-        double valorContracao;
+        double valorContracao = 0.0;
 
-        switch (entidade.getTipoContratacao()){
+        switch (contrato.getTipoContratacao()){
             case MES: valorContracao = diariaEspaco * 30; //mes de 30 dias
                 break;
             case SEMANA: valorContracao = diariaEspaco * 7; //7 dias

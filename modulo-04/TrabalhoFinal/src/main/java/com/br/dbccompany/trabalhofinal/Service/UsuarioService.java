@@ -1,12 +1,14 @@
 package com.br.dbccompany.trabalhofinal.Service;
 
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Service;
 
 import com.br.dbccompany.trabalhofinal.Utils;
 import com.br.dbccompany.trabalhofinal.Entity.Usuario;
 import com.br.dbccompany.trabalhofinal.Repository.UsuarioRepository;
 
-@Service("detailsUserService")
+@Service("userDetailsService")
+@EnableWebSecurity
 public class UsuarioService extends AbstractService<UsuarioRepository, Usuario> {
 
     public Usuario buscarPorNome(String username){

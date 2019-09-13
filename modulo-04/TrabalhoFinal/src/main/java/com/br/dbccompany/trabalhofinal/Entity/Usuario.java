@@ -13,7 +13,7 @@ public class Usuario extends AbstractEntity{
     @Column(name = "Nome")
     private String nome;
 
-    @Column(name = "Email")
+    @Column(name = "Email", unique = true)
     private String email;
 
     @Column(name = "Usuario", unique = true)

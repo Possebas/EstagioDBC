@@ -3,6 +3,8 @@ package com.br.dbccompany.trabalhofinal.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 import com.br.dbccompany.trabalhofinal.Entity.*;
@@ -50,7 +52,9 @@ public class PagamentoService extends AbstractService<PagamentoRepository, Pagam
                 SaldoCliente saldoCliente = new SaldoCliente();
                 saldoCliente.setId(id);
                 saldoCliente.setQuantidade(clientePacote.getQuantidade());
-                saldoCliente.setVencimento(new Date(System.currentTimeMillis() + (espPacote.getPrazo() * saldoCliente.getQuantidade()))); //REVISAR O CALCULO
+                LocalDateTime now = LocalDateTime.now();
+                LocalDateTime vencimento = now.plus(espPacote.getPrazo(), ChronoUnit.DAYS);
+                saldoCliente.setVencimento(vencimento); //REVISAR O CALCULO
                 saldoCliente.setTipoContratacao(espPacote.getTipoContratacao());
                 saldoClienteService.salvar(saldoCliente);
             }
@@ -68,8 +72,11 @@ public class PagamentoService extends AbstractService<PagamentoRepository, Pagam
 
             id.setEspaco(espacoService.buscarPorId(idEspaco));
             id.setCliente(clienteService.buscarPorId(idCliente));
+            
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime vencimento = now.plus(contratacao.getPrazo(), ChronoUnit.DAYS); //ChoronoUnit para criar periodos de datas escolhendo o periodo base
 
-            saldoCliente.setVencimento(new Date(System.currentTimeMillis() + (contratacao.getPrazo() * saldoCliente.getQuantidade()))); //REVISAR O CALCULO
+            saldoCliente.setVencimento(vencimento);
             saldoCliente.setTipoContratacao(contratacao.getTipoContratacao());
             saldoCliente.setId(id);
             saldoCliente.setQuantidade(contratacao.getQuantidade());

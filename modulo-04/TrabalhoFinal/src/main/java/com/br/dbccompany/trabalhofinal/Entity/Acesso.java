@@ -1,7 +1,8 @@
 package com.br.dbccompany.trabalhofinal.Entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Acesso extends AbstractEntity {
@@ -21,9 +22,7 @@ public class Acesso extends AbstractEntity {
     @Column(name = "Is_Entrada")
     private boolean isEntrada = false;
 
-    private boolean isExcecao = false;
-
-    private Date data = new Date();
+    private LocalDateTime data;
 
     @Override
     public Integer getId() {
@@ -51,19 +50,11 @@ public class Acesso extends AbstractEntity {
         isEntrada = entrada;
     }
 
-    public Date getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
-    }
-
-    public boolean isExcecao() {
-        return isExcecao;
-    }
-
-    public void setExcecao(boolean excecao) {
-        isExcecao = excecao;
     }
 }

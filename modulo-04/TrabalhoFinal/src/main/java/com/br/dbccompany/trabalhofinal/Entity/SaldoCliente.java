@@ -1,5 +1,6 @@
 package com.br.dbccompany.trabalhofinal.Entity;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import javax.persistence.*;
@@ -16,10 +17,10 @@ public class SaldoCliente {
     private TipoContratacao tipoContratacao;
 
     @Column(nullable = false)
-    private int quantidade;
+    private double quantidade;
 
     @Column(nullable = false)
-    private Date vencimento;
+    private LocalDateTime vencimento;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Espaco espaco;
@@ -43,19 +44,19 @@ public class SaldoCliente {
         this.tipoContratacao = tipoContratacao;
     }
 
-    public int getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
 
-    public Date getVencimento() {
+    public LocalDateTime getVencimento() {
         return vencimento;
     }
 
-    public void setVencimento(Date vencimento) {
+    public void setVencimento(LocalDateTime vencimento) {
         this.vencimento = vencimento;
     }
 

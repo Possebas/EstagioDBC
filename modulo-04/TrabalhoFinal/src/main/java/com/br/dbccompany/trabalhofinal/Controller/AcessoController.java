@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/api/acesso")
-public class AcessoController {//extends AbstractController<Acesso, AcessoRepository, AcessoService> {
+public class AcessoController {
 
     @Autowired
     AcessoService acessoService;
@@ -51,6 +51,5 @@ public class AcessoController {//extends AbstractController<Acesso, AcessoReposi
     public void remover(@PathVariable Integer id) {
         acessoService.deletarPorId(id);
     }
-
 
 }

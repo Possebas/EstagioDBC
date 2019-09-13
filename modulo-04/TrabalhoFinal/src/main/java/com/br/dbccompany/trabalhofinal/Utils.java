@@ -60,7 +60,10 @@ public class Utils {
 
             digest.update(senha.getBytes(), 0, senha.length());
 
-            md5 = new BigInteger(1, digest.digest()).toString(16);
+            BigInteger hash = new BigInteger(1, digest.digest());
+
+            md5 = String.format("%32x", hash);
+
         } catch (NoSuchAlgorithmException e) {
             System.err.println("Erro ao criar criptografia");
             return  null;
